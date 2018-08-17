@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <Version>0.1.0-alpha</Version>
+    <Authors>Arturo Torres</Authors>
+    <PackageId>ArturoTorres.QApp</PackageId>
+    <Company>Arturo Torres</Company>
+    <Copyright>Copyright ©2018 ArturoTorres</Copyright>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/arttorres/QApp/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/arttorres/QApp</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/arttorres/QApp</RepositoryUrl>
+    <PackageTags>console framework quick app</PackageTags>
+    <Description>A light console framework for quick applications.</Description>
+    <RepositoryType>Git</RepositoryType>
+    <PackageReleaseNotes>Initial release for QApp</PackageReleaseNotes>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ArturoTorres.MagnetArgs" Version="0.1.0-alpha" />
+    <PackageReference Include="log4net" Version="2.0.8" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Events\" />
+    <Folder Include="Attributes\" />
+  </ItemGroup>
+
+</Project>
