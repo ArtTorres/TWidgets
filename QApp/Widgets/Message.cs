@@ -4,7 +4,8 @@ using System.Text;
 
 namespace QApp.Widgets
 {
-    class ProgressBar: ProgressWidget
+    class Message : QWidget
     {
+        public string Text { get; set; }
     }
 }
