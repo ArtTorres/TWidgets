@@ -3,7 +3,7 @@
 namespace QApp.Attributes
 {
     [AttributeUsage(AttributeTargets.Property, Inherited = true)]
-    public class OptionSetAttribute : Attribute
+    public class HelpGroupAttribute : Attribute
     {
         public int HelpOrder
         {
@@ -11,7 +11,7 @@ namespace QApp.Attributes
             set;
         }
 
-        public OptionSetAttribute(int helpOrder = 0)
+        public HelpGroupAttribute(int helpOrder = 0)
         {
             this.HelpOrder = helpOrder;
         }

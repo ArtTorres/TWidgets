@@ -11,7 +11,7 @@ namespace QApp
     public class ApplicationOptions : MagnetOption
     {
         [Arg("--help", Alias = "-h"), IfPresent]
-        [Help("Displays the application help instructions.", Example = "--help", Group = "Help", Order = 0)]
+        [Help("Displays the help instructions.", Example = "--help", Group = "Help", Order = 0)]
         public bool ShowHelp { get; set; }
 
         //[Arg("--log", Alias = "-l"), Parser(typeof(MessagePriorityParser)), Default("low")]

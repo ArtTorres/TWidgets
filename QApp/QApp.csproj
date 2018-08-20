@@ -23,7 +23,7 @@
 
   <ItemGroup>
     <Folder Include="Events\" />
-    <Folder Include="Attributes\" />
+    <Folder Include="Exceptions\" />
   </ItemGroup>
 
 </Project>
