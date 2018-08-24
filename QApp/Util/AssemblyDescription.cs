@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Reflection;
 
-namespace QApp.Presentation
+namespace QApp.Util
 {
     public class AssemblyDescription
     {

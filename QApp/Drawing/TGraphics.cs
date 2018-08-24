@@ -2,38 +2,33 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace QApp.Widgets
+namespace QApp.Drawing
 {
-    public class Message : Widget
+    public static class TGraphics
     {
-        public string Text { get; set; }
+        //TODO: Set color property
 
-        public Message(string id) : base(id)
-        {
-
-        }
-
-        public override void Init()
+        public static string[] DrawLine()
         {
             throw new NotImplementedException();
         }
 
-        public override void Load()
+        public static string[] DrawRectangle()
         {
             throw new NotImplementedException();
         }
 
-        public override void Draw()
+        public static string[] FillRectangle()
         {
             throw new NotImplementedException();
         }
 
-        public override void DrawComplete()
+        public static string[] DrawString()
         {
             throw new NotImplementedException();
         }
 
-        public override void Unload()
+        public static string[] Clear()
         {
             throw new NotImplementedException();
         }

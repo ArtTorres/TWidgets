@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace QApp.Widgets
+namespace QApp.Drawing
 {
-    abstract class InputWidget:Widget
+    class Rectangle
     {
     }
 }

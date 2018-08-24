@@ -4,7 +4,7 @@ using System.Text;
 
 namespace QApp.Widgets
 {
-    abstract class ProgressWidget : QWidget
+    abstract class ProgressWidget : Widget
     {
     }
 }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace QApp.Widgets
 {
-    class Marquee : QWidget
+    class Marquee : Widget
     {
     }
 }

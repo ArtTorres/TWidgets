@@ -17,7 +17,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="ArturoTorres.MagnetArgs" Version="0.1.0-alpha" />
+    <PackageReference Include="ArturoTorres.MagnetArgs" Version="0.2.0-beta" />
     <PackageReference Include="log4net" Version="2.0.8" />
   </ItemGroup>
 
