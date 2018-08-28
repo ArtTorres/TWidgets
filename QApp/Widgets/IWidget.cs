@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QApp.Drawing;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -10,7 +11,7 @@ namespace QApp.Widgets
 
         void Init();
         void Load();
-        void Draw();
+        void Draw(Graphics g);
         void DrawComplete();
         void Unload();
     }
