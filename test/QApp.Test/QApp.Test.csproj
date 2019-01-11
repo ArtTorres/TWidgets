@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\QApp\QApp.csproj" />
+    <ProjectReference Include="..\..\src\QApp\QApp.csproj" />
   </ItemGroup>
 
 </Project>
