@@ -1,5 +1,5 @@
 ﻿
-namespace QApp.Drawing
+namespace QApp.Core.Drawing
 {
     public enum Align
     {

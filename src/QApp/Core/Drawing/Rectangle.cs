@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace QApp.Drawing
+namespace QApp.Core.Drawing
 {
     public class Rectangle
     {

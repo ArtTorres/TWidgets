@@ -1,7 +1,7 @@
 ﻿
-namespace QApp.Drawing
+namespace QApp.Core.Drawing
 {
-    public struct Padding
+    public struct Margin
     {
         public int top;
         public int left;

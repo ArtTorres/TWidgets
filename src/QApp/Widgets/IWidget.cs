@@ -1,4 +1,4 @@
-﻿using QApp.Drawing;
+﻿using QApp.Core.Drawing;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,12 +7,24 @@ namespace QApp.Widgets
 {
     public interface IWidget
     {
+        event EventHandler<EventArgs> StateChanged;
+
         string Id { get; }
 
-        void Init();
-        void Load();
-        void Draw(Graphics g);
+        Position Position { get; }
+
+        //void Init();
+
+        //void Load();
+
+        void Mount();
+
+        Canvas Draw(Graphics g);
+
         void DrawComplete();
-        void Unload();
+
+        void UnMount();
+
+        //void Unload();
     }
 }
