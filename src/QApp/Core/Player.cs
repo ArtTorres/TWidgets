@@ -49,17 +49,16 @@ namespace QApp.Core
         private void DrawWidget(IWidget widget)
         {
             // Draw Widget
-            var canvas = widget.Draw(
-                new Graphics(
-                    new Canvas(
-                        RenderEngine.Instance.WindowWidth,
-                        RenderEngine.Instance.WindowHeight
-                    )
+            var g = new Graphics(
+                new Canvas(
+                    RenderEngine.Instance.WindowWidth,
+                    RenderEngine.Instance.WindowHeight
                 )
             );
+            widget.Draw(g);
 
             // Display on Console
-            RenderEngine.Instance.Display(canvas);
+            RenderEngine.Instance.Display(g.Canvas);
         }
 
         private void OnStateChanged(object sender, EventArgs e)

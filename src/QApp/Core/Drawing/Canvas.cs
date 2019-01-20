@@ -9,8 +9,10 @@ namespace QApp.Core.Drawing
         public int Width { get; private set; }
         public int Height { get; private set; }
 
-        public int RowCursor { get; private set; }
-        public int ColumnCursor { get; private set; }
+        public int RowCursor { get; set; }
+        public int ColumnCursor { get; set; }
+
+        public char BackgroundChar { get; set; }
 
         private StringBuilder _builder;
         public string[] Map
@@ -30,6 +32,7 @@ namespace QApp.Core.Drawing
             ColumnCursor = 0;
 
             _builder = new StringBuilder(width);
+            _builder.Append(this.BackgroundChar, width);
         }
 
         public void Draw(string value)
@@ -43,9 +46,19 @@ namespace QApp.Core.Drawing
 
         public void Draw(string value, int row, int column)
         {
-            int index = row * Width + column;
+            int ix = row * Width + column;  // index
+            int lix = ix + value.Length;    // last index
 
-            _builder.Insert(index, value);
+            if (lix > _builder.Length)
+            {
+                _builder.Append(
+                    this.BackgroundChar, 
+                    (lix - Width) <= Width ? ix + Width : lix
+                );
+                //_builder.Capacity = (lix - Width) <= Width ? ix + Width : lix;
+            }
+
+            _builder.Insert(ix, value);
         }
 
         public void Clear()
@@ -55,12 +68,12 @@ namespace QApp.Core.Drawing
 
         public void SetForegroundColor(ConsoleColor color)
         {
-
+            //TODO: Implement Color change support
         }
 
         public void SetBackgroundColor(ConsoleColor color)
         {
-
+            //TODO: Implement Color change support
         }
     }
 }

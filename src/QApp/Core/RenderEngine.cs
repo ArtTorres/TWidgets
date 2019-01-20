@@ -51,6 +51,8 @@ namespace QApp.Core
             {
                 Console.Write(line);
             }
+
+            Console.Write("\n");
         }
 
         #region Write Tools

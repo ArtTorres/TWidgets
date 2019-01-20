@@ -5,19 +5,20 @@ using QApp.Core.Drawing;
 
 namespace QApp.Widgets
 {
-    public class Box : Widget
+    public abstract class Box : Widget
     {
         public Margin Margin { get; set; }
 
-        public Padding Padding { get; set; }
+        //public Padding Padding { get; set; }
 
         public Box(string id) : base(id)
         {
+            this.Margin = new Margin();
         }
 
-        public override Canvas Draw(Graphics g)
+        public override void Draw(Graphics g)
         {
-            throw new NotImplementedException();
+            //g.DrawRectangle();
         }
     }
 }

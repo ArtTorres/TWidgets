@@ -27,20 +27,20 @@ namespace QApp.Core.Drawing
 
         public Rectangle(int width, int height, int envWidth, bool shrink = true)
         {
-            this.Margin = new Margin()
-            {
-                top = 0,
-                left = 1,
-                bottom = 0,
-                right = 1
-            };
-            this.Padding = new Padding()
-            {
-                top = 0,
-                left = 0,
-                bottom = 1,
-                right = 0
-            };
+            //this.Margin = new Margin()
+            //{
+            //    top = 0,
+            //    left = 1,
+            //    bottom = 0,
+            //    right = 1
+            //};
+            //this.Padding = new Padding()
+            //{
+            //    top = 0,
+            //    left = 0,
+            //    bottom = 1,
+            //    right = 0
+            //};
 
             this.BorderTemplate = new char[] { '┌', '─', '┐', '│', ' ', '│', '└', '─', '┘' };
         }

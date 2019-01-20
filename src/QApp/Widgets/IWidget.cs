@@ -19,7 +19,7 @@ namespace QApp.Widgets
 
         void Mount();
 
-        Canvas Draw(Graphics g);
+        void Draw(Graphics g);
 
         void DrawComplete();
 
