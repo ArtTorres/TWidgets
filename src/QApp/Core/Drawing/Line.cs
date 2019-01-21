@@ -8,7 +8,6 @@ namespace QApp.Core.Drawing
     {
         public Border Border { get; private set; }
         public Margin Margin { get; set; }
-        public Padding Padding { get; set; }
 
         public Line()
             :this(
@@ -22,7 +21,6 @@ namespace QApp.Core.Drawing
         public Line(Margin margin, Border border)
         {
             this.Margin = margin;
-            this.Padding = new Padding();
             this.Border = border;
         }
     }

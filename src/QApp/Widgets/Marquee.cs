@@ -17,7 +17,6 @@ namespace QApp.Widgets
                     g.Canvas.Width,
                     5,
                     this.Margin,
-                    this.Padding,
                     this.Border
                 )
             );

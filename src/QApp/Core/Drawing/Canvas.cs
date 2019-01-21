@@ -22,7 +22,7 @@ namespace QApp.Core.Drawing
             get
             {
                 return TextTools.Split(
-                    _builder.ToString().Substring(0, this.RowCursor * Width),
+                    _builder.ToString().Substring(0, (this.RowCursor) * Width),
                     this.Width
                 ).ToArray();
             }
@@ -72,6 +72,12 @@ namespace QApp.Core.Drawing
         public void DrawLine(string value)
         {
             this.Draw(value);
+            this.RowCursor += 1;
+        }
+
+        public void DrawLine(string value, int column, int row)
+        {
+            this.Draw(value, column, row);
             this.RowCursor += 1;
         }
 

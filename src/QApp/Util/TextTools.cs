@@ -20,9 +20,12 @@ namespace QApp.Util
             for (int i = 0; i <= chunk; i++)
             {
                 int c = i * size;
+                int len = value.Length - c;
 
-                if (value.Length - c < size)
-                    yield return  value.Substring(c, value.Length - c);
+                if (len == 0) continue;
+
+                if (len < size)
+                    yield return value.Substring(c, len);
                 else
                     yield return value.Substring(c, size);
             }

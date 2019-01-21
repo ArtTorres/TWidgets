@@ -8,7 +8,6 @@ namespace QApp.Core.Drawing
     {
         public Border Border { get; private set; }
         public Margin Margin { get; set; }
-        public Padding Padding { get; set; }
 
         public int Width { get; private set; }
         public int Height { get; private set; }
@@ -18,18 +17,16 @@ namespace QApp.Core.Drawing
                 width,
                 height,
                 new Margin(),
-                new Padding(),
                 new Border()
             )
         { }
 
-        public Rectangle(int width, int height, Margin margin, Padding padding, Border border)
+        public Rectangle(int width, int height, Margin margin, Border border)
         {
             this.Width = width;
             this.Height = height;
 
             this.Margin = margin;
-            this.Padding = padding;
             this.Border = border;
         }
     }

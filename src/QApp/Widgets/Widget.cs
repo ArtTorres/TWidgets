@@ -23,14 +23,11 @@ namespace QApp.Widgets
 
         public Margin Margin { get; set; }
 
-        public Padding Padding { get; set; }
-
         public Widget(string id)
         {
             this.Id = id;
             this.Position = Position.Relative;
             this.Margin = new Margin();
-            this.Padding = new Padding();
         }
 
         ~Widget()

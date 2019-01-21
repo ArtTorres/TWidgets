@@ -26,7 +26,7 @@ namespace QApp.Widgets
 
         public override void Draw(Graphics g)
         {
-            g.DrawText(this.Text, this.Margin, this.Padding);
+            g.DrawText(this.Text, this.Margin);
         }
     }
 }
