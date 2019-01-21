@@ -19,17 +19,7 @@
 
   <ItemGroup>
     <Compile Remove="ApplicationOptions.cs" />
-    <Compile Remove="Attributes\HeaderAttribute.cs" />
-    <Compile Remove="Attributes\HelpAttribute.cs" />
-    <Compile Remove="Attributes\HelpGroupAttribute.cs" />
     <Compile Remove="Core\Workflow.cs" />
-    <Compile Remove="Events\MessageEventArgs.cs" />
-    <Compile Remove="Events\MessagePriority.cs" />
-    <Compile Remove="Events\MessageType.cs" />
-    <Compile Remove="Events\QMessage.cs" />
-    <Compile Remove="Layout\HelpTemplate.cs" />
-    <Compile Remove="Layout\Marquee.cs" />
-    <Compile Remove="Parsers\MessagePriorityParser.cs" />
     <Compile Remove="QApplication.cs" />
     <Compile Remove="Util\AssemblyDescription.cs" />
     <Compile Remove="Widgets\Container.cs" />
@@ -39,17 +29,6 @@
     <Compile Remove="Widgets\ProgressChar.cs" />
     <Compile Remove="Widgets\ProgressList.cs" />
     <Compile Remove="Widgets\ProgressWidget.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Attributes\" />
-    <Folder Include="Core\Events\" />
-    <Folder Include="Core\Render\" />
-    <Folder Include="Core\Workflow\" />
-    <Folder Include="Events\" />
-    <Folder Include="Exceptions\" />
-    <Folder Include="Layout\" />
-    <Folder Include="Parsers\" />
   </ItemGroup>
 
 </Project>
