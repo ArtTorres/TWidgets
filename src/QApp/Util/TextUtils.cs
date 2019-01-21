@@ -5,14 +5,8 @@ using System.Text;
 
 namespace QApp.Util
 {
-    public static class TextTools
+    public static class TextUtils
     {
-        //public static IEnumerable<string> Split(string value, int size)
-        //{
-        //    return Enumerable.Range(0, value.Length / size)
-        //        .Select(i => value.Substring(i * size, size));
-        //}
-
         public static IEnumerable<string> Split(string value, int size)
         {
             int chunk = value.Length / size;
@@ -28,6 +22,25 @@ namespace QApp.Util
                     yield return value.Substring(c, len);
                 else
                     yield return value.Substring(c, size);
+            }
+        }
+
+        public static string Normalize(string value, int maxLength)
+        {
+            if (value.Length < maxLength)
+            {
+                // Fill with empty characters
+                return string.Concat(value, new string(' ', maxLength - value.Length));
+            }
+            else if (value.Length == maxLength)
+            {
+                // No changes
+                return value;
+            }
+            else
+            {
+                // Trim to max
+                return value.Substring(0, maxLength);
             }
         }
     }

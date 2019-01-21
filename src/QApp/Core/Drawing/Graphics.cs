@@ -23,50 +23,27 @@ namespace QApp.Core.Drawing
         public void Draw(Line line)
         {
             // Draw top margin
-            for (int i = 0; i < line.Margin.Top; i++)
-            {
-                this.Canvas.DrawLine(
-                    new string(' ', this.Canvas.Width)
-                );
-            }
+            this.Canvas.DrawSpace(line.Margin.Top);
 
             int x = this.Canvas.ColumnCursor + line.Margin.Left;
-            //int y = this.Canvas.RowCursor + line.Margin.Top + line.Padding.Top;
 
             int xp = this.Canvas.Width - line.Margin.Right;
-            //int yp = this.Canvas.Height - line.Margin.Bottom - line.Padding.Bottom;
-
-            //this.Canvas.Draw(new string(line.Border.Top, xp - x), x, y);
 
             this.Canvas.DrawLine(new string(line.Border.Top, xp - x), x, this.Canvas.RowCursor);
 
             // Draw bottom margin
-            for (int i = 0; i < line.Margin.Bottom; i++)
-            {
-                this.Canvas.DrawLine(
-                    new string(' ', this.Canvas.Width),
-                    x,
-                    this.Canvas.RowCursor
-                );
-            }
+            this.Canvas.DrawSpace(line.Margin.Bottom);
         }
 
         public void Draw(Rectangle rectangle)
         {
             // Draw top margin
-            for (int i = 0; i < rectangle.Margin.Top; i++)
-            {
-                this.Canvas.DrawLine(
-                    new string(' ', this.Canvas.Width)
-                );
-            }
+            this.Canvas.DrawSpace(rectangle.Margin.Top);
 
-            // TODO: Fix Drawing
             int x = this.Canvas.ColumnCursor + rectangle.Margin.Left;
             int y = this.Canvas.RowCursor;
 
             int xp = this.Canvas.Width - rectangle.Margin.Right - 1;
-            //int yp = this.Canvas.Height - rectangle.Margin.Bottom - 1;
 
             int rows = rectangle.Height;
 
@@ -106,17 +83,17 @@ namespace QApp.Core.Drawing
             }
 
             // Draw bottom margin
-            for (int i = 0; i < rectangle.Margin.Bottom; i++)
-            {
-                this.Canvas.DrawLine(
-                    new string(' ', this.Canvas.Width)
-                );
-            }
+            this.Canvas.DrawSpace(rectangle.Margin.Bottom);
         }
 
         public void Draw(Text text)
         {
-            // TODO: Fix Text Drawing
+            this.Draw(text, this.Canvas.ColumnCursor);
+        }
+
+        public void Draw(Text text, int column)
+        {
+            this.Draw(text, column, this.Canvas.RowCursor);
         }
 
         public void Draw(Text text, int column, int row)
@@ -124,29 +101,24 @@ namespace QApp.Core.Drawing
             int x = this.Canvas.ColumnCursor + text.Margin.Left;
             int y = this.Canvas.RowCursor + text.Margin.Top;
 
-            int xp = this.Canvas.Width - text.Margin.Right;
-            int yp = this.Canvas.Height - text.Margin.Bottom;
+            // Draw top margin
+            this.Canvas.DrawSpace(text.Margin.Top);
 
-            if (x + text.Value.Length > xp)
-            {
-                var lines = TextTools.Split(text.Value, xp - x);
-                foreach (var line in lines)
-                {
-                    this.Canvas.Draw(line, x, y);
-                    this.Canvas.RowCursor += 1;
-                }
-            }
-            else
-            {
-                this.Canvas.Draw(text.Value, x, y);
-            }
+            this.Canvas.DrawLine(text.Value, x, y);
 
-            this.Canvas.RowCursor = y;
+            // Draw bottom margin
+            this.Canvas.DrawSpace(text.Margin.Bottom);
         }
 
-        public void DrawText(string value, Margin margin)
+        public void Draw(string value, int column, int row)
         {
-            this.Draw(new Text(value, margin));
+            this.Canvas.Draw(value, column, row);
+        }
+
+        public void ResetCursors()
+        {
+            this.Canvas.ColumnCursor = 0;
+            this.Canvas.RowCursor = 0;
         }
 
         public void Clear()

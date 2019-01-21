@@ -141,6 +141,14 @@ namespace QApp.Core.Drawing
             }
         }
 
+        public int Width
+        {
+            get
+            {
+                return 1;
+            }
+        }
+
         public Border()
         {
             _template = new char[] {

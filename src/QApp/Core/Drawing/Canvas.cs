@@ -11,8 +11,26 @@ namespace QApp.Core.Drawing
         public int Width { get; private set; }
         public int Height { get; private set; }
 
-        public int RowCursor { get; set; }
+        private int _rowCursor;
+        public int RowCursor
+        {
+            get
+            {
+                return _rowCursor;
+            }
+            set
+            {
+                if (value > Rows)
+                {
+                    Rows = value;
+                }
+
+                _rowCursor = value;
+            }
+        }
         public int ColumnCursor { get; set; }
+
+        public int Rows { get; private set; }
 
         public char BackgroundChar { get; set; }
 
@@ -21,8 +39,11 @@ namespace QApp.Core.Drawing
         {
             get
             {
-                return TextTools.Split(
-                    _builder.ToString().Substring(0, (this.RowCursor) * Width),
+                return TextUtils.Split(
+                    TextUtils.Normalize(
+                        _builder.ToString(),
+                        this.Rows * Width
+                    ),
                     this.Width
                 ).ToArray();
             }
@@ -62,7 +83,6 @@ namespace QApp.Core.Drawing
                     this.BackgroundChar,
                     (lix - Width) <= Width ? ix + Width : lix
                 );
-                //_builder.Capacity = (lix - Width) <= Width ? ix + Width : lix;
             }
 
             _builder.Remove(ix, value.Length);
@@ -79,6 +99,11 @@ namespace QApp.Core.Drawing
         {
             this.Draw(value, column, row);
             this.RowCursor += 1;
+        }
+
+        public void DrawSpace(int rows = 1)
+        {
+            this.RowCursor += rows;
         }
 
         public void Clear()

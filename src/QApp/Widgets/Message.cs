@@ -22,11 +22,11 @@ namespace QApp.Widgets
         }
 
         public Message(string id) : base(id)
-        {}
+        { }
 
         public override void Draw(Graphics g)
         {
-            g.DrawText(this.Text, this.Margin);
+            g.Draw(new Text(this.Text, this.Margin));
         }
     }
 }
