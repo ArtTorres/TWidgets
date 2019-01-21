@@ -7,6 +7,8 @@ namespace QApp.Core
 {
     internal sealed class RenderEngine
     {
+        #region Instance
+
         private static readonly Lazy<RenderEngine> instance = new Lazy<RenderEngine>(() => new RenderEngine());
 
         public static RenderEngine Instance
@@ -16,6 +18,8 @@ namespace QApp.Core
                 return instance.Value;
             }
         }
+
+        #endregion
 
         public event EventHandler<EventArgs> RenderComplete;
         public void OnRenderComplete()

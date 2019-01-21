@@ -1,6 +1,8 @@
-﻿using System;
+﻿using QApp.Util;
+using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace QApp.Core.Drawing
 {
@@ -19,7 +21,10 @@ namespace QApp.Core.Drawing
         {
             get
             {
-                return _builder.ToString().Split(',');
+                return TextTools.Split(
+                    _builder.ToString().Substring(0, this.RowCursor * Width),
+                    this.Width
+                ).ToArray();
             }
         }
 
@@ -31,6 +36,8 @@ namespace QApp.Core.Drawing
             RowCursor = 0;
             ColumnCursor = 0;
 
+            BackgroundChar = ' ';
+
             _builder = new StringBuilder(width);
             _builder.Append(this.BackgroundChar, width);
         }
@@ -39,12 +46,12 @@ namespace QApp.Core.Drawing
         {
             this.Draw(
                 value,
-                this.RowCursor,
-                this.ColumnCursor
+                this.ColumnCursor,
+                this.RowCursor
             );
         }
 
-        public void Draw(string value, int row, int column)
+        public void Draw(string value, int column, int row)
         {
             int ix = row * Width + column;  // index
             int lix = ix + value.Length;    // last index
@@ -52,13 +59,20 @@ namespace QApp.Core.Drawing
             if (lix > _builder.Length)
             {
                 _builder.Append(
-                    this.BackgroundChar, 
+                    this.BackgroundChar,
                     (lix - Width) <= Width ? ix + Width : lix
                 );
                 //_builder.Capacity = (lix - Width) <= Width ? ix + Width : lix;
             }
 
+            _builder.Remove(ix, value.Length);
             _builder.Insert(ix, value);
+        }
+
+        public void DrawLine(string value)
+        {
+            this.Draw(value);
+            this.RowCursor += 1;
         }
 
         public void Clear()

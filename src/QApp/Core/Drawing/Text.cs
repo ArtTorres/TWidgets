@@ -4,12 +4,11 @@ using System.Text;
 
 namespace QApp.Core.Drawing
 {
-    public class Text
+    public class Text : IMarginable
     {
         public string Value { get; set; }
 
         public Margin Margin { get; set; }
-
         public Padding Padding { get; set; }
 
         public Text(string value)

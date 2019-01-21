@@ -8,6 +8,8 @@ namespace QApp.Core
 {
     public class Player
     {
+        #region Instance
+
         private static readonly Lazy<Player> instance = new Lazy<Player>(() => new Player());
         private IWidget _widget;
 
@@ -18,6 +20,8 @@ namespace QApp.Core
                 return instance.Value;
             }
         }
+
+        #endregion
 
         public Player()
         {

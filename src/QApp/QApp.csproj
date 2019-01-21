@@ -35,15 +35,10 @@
     <Compile Remove="Widgets\Container.cs" />
     <Compile Remove="Widgets\HelpDescription.cs" />
     <Compile Remove="Widgets\InputWidget.cs" />
-    <Compile Remove="Widgets\Marquee.cs" />
     <Compile Remove="Widgets\ProgressBar.cs" />
     <Compile Remove="Widgets\ProgressChar.cs" />
     <Compile Remove="Widgets\ProgressList.cs" />
     <Compile Remove="Widgets\ProgressWidget.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="ArturoTorres.MagnetArgs" Version="0.2.2-beta" />
   </ItemGroup>
 
   <ItemGroup>
@@ -55,7 +50,6 @@
     <Folder Include="Exceptions\" />
     <Folder Include="Layout\" />
     <Folder Include="Parsers\" />
-    <Folder Include="Util\" />
   </ItemGroup>
 
 </Project>

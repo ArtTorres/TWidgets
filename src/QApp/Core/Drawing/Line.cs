@@ -4,31 +4,26 @@ using System.Text;
 
 namespace QApp.Core.Drawing
 {
-    public class Line
+    public class Line: IMarginable, IBordeable
     {
-        // Spaces
+        public Border Border { get; private set; }
         public Margin Margin { get; set; }
+        public Padding Padding { get; set; }
 
-        // Template
-        public char Template { get; set; }
-        public int Length { get; set; }
-
-        public Line(char template, int length)
+        public Line()
+            :this(
+                 new Margin(),
+                 new Border()
+            )
         {
-            Template = template;
-            Length = length;
+
         }
 
-        //public string[] Draw()
-        //{
-        //    var output = new char[_length];
-
-        //    for (int i = 0; i < _length; i++)
-        //    {
-        //        output[i] = _char;
-        //    }
-
-        //    return new string[] { output.ToString() };
-        //}
+        public Line(Margin margin, Border border)
+        {
+            this.Margin = margin;
+            this.Padding = new Padding();
+            this.Border = border;
+        }
     }
 }

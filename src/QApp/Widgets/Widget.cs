@@ -5,9 +5,9 @@ using QApp.Core.Drawing;
 
 namespace QApp.Widgets
 {
-    public abstract class Widget : IWidget
+    public abstract class Widget : IWidget, IMarginable
     {
-        #region Instance
+        #region Events
 
         public event EventHandler<EventArgs> StateChanged;
         public void OnStateChanged()
