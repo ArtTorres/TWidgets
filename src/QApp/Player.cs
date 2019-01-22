@@ -1,10 +1,11 @@
-﻿using QApp.Core.Drawing;
+﻿using QApp.Core;
+using QApp.Core.Drawing;
 using QApp.Widgets;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace QApp.Core
+namespace QApp
 {
     public class Player
     {
