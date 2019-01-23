@@ -7,14 +7,14 @@ using System.Text;
 
 namespace QApp
 {
-    public class Player
+    public class WidgetPlayer
     {
         #region Instance
 
-        private static readonly Lazy<Player> instance = new Lazy<Player>(() => new Player());
+        private static readonly Lazy<WidgetPlayer> instance = new Lazy<WidgetPlayer>(() => new WidgetPlayer());
         private IWidget _widget;
 
-        public static Player Instance
+        private static WidgetPlayer Instance
         {
             get
             {
@@ -22,18 +22,28 @@ namespace QApp
             }
         }
 
+        public static void Mount(IWidget widget)
+        {
+            Instance.MountWidget(widget);
+        }
+
+        public static void UnMount()
+        {
+            Instance.UnMountWidget();
+        }
+
         #endregion
 
-        public Player()
+        public WidgetPlayer()
         {
             RenderEngine.Instance.RenderComplete += OnRenderComplete;
         }
 
-        public void Mount(IWidget widget)
+        private void MountWidget(IWidget widget)
         {
             if (null != _widget)
             {
-                this.UnMount();
+                this.UnMountWidget();
             }
 
             _widget = widget;
@@ -45,7 +55,7 @@ namespace QApp
             this.DrawWidget(_widget);
         }
 
-        public void UnMount()
+        private void UnMountWidget()
         {
             _widget.StateChanged -= OnStateChanged;
             _widget = null;
