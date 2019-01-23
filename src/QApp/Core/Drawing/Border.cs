@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QApp.Util;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -151,11 +152,7 @@ namespace QApp.Core.Drawing
 
         public Border()
         {
-            _template = new char[] {
-                '┌', '─', '┐',
-                '│', ' ', '│',
-                '└', '─', '┘'
-            };
+            _template = BorderTemplates.SOLID;
         }
 
         public Border(char[] template)
