@@ -1,20 +1,22 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFrameworks>netcoreapp2.0;netstandard2.0;net40;net45</TargetFrameworks>
     <Version>0.1.0-alpha</Version>
     <Authors>Arturo Torres</Authors>
     <PackageId>ArturoTorres.TWidgets</PackageId>
     <Company>Arturo Torres</Company>
-    <Copyright>Copyright ©2018 ArturoTorres</Copyright>
+    <Copyright>Copyright ©2019 ArturoTorres</Copyright>
     <PackageLicenseUrl>https://raw.githubusercontent.com/arttorres/TWidgets/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/arttorres/TWidgets</PackageProjectUrl>
     <RepositoryUrl>https://github.com/arttorres/TWidgets</RepositoryUrl>
-    <PackageTags>console framework quick app</PackageTags>
-    <Description>A light console framework for quick applications.</Description>
+    <PackageTags>console framework widgets</PackageTags>
+    <Description>A Text-based widget framework for console applications.</Description>
     <RepositoryType>Git</RepositoryType>
     <PackageReleaseNotes>Initial release for TWidgets</PackageReleaseNotes>
-    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <SignAssembly>false</SignAssembly>
+    <PackageIconUrl>https://github.com/ArtTorres/TWidgets/raw/master/doc/nuget/logo.png</PackageIconUrl>
   </PropertyGroup>
 
   <ItemGroup>
