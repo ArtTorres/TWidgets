@@ -1,7 +1,6 @@
-﻿using TWidgets.Core.Drawing;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
+using TWidgets.Core.Drawing;
+using TWidgets.Widgets;
 
 namespace TWidgets.Core
 {
@@ -20,6 +19,12 @@ namespace TWidgets.Core
         }
 
         #endregion
+
+        public event EventHandler<EventArgs> BeforeRender;
+        public void OnBeforeRender()
+        {
+            this.BeforeRender?.Invoke(this, new EventArgs());
+        }
 
         public event EventHandler<EventArgs> RenderComplete;
         public void OnRenderComplete()
@@ -43,20 +48,28 @@ namespace TWidgets.Core
             }
         }
 
+        public int WindowForegroundColor { get; private set; }
+
+        public int WindowBackgroundColor { get; private set; }
+
+        public RenderEngine()
+        {
+            this.SaveSystemColor();
+        }
+
         public void Display(Canvas canvas)
         {
+            this.OnBeforeRender();
             this.WriteCanvas(canvas.Map);
             this.OnRenderComplete();
         }
 
         private void WriteCanvas(string[] map)
         {
-            foreach(var line in map)
+            foreach (var line in map)
             {
                 Console.Write(line);
             }
-
-            //Console.Write("\n");
         }
 
         #region Write Tools
@@ -77,14 +90,32 @@ namespace TWidgets.Core
             Console.Clear();
         }
 
-        private void SetForegroundColor(ConsoleColor color)
+        public void SaveSystemColor()
         {
-            Console.ForegroundColor = color;
+            this.WindowForegroundColor = (int)Console.ForegroundColor;
+            this.WindowBackgroundColor = (int)Console.BackgroundColor;
         }
 
-        private void SetBackgroundColor(ConsoleColor color)
+        public void LoadSystemColor()
         {
-            Console.BackgroundColor = color;
+            Console.ForegroundColor = (ConsoleColor)this.WindowForegroundColor;
+            Console.BackgroundColor = (ConsoleColor)this.WindowBackgroundColor;
+        }
+
+        public void SetForegroundColor(WidgetColor color)
+        {
+            if (WidgetColor.System == color)
+                Console.ForegroundColor = (ConsoleColor)this.WindowForegroundColor;
+            else
+                Console.ForegroundColor = (ConsoleColor)(int)color;
+        }
+
+        public void SetBackgroundColor(WidgetColor color)
+        {
+            if (WidgetColor.System == color)
+                Console.BackgroundColor = (ConsoleColor)this.WindowBackgroundColor;
+            else
+                Console.BackgroundColor = (ConsoleColor)(int)color;
         }
 
         #endregion

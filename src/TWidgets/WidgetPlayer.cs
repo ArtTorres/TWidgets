@@ -1,9 +1,7 @@
-﻿using TWidgets.Core;
+﻿using System;
+using TWidgets.Core;
 using TWidgets.Core.Drawing;
 using TWidgets.Widgets;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace TWidgets
 {
@@ -36,6 +34,7 @@ namespace TWidgets
 
         public WidgetPlayer()
         {
+            //RenderEngine.Instance.BeforeRender += OnBeforeRender;
             RenderEngine.Instance.RenderComplete += OnRenderComplete;
         }
 
@@ -63,6 +62,9 @@ namespace TWidgets
 
         private void DrawWidget(IWidget widget)
         {
+            // Before Draw
+            widget.BeforeDraw();
+
             // Draw Widget
             var g = new Graphics(
                 new Canvas(
@@ -73,6 +75,9 @@ namespace TWidgets
             widget.Draw(g);
 
             // Display on Console
+            RenderEngine.Instance.SaveSystemColor();
+            RenderEngine.Instance.SetForegroundColor(widget.ForegroundColor);
+            RenderEngine.Instance.SetBackgroundColor(widget.BackgroundColor);
             RenderEngine.Instance.Display(g.Canvas);
         }
 
@@ -81,10 +86,18 @@ namespace TWidgets
             this.DrawWidget((IWidget)sender);
         }
 
+        private void OnBeforeRender(object sender, EventArgs e)
+        {
+            
+        }
+
         private void OnRenderComplete(object sender, EventArgs e)
         {
             // Launch DrawComplete Event
             _widget.DrawComplete();
+
+            // Reset Colors
+            RenderEngine.Instance.LoadSystemColor();
         }
     }
 }

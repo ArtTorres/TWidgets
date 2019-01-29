@@ -1,7 +1,7 @@
-﻿using TWidgets;
+﻿using System;
+using TWidgets;
 using TWidgets.Util;
 using TWidgets.Widgets;
-using System;
 
 namespace DemoApp
 {
@@ -14,6 +14,7 @@ namespace DemoApp
                 Text = "Hello World"
             };
             msg.Margin.All = 1;
+            msg.ForegroundColor = WidgetColor.Red;
 
             WidgetPlayer.Mount(msg);
 
@@ -27,6 +28,7 @@ namespace DemoApp
             marquee.Margin.All = 1;
             marquee.Padding.All = 1;
             marquee.Border.Template = BorderTemplates.DOTTED;
+            marquee.ForegroundColor = WidgetColor.Blue;
 
             WidgetPlayer.Mount(marquee);
 
@@ -34,15 +36,13 @@ namespace DemoApp
 
             var separator = new Separator("sep");
             separator.Margin.All = 1;
+            separator.ForegroundColor = WidgetColor.Yellow;
 
             WidgetPlayer.Mount(separator);
 
             Console.WriteLine("--END--");
 
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.Write("Hola ");
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.Write("Mundo");
+            Console.WriteLine("Text with System Color");
 
             Console.ReadKey();
         }

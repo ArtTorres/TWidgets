@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using TWidgets.Core.Drawing;
 
 namespace TWidgets.Widgets
@@ -21,13 +19,21 @@ namespace TWidgets.Widgets
 
         public Position Position { get; private set; }
 
+        public WidgetColor ForegroundColor { get; set; }
+
+        public WidgetColor BackgroundColor { get; set; }
+
         public Margin Margin { get; set; }
 
         public Widget(string id)
         {
             this.Id = id;
+
             this.Position = Position.Relative;
             this.Margin = new Margin();
+
+            this.ForegroundColor = WidgetColor.System;
+            this.BackgroundColor = WidgetColor.System;
         }
 
         ~Widget()
@@ -36,6 +42,8 @@ namespace TWidgets.Widgets
         }
 
         public virtual void Mount() { }
+
+        public virtual void BeforeDraw() { }
 
         public abstract void Draw(Graphics g);
 
