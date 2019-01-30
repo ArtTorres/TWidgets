@@ -1,24 +1,20 @@
 ﻿using TWidgets.Core.Drawing;
 using TWidgets.Util;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Linq;
 
 namespace TWidgets.Widgets
 {
     public class Marquee : Box
     {
-        private string[] _lines;
-        public string[] Lines
+        private string[] _items;
+        public string[] Items
         {
             get
             {
-                return _lines;
+                return _items;
             }
             set
             {
-                _lines = value;
+                _items = value;
                 this.OnStateChanged();
             }
         }
@@ -32,7 +28,8 @@ namespace TWidgets.Widgets
 
         public override void Draw(Graphics g)
         {
-            int rectangleHeight = this.Lines.Length + (this.Border.Width * 2) + this.Padding.Top + this.Padding.Bottom;
+            // Draw Rectangle
+            int rectangleHeight = this.Items.Length + (this.Border.Width * 2) + this.Padding.Top + this.Padding.Bottom;
             g.Draw(
                 new Rectangle(
                     g.Canvas.Width,
@@ -44,6 +41,7 @@ namespace TWidgets.Widgets
 
             g.ResetCursors();
 
+            // Draw List inside Rectangle
             var textMargin = new Margin(
                 Margin.Top + Border.Width + Padding.Top,
                 Margin.Left + Border.Width + Padding.Left,
@@ -51,34 +49,15 @@ namespace TWidgets.Widgets
                 Margin.Right + Border.Width + Padding.Right
             );
 
-            g.Canvas.RowCursor = textMargin.Top;
-
-            foreach (var line in Resize(this.Lines, g.Canvas.Width))
-            {
-                g.Draw(line, textMargin.Left, g.Canvas.RowCursor);
-                g.Canvas.RowCursor += 1;
-            }
-        }
-
-        private string[] Resize(string[] lines, int maxWidth)
-        {
-            var output = new List<string>();
-
-            foreach (var line in lines)
-            {
-                if (line.Length > maxWidth)
-                {
-                    output.AddRange(
-                        TextUtils.Split(line, maxWidth)
-                    );
-                }
-                else
-                {
-                    output.Add(line);
-                }
-            }
-
-            return output.ToArray();
+            g.Draw(
+                new List(
+                    TextUtils.ResizeLines(
+                        this.Items,
+                        g.Canvas.Width
+                    ),
+                    textMargin
+                )
+            );
         }
     }
 }

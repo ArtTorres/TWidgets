@@ -43,5 +43,26 @@ namespace TWidgets.Util
                 return value.Substring(0, maxLength);
             }
         }
+
+        public static string[] ResizeLines(string[] lines, int maxWidth)
+        {
+            var output = new List<string>();
+
+            foreach (var line in lines)
+            {
+                if (line.Length > maxWidth)
+                {
+                    output.AddRange(
+                        TextUtils.Split(line, maxWidth)
+                    );
+                }
+                else
+                {
+                    output.Add(line);
+                }
+            }
+
+            return output.ToArray();
+        }
     }
 }

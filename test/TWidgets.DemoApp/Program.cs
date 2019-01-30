@@ -21,7 +21,7 @@ namespace DemoApp
             Console.WriteLine("--END--");
 
             var marquee = new Marquee("mar");
-            marquee.Lines = new string[] {
+            marquee.Items = new string[] {
                 "Hello World",
                 "GoodBye World"
             };
@@ -39,6 +39,20 @@ namespace DemoApp
             separator.ForegroundColor = WidgetColor.Yellow;
 
             WidgetPlayer.Mount(separator);
+
+            Console.WriteLine("--END--");
+
+            var list = new BulletList("lst");
+            list.Margin.All = 1;
+            list.BackgroundColor = WidgetColor.DarkBlue;
+            list.ForegroundColor = WidgetColor.White;
+            list.Items = new string[] {
+                "Uno",
+                "Dos",
+                "Tres"
+            };
+
+            WidgetPlayer.Mount(list);
 
             Console.WriteLine("--END--");
 

@@ -26,13 +26,28 @@ namespace TWidgets.Core.Drawing
             this.Canvas.DrawSpace(line.Margin.Top);
 
             int x = this.Canvas.ColumnCursor + line.Margin.Left;
-
             int xp = this.Canvas.Width - line.Margin.Right;
 
             this.Canvas.DrawLine(new string(line.Border.Top, xp - x), x, this.Canvas.RowCursor);
 
             // Draw bottom margin
             this.Canvas.DrawSpace(line.Margin.Bottom);
+        }
+
+        public void Draw(List list)
+        {
+            // Draw top margin
+            this.Canvas.DrawSpace(list.Margin.Top);
+
+            int x = this.Canvas.ColumnCursor + list.Margin.Left;
+
+            foreach (var item in list.Items)
+            {
+                this.Canvas.DrawLine(item, x, this.Canvas.RowCursor);
+            }
+
+            // Draw bottom margin
+            this.Canvas.DrawSpace(list.Margin.Bottom);
         }
 
         public void Draw(Rectangle rectangle)
