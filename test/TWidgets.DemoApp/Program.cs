@@ -1,7 +1,7 @@
-﻿using TWidgets;
+﻿using System;
+using TWidgets;
 using TWidgets.Util;
 using TWidgets.Widgets;
-using System;
 
 namespace DemoApp
 {
@@ -14,19 +14,21 @@ namespace DemoApp
                 Text = "Hello World"
             };
             msg.Margin.All = 1;
+            msg.ForegroundColor = WidgetColor.Red;
 
             WidgetPlayer.Mount(msg);
 
             Console.WriteLine("--END--");
 
             var marquee = new Marquee("mar");
-            marquee.Lines = new string[] {
+            marquee.Items = new string[] {
                 "Hello World",
                 "GoodBye World"
             };
             marquee.Margin.All = 1;
             marquee.Padding.All = 1;
             marquee.Border.Template = BorderTemplates.DOTTED;
+            marquee.ForegroundColor = WidgetColor.Blue;
 
             WidgetPlayer.Mount(marquee);
 
@@ -34,15 +36,27 @@ namespace DemoApp
 
             var separator = new Separator("sep");
             separator.Margin.All = 1;
+            separator.ForegroundColor = WidgetColor.Yellow;
 
             WidgetPlayer.Mount(separator);
 
             Console.WriteLine("--END--");
 
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.Write("Hola ");
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.Write("Mundo");
+            var list = new BulletList("lst");
+            list.Margin.All = 1;
+            list.BackgroundColor = WidgetColor.DarkBlue;
+            list.ForegroundColor = WidgetColor.White;
+            list.Items = new string[] {
+                "Uno",
+                "Dos",
+                "Tres"
+            };
+
+            WidgetPlayer.Mount(list);
+
+            Console.WriteLine("--END--");
+
+            Console.WriteLine("Text with System Color");
 
             Console.ReadKey();
         }

@@ -1,7 +1,5 @@
-﻿using TWidgets.Core.Drawing;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
+using TWidgets.Core.Drawing;
 
 namespace TWidgets.Widgets
 {
@@ -13,18 +11,18 @@ namespace TWidgets.Widgets
 
         Position Position { get; }
 
-        //void Init();
+        WidgetColor ForegroundColor { get; set; }
 
-        //void Load();
+        WidgetColor BackgroundColor { get; set; }
 
         void Mount();
+
+        void BeforeDraw();
 
         void Draw(Graphics g);
 
         void DrawComplete();
 
         void UnMount();
-
-        //void Unload();
     }
 }
