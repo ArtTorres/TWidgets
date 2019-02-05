@@ -8,7 +8,7 @@ namespace TWidgets.Widgets
 {
     public class BulletList : Widget
     {
-        public char Bullet { get; set; } = '■';
+        public char Bullet { get; set; }
 
         private string[] _items;
         public string[] Items
@@ -25,7 +25,9 @@ namespace TWidgets.Widgets
         }
 
         public BulletList(string id) : base(id)
-        { }
+        {
+            this.Bullet = BulletTemplates.SQUARE;
+        }
 
         public override void Draw(Graphics g)
         {
