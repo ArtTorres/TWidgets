@@ -140,15 +140,5 @@ namespace TWidgets.Core.Drawing
         {
             this.Canvas.Clear();
         }
-
-        public void SetForegroundColor(ConsoleColor color)
-        {
-            this.Canvas.SetForegroundColor(color);
-        }
-
-        public void SetBackgroundColor(ConsoleColor color)
-        {
-            this.Canvas.SetBackgroundColor(color);
-        }
     }
 }
