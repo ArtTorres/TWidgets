@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using TWidgets.Core;
 using TWidgets.Core.Drawing;
 
 namespace TWidgets.Widgets
 {
-    public class ProgressBar : Box
+    public class ProgressBar : BoxWidget
     {
         public double Step { get; set; } = 1.0d;
         public double Max { get; set; } = 100.0d;

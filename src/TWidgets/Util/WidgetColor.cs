@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TWidgets.Widgets
+namespace TWidgets.Util
 {
     public enum WidgetColor
     {

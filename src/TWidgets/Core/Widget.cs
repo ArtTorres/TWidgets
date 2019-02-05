@@ -1,7 +1,8 @@
 ﻿using System;
 using TWidgets.Core.Drawing;
+using TWidgets.Util;
 
-namespace TWidgets.Widgets
+namespace TWidgets.Core
 {
     public abstract class Widget : IWidget, IMarginable
     {
