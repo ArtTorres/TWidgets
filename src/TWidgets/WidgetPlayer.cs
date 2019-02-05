@@ -1,7 +1,6 @@
 ﻿using System;
 using TWidgets.Core;
 using TWidgets.Core.Drawing;
-using TWidgets.Widgets;
 
 namespace TWidgets
 {
@@ -10,7 +9,6 @@ namespace TWidgets
         #region Instance
 
         private static readonly Lazy<WidgetPlayer> instance = new Lazy<WidgetPlayer>(() => new WidgetPlayer());
-        private IWidget _widget;
 
         private static WidgetPlayer Instance
         {
@@ -32,32 +30,107 @@ namespace TWidgets
 
         #endregion
 
+        public IWidget Widget { get; private set; }
+
+        //public bool DrawOnMount { get; set; } = true;
+
         public WidgetPlayer()
         {
-            //RenderEngine.Instance.BeforeRender += OnBeforeRender;
+            RenderEngine.Instance.BeforeRender += OnBeforeRender;
             RenderEngine.Instance.RenderComplete += OnRenderComplete;
         }
 
-        private void MountWidget(IWidget widget)
+        private void MountWidget(IWidget widget, bool drawOnMount = true)
         {
-            if (null != _widget)
+            if (null != Widget)
             {
                 this.UnMountWidget();
             }
 
-            _widget = widget;
-            _widget.StateChanged += OnStateChanged;
+            Widget = widget;
+
+            // Set Events
+            Widget.StateChanged += OnStateChanged;
+
+            // Save initial position for Fixed widgets
+            if (Position.Fixed == Widget.Position)
+            {
+                InputEngine.Instance.SaveSystemCursor();
+            }
+
+            //if (Widget is IInput)
+            //{
+            //    var input = (IInput)Widget;
+            //    input.StartCapture += OnStartCapture;
+            //    input.EndCapture += OnEndCapture;
+            //    input.InputCaptured += OnInputCapture;
+            //}
 
             // Launch Mount Event
-            _widget.Mount();
+            Widget.Mount();
 
-            this.DrawWidget(_widget);
+            if (drawOnMount)
+                this.PlayWidget();
         }
 
         private void UnMountWidget()
         {
-            _widget.StateChanged -= OnStateChanged;
-            _widget = null;
+            // Unset Events
+            Widget.StateChanged -= OnStateChanged;
+
+            //if (Widget is IInput)
+            //{
+            //    var input = (IInput)Widget;
+            //    input.StartCapture -= OnStartCapture;
+            //    input.EndCapture -= OnEndCapture;
+            //    input.InputCaptured -= OnInputCapture;
+            //}
+
+            Widget.UnMount();
+            Widget = null;
+        }
+
+        private void PlayWidget()
+        {
+            if (Widget is IInput)
+            {
+                // TODO: implement input widgets
+                var input = (IInput)Widget;
+
+                var g = new Graphics(
+                    new Canvas(
+                        RenderEngine.Instance.WindowWidth,
+                        RenderEngine.Instance.WindowHeight
+                    )
+                );
+
+                input.BeforeCapture(g);
+
+                this.DrawWidget(Widget);
+
+                Widget.Draw(g);
+                input.StartCapture();
+
+                input.MapValues(null);
+
+                switch (input.ValidateInput())
+                {
+                    case ValidationState.Valid:
+                        input.AfterCapture(g);
+                        break;
+                    case ValidationState.Invalid:
+                        input.DisplayError(g, null);
+                        PlayWidget();
+                        break;
+                    case ValidationState.Repeat:
+                        PlayWidget();
+                        break;
+                }
+            }
+            else
+            {
+                this.DrawWidget(Widget);
+            }
         }
 
         private void DrawWidget(IWidget widget)
@@ -88,16 +161,32 @@ namespace TWidgets
 
         private void OnBeforeRender(object sender, EventArgs e)
         {
-            
+            // Restart position for Fixed widgets
+            if (Position.Fixed == Widget.Position)
+            {
+                InputEngine.Instance.Cursor = InputEngine.Instance.SystemCursor;
+            }
         }
 
         private void OnRenderComplete(object sender, EventArgs e)
         {
             // Launch DrawComplete Event
-            _widget.DrawComplete();
+            Widget.DrawComplete();
 
             // Reset Colors
             RenderEngine.Instance.LoadSystemColor();
         }
+
+        //private void OnStartCapture(object sender, EventArgs e)
+        //{
+        //}
+
+        //private void OnEndCapture(object sender, EventArgs e)
+        //{
+        //}
+
+        //private void OnInputCapture(object sender, EventArgs e)
+        //{
+        //}
     }
 }

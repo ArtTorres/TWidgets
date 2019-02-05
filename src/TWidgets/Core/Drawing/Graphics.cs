@@ -125,6 +125,11 @@ namespace TWidgets.Core.Drawing
             this.Canvas.DrawSpace(text.Margin.Bottom);
         }
 
+        public void Draw(string value, int column)
+        {
+            this.Canvas.Draw(value, column, this.Canvas.RowCursor);
+        }
+
         public void Draw(string value, int column, int row)
         {
             this.Canvas.Draw(value, column, row);

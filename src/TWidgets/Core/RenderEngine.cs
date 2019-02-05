@@ -53,7 +53,7 @@ namespace TWidgets.Core
 
         public int WindowBackgroundColor { get; private set; }
 
-        public RenderEngine()
+        private RenderEngine()
         {
             this.SaveSystemColor();
         }

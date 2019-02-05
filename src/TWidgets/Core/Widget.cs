@@ -18,7 +18,7 @@ namespace TWidgets.Core
 
         public string Id { get; private set; }
 
-        public Position Position { get; private set; }
+        public Position Position { get; set; }
 
         public WidgetColor ForegroundColor { get; set; }
 
@@ -44,11 +44,15 @@ namespace TWidgets.Core
 
         public virtual void Mount() { }
 
+        public virtual void Load() { }
+
         public virtual void BeforeDraw() { }
 
         public abstract void Draw(Graphics g);
 
         public virtual void DrawComplete() { }
+
+        public virtual void Unload() { }
 
         public virtual void UnMount() { }
     }
