@@ -30,7 +30,7 @@ namespace TWidgets.Util
 
         // ¦|||||||||¦
         public static readonly char[] BARS = new char[] {
-            '[', ' ', '/', ']'
+            '¦', ' ', '|', '¦'
         };
     }
 }
