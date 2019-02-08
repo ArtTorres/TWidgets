@@ -10,9 +10,6 @@ namespace DemoApp
     {
         static void Main(string[] args)
         {
-            ProgressBarSample();
-
-            Console.WriteLine("Text with System Color");
             Console.ReadKey();
         }
 
@@ -39,7 +36,7 @@ namespace DemoApp
             };
             marquee.Margin.All = 1;
             marquee.Padding.All = 1;
-            marquee.Border.Template = BorderTemplates.DOTTED;
+            marquee.Border.Template = BorderTemplate.DOTTED;
             marquee.ForegroundColor = WidgetColor.Blue;
 
             WidgetPlayer.Mount(marquee);
@@ -78,10 +75,16 @@ namespace DemoApp
         static void TextInputSample()
         {
             var tInput = new TextInput("txi");
+            tInput.HeaderText = "Example Header";
 
             WidgetPlayer.Mount(tInput);
 
             Console.WriteLine("--END--");
+
+            foreach (var value in tInput.Values)
+            {
+                Console.WriteLine("{0},{1}", value.Key, value.Value);
+            }
         }
 
         static void ProgressBarSample()
@@ -89,7 +92,7 @@ namespace DemoApp
             var progress = new ProgressBar("pb");
             progress.Width = 0;
             progress.Margin.All = 1;
-            progress.Template = ProgressBarTemplates.ARROW;
+            progress.Template = ProgressBarTemplate.ARROW;
 
             WidgetPlayer.Mount(progress);
 
