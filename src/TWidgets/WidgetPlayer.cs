@@ -95,8 +95,19 @@ namespace TWidgets
             }
             else
             {
-                this.DrawWidget(Widget);
+                this.DrawSimpleWidget(Widget);
             }
+        }
+
+        private void DrawSimpleWidget(IWidget widget)
+        {
+            // Draw Widget
+            var g = this.GetGraphics();
+
+            widget.Draw(g);
+
+            // Display on Console
+            this.Display(g);
         }
 
         private void DrawInputWidget(IWidget widget)
@@ -111,39 +122,14 @@ namespace TWidgets
                 switch (InputFlow.Instance.NextState())
                 {
                     case InputFlow.States.Header:
-                        var g = New();
-
-                        input.DrawHeader(g);
-
-                        this.Draw(g);
-
-                        InputFlow.Instance.Action = InputFlow.Actions.Continue;
+                        this.HeaderStep(input);
                         break;
                     case InputFlow.States.Capture:
-
-                        //InputEngine.Instance.Cursor = input.Cursor;
-
-                        var gc = New();
-                        widget.Draw(gc);
-                        this.Draw(gc);
-
-                        InputEngine.Instance.Capture(actions[ix].id, actions[ix].method);
+                        this.CaptureStep(actions[ix], input);
                         break;
                     case InputFlow.States.Error:
-                        if (actions[ix].action != ValidateAction.Ignore)
-                        {
-                            var ge = New();
-                            input.DrawError(ge, _errorMessages);
-                            this.Draw(ge);
-                        }
-                        if (actions[ix].action == ValidateAction.Repeat)
-                        {
-                            InputFlow.Instance.Action = InputFlow.Actions.Ok;
-                        }
-                        else
-                        {
-                            InputFlow.Instance.Action = InputFlow.Actions.Continue;
-                        }
+
+                        this.ErrorStep(actions[ix], input);
                         break;
                     case InputFlow.States.Control:
                         if (ix < actions.Length - 1)
@@ -157,36 +143,13 @@ namespace TWidgets
                         }
                         break;
                     case InputFlow.States.Footer:
-
-                        var gf = New();
-                        input.DrawFooter(gf);
-                        this.Draw(gf);
-
-                        InputFlow.Instance.Action = InputFlow.Actions.Continue;
+                        this.FooterStep(input);
                         break;
                 }
             } while (InputFlow.Instance.State != InputFlow.States.End);
         }
 
-        private void DrawWidget(IWidget widget)
-        {
-            // Draw Widget
-            var g = new Graphics(
-                new Canvas(
-                    RenderEngine.Instance.WindowWidth,
-                    RenderEngine.Instance.WindowHeight
-                )
-            );
-            widget.Draw(g);
-
-            // Display on Console
-            RenderEngine.Instance.SaveSystemColor();
-            RenderEngine.Instance.SetForegroundColor(widget.ForegroundColor);
-            RenderEngine.Instance.SetBackgroundColor(widget.BackgroundColor);
-            RenderEngine.Instance.Display(g.Canvas);
-        }
-
-        private Graphics New()
+        private Graphics GetGraphics()
         {
             return new Graphics(
                 new Canvas(
@@ -196,7 +159,7 @@ namespace TWidgets
             );
         }
 
-        private void Draw(Graphics g)
+        private void Display(Graphics g)
         {
             RenderEngine.Instance.SaveSystemColor();
             RenderEngine.Instance.SetForegroundColor(Widget.ForegroundColor);
@@ -204,9 +167,65 @@ namespace TWidgets
             RenderEngine.Instance.Display(g.Canvas);
         }
 
-        #region Steps
+        #region Input Steps
 
+        private void HeaderStep(IInputWidget widget)
+        {
+            var g = GetGraphics();
 
+            widget.DrawHeader(g);
+
+            this.Display(g);
+
+            InputFlow.Instance.Action = InputFlow.Actions.Continue;
+        }
+
+        private void CaptureStep(InputAction action, IInputWidget widget)
+        {
+            var g = GetGraphics();
+
+            (widget as IWidget).Draw(g);
+
+            this.Display(g);
+
+            InputEngine.Instance.SaveSystemCursor();
+            InputEngine.Instance.Cursor = new InputCursor(
+                widget.CursorPosition.X,
+                InputEngine.Instance.SystemCursor.Y + widget.CursorPosition.Y - 1
+            );
+            InputEngine.Instance.Capture(action.id, action.method);
+        }
+
+        private void ErrorStep(InputAction action, IInputWidget widget)
+        {
+            if (action.action != ValidateAction.Ignore)
+            {
+                var g = GetGraphics();
+
+                widget.DrawError(g, _errorMessages);
+
+                this.Display(g);
+            }
+            if (action.action == ValidateAction.Repeat)
+            {
+                InputFlow.Instance.Action = InputFlow.Actions.Ok;
+            }
+            else
+            {
+                InputFlow.Instance.Action = InputFlow.Actions.Continue;
+            }
+        }
+
+        private void FooterStep(IInputWidget widget)
+        {
+            var g = GetGraphics();
+
+            widget.DrawFooter(g);
+
+            this.Display(g);
+
+            InputFlow.Instance.Action = InputFlow.Actions.Continue;
+        }
 
         #endregion
 
@@ -214,7 +233,7 @@ namespace TWidgets
 
         private void OnStateChanged(object sender, EventArgs e)
         {
-            this.DrawWidget((IWidget)sender);
+            this.DrawSimpleWidget((IWidget)sender);
         }
 
         #endregion

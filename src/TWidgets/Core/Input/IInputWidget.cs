@@ -7,7 +7,7 @@ namespace TWidgets.Core.Input
     {
         Dictionary<string, string> Values { get; }
 
-        InputCursor Cursor { get; }
+        InputCursor CursorPosition { get; }
 
         void MapValues(string id, string value);
 

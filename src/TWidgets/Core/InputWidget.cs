@@ -8,12 +8,12 @@ namespace TWidgets.Core
     {
         public Dictionary<string, string> Values { get; private set; }
 
-        public InputCursor Cursor { get; private set; }
+        public InputCursor CursorPosition { get; private set; }
 
         public InputWidget(string id) : base(id)
         {
             this.Values = new Dictionary<string, string>();
-            this.Cursor = new InputCursor();
+            this.CursorPosition = new InputCursor();
         }
 
         public virtual void DrawHeader(Graphics g) { }
