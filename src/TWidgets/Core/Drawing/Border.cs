@@ -1,32 +1,19 @@
-﻿using TWidgets.Util;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
+using TWidgets.Util;
 
 namespace TWidgets.Core.Drawing
 {
     public class Border
     {
-        public const int BORDER_TOP_LEFT = 0;
-        public const int BORDER_TOP = 1;
-        public const int BORDER_TOP_RIGHT = 2;
-        public const int BORDER_LEFT = 3;
-        public const int BACKGROUND = 4;
-        public const int BORDER_RIGHT = 5;
-        public const int BORDER_BOTTOM_LEFT = 6;
-        public const int BORDER_BOTTOM = 7;
-        public const int BORDER_BOTTOM_RIGHT = 8;
-        public const int TEMPLATE_SIZE = 9;
-
         public char TopLeft
         {
             get
             {
-                return Template[BORDER_TOP_LEFT];
+                return Template[BorderTemplate.BORDER_TOP_LEFT];
             }
             set
             {
-                Template[BORDER_TOP_LEFT] = value;
+                Template[BorderTemplate.BORDER_TOP_LEFT] = value;
             }
         }
 
@@ -34,11 +21,11 @@ namespace TWidgets.Core.Drawing
         {
             get
             {
-                return Template[BORDER_TOP];
+                return Template[BorderTemplate.BORDER_TOP];
             }
             set
             {
-                Template[BORDER_TOP] = value;
+                Template[BorderTemplate.BORDER_TOP] = value;
             }
         }
 
@@ -46,11 +33,11 @@ namespace TWidgets.Core.Drawing
         {
             get
             {
-                return Template[BORDER_TOP_RIGHT];
+                return Template[BorderTemplate.BORDER_TOP_RIGHT];
             }
             set
             {
-                Template[BORDER_TOP_RIGHT] = value;
+                Template[BorderTemplate.BORDER_TOP_RIGHT] = value;
             }
         }
 
@@ -58,11 +45,11 @@ namespace TWidgets.Core.Drawing
         {
             get
             {
-                return Template[BORDER_LEFT];
+                return Template[BorderTemplate.BORDER_LEFT];
             }
             set
             {
-                Template[BORDER_LEFT] = value;
+                Template[BorderTemplate.BORDER_LEFT] = value;
             }
         }
 
@@ -70,11 +57,11 @@ namespace TWidgets.Core.Drawing
         {
             get
             {
-                return Template[BACKGROUND];
+                return Template[BorderTemplate.BACKGROUND];
             }
             set
             {
-                Template[BACKGROUND] = value;
+                Template[BorderTemplate.BACKGROUND] = value;
             }
         }
 
@@ -82,11 +69,11 @@ namespace TWidgets.Core.Drawing
         {
             get
             {
-                return Template[BORDER_RIGHT];
+                return Template[BorderTemplate.BORDER_RIGHT];
             }
             set
             {
-                Template[BORDER_RIGHT] = value;
+                Template[BorderTemplate.BORDER_RIGHT] = value;
             }
         }
 
@@ -94,11 +81,11 @@ namespace TWidgets.Core.Drawing
         {
             get
             {
-                return Template[BORDER_BOTTOM_LEFT];
+                return Template[BorderTemplate.BORDER_BOTTOM_LEFT];
             }
             set
             {
-                Template[BORDER_BOTTOM_LEFT] = value;
+                Template[BorderTemplate.BORDER_BOTTOM_LEFT] = value;
             }
         }
 
@@ -106,11 +93,11 @@ namespace TWidgets.Core.Drawing
         {
             get
             {
-                return Template[BORDER_BOTTOM];
+                return Template[BorderTemplate.BORDER_BOTTOM];
             }
             set
             {
-                Template[BORDER_BOTTOM] = value;
+                Template[BorderTemplate.BORDER_BOTTOM] = value;
             }
         }
 
@@ -118,11 +105,11 @@ namespace TWidgets.Core.Drawing
         {
             get
             {
-                return Template[BORDER_BOTTOM_RIGHT];
+                return Template[BorderTemplate.BORDER_BOTTOM_RIGHT];
             }
             set
             {
-                Template[BORDER_BOTTOM_RIGHT] = value;
+                Template[BorderTemplate.BORDER_BOTTOM_RIGHT] = value;
             }
         }
 
@@ -135,8 +122,8 @@ namespace TWidgets.Core.Drawing
             }
             set
             {
-                if (_template.Length != TEMPLATE_SIZE)
-                    throw new Exception($"Template size different of {TEMPLATE_SIZE}.");
+                if (_template.Length != BorderTemplate.TEMPLATE_SIZE)
+                    throw new Exception($"Template size different of {BorderTemplate.TEMPLATE_SIZE}.");
 
                 _template = value;
             }
@@ -152,7 +139,7 @@ namespace TWidgets.Core.Drawing
 
         public Border()
         {
-            _template = BorderTemplates.SOLID;
+            _template = BorderTemplate.SOLID;
         }
 
         public Border(char[] template)

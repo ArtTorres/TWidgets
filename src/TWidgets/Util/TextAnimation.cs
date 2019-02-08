@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
+﻿
 namespace TWidgets.Util
 {
-    public static class TextAnimations
+    public static class TextAnimation
     {
         public static readonly char[] BARS = new char[] {
             '/', '─', '\\', '|'

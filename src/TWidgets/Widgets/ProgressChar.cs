@@ -11,7 +11,7 @@ namespace TWidgets.Widgets
 
         public ProgressChar(string id) : base(id)
         {
-            this.Animation = TextAnimations.BARS;
+            this.Animation = TextAnimation.BARS;
             base.Position = Position.Fixed;
         }
 

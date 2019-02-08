@@ -61,12 +61,6 @@ namespace TWidgets.Widgets
 
         public double Step { get; set; } = 10.0d;
 
-        public const int BAR_START = 0;
-        public const int BAR_BACKGROUND = 1;
-        public const int BAR_FILLED = 2;
-        public const int BAR_END = 3;
-        public const int TEMPLATE_SIZE = 4;
-
         private char[] _template;
         public char[] Template
         {
@@ -76,8 +70,8 @@ namespace TWidgets.Widgets
             }
             set
             {
-                if (_template.Length != TEMPLATE_SIZE)
-                    throw new Exception($"Template size different of {TEMPLATE_SIZE}.");
+                if (_template.Length != ProgressBarTemplate.TEMPLATE_SIZE)
+                    throw new Exception($"Template size different of {ProgressBarTemplate.TEMPLATE_SIZE}.");
 
                 _template = value;
             }
@@ -88,14 +82,14 @@ namespace TWidgets.Widgets
             _maximum = 100.0d;
             _minimum = 0.0d;
 
-            _template = ProgressBarTemplates.SIMPLE;
+            _template = ProgressBarTemplate.SIMPLE;
             this.Position = Position.Fixed;
         }
 
         public override void Draw(Graphics g)
         {
             g.Draw(new Text(
-                $"{Template[BAR_START]}{ComposeBar(g.Canvas.Width)}{Template[BAR_END]}",
+                $"{Template[ProgressBarTemplate.BAR_START]}{ComposeBar(g.Canvas.Width)}{Template[ProgressBarTemplate.BAR_END]}",
                 this.Margin
                 )
             );
@@ -114,8 +108,8 @@ namespace TWidgets.Widgets
             int background = (int)(width - filled);
 
             return string.Concat(
-                new string(Template[BAR_FILLED], filled),
-                new string(Template[BAR_BACKGROUND], background)
+                new string(Template[ProgressBarTemplate.BAR_FILLED], filled),
+                new string(Template[ProgressBarTemplate.BAR_BACKGROUND], background)
             );
         }
     }

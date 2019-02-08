@@ -1,7 +1,7 @@
 ﻿
 namespace TWidgets.Util
 {
-    public static class BulletTemplates
+    public static class BulletTemplate
     {
         public static readonly char SQUARE = '■';
 

@@ -26,7 +26,7 @@ namespace TWidgets.Widgets
 
         public BulletList(string id) : base(id)
         {
-            this.Bullet = BulletTemplates.SQUARE;
+            this.Bullet = BulletTemplate.SQUARE;
         }
 
         public override void Draw(Graphics g)
