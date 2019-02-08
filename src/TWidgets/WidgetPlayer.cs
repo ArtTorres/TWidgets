@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TWidgets.Core;
 using TWidgets.Core.Drawing;
-using TWidgets.Core.IO;
+using TWidgets.Core.Input;
 
 namespace TWidgets
 {

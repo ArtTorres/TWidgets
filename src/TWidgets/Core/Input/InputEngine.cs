@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 using TWidgets.Core.Events;
-using TWidgets.Core.IO;
+using TWidgets.Core.Input;
 
-namespace TWidgets.Core
+namespace TWidgets.Core.Input
 {
     internal sealed class InputEngine
     {

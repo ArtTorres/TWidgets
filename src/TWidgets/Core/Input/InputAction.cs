@@ -1,4 +1,4 @@
-﻿namespace TWidgets.Core.IO
+﻿namespace TWidgets.Core.Input
 {
     public class InputAction
     {

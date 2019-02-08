@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using TWidgets.Core.Drawing;
-using TWidgets.Core.IO;
+using TWidgets.Core.Input;
 using TWidgets.Widgets;
 
 namespace TWidgets.Core

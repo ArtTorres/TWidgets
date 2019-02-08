@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TWidgets.Core.IO
+namespace TWidgets.Core.Input
 {
     internal sealed class InputFlow
     {

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace TWidgets.Core.IO
+namespace TWidgets.Core.Input
 {
     public class ValidationResult
     {
