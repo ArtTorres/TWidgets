@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace TWidgets.Core
+﻿namespace TWidgets.Core.IO
 {
     public class InputCursor
     {
