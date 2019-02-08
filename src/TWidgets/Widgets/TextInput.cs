@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using TWidgets.Core;
 using TWidgets.Core.Drawing;
 using TWidgets.Core.Input;

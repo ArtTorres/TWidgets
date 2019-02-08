@@ -1,36 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using TWidgets.Core.Drawing;
 using TWidgets.Core.Input;
-using TWidgets.Widgets;
 
 namespace TWidgets.Core
 {
     public abstract class InputWidget : Widget, IInputWidget
     {
-        #region Events
-
-        //public event EventHandler<EventArgs> StartCapture;
-        //public void OnStartCapture()
-        //{
-        //    this.StartCapture?.Invoke(this, new EventArgs());
-        //}
-
-        //public event EventHandler<EventArgs> EndCapture;
-        //public void OnEndCapture()
-        //{
-        //    this.EndCapture?.Invoke(this, new EventArgs());
-        //}
-
-        //public event EventHandler<EventArgs> InputCaptured;
-        //public void OnInputCaptured()
-        //{
-        //    this.InputCaptured?.Invoke(this, new EventArgs());
-        //}
-
-        #endregion
-
         public Dictionary<string, string> Values { get; private set; }
 
         public InputCursor Cursor { get; private set; }

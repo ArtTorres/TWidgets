@@ -5,12 +5,6 @@ namespace TWidgets.Core.Input
 {
     public interface IInputWidget
     {
-        //event EventHandler<EventArgs> StartCapture;
-
-        //event EventHandler<EventArgs> EndCapture;
-
-        //event EventHandler<EventArgs> InputCaptured;
-
         Dictionary<string, string> Values { get; }
 
         InputCursor Cursor { get; }

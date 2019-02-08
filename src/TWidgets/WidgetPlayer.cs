@@ -65,11 +65,6 @@ namespace TWidgets
 
             if (Widget is IInputWidget)
             {
-                //var input = (IInput)Widget;
-                //input.StartCapture += OnStartCapture;
-                //input.EndCapture += OnEndCapture;
-                //input.InputCaptured += OnInputCapture;
-
                 InputFlow.Instance.Start();
             }
 
@@ -84,14 +79,6 @@ namespace TWidgets
         {
             // Unset Events
             Widget.StateChanged -= OnStateChanged;
-
-            //if (Widget is IInput)
-            //{
-            //    var input = (IInput)Widget;
-            //    input.StartCapture -= OnStartCapture;
-            //    input.EndCapture -= OnEndCapture;
-            //    input.InputCaptured -= OnInputCapture;
-            //}
 
             Widget.UnMount();
             Widget = null;
@@ -277,17 +264,5 @@ namespace TWidgets
         }
 
         #endregion
-
-        //private void OnStartCapture(object sender, EventArgs e)
-        //{
-        //}
-
-        //private void OnEndCapture(object sender, EventArgs e)
-        //{
-        //}
-
-        //private void OnInputCapture(object sender, EventArgs e)
-        //{
-        //}
     }
 }
