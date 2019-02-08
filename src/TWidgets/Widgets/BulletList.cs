@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using TWidgets.Core;
 using TWidgets.Core.Drawing;
 using TWidgets.Util;
 
@@ -7,7 +8,7 @@ namespace TWidgets.Widgets
 {
     public class BulletList : Widget
     {
-        public char Bullet { get; set; } = '■';
+        public char Bullet { get; set; }
 
         private string[] _items;
         public string[] Items
@@ -24,7 +25,9 @@ namespace TWidgets.Widgets
         }
 
         public BulletList(string id) : base(id)
-        { }
+        {
+            this.Bullet = BulletTemplate.SQUARE;
+        }
 
         public override void Draw(Graphics g)
         {

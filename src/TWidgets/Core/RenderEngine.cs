@@ -1,5 +1,6 @@
 ﻿using System;
 using TWidgets.Core.Drawing;
+using TWidgets.Util;
 using TWidgets.Widgets;
 
 namespace TWidgets.Core
@@ -52,7 +53,7 @@ namespace TWidgets.Core
 
         public int WindowBackgroundColor { get; private set; }
 
-        public RenderEngine()
+        private RenderEngine()
         {
             this.SaveSystemColor();
         }

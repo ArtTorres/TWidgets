@@ -1,9 +1,10 @@
-﻿using TWidgets.Core.Drawing;
+﻿using TWidgets.Core;
+using TWidgets.Core.Drawing;
 using TWidgets.Util;
 
 namespace TWidgets.Widgets
 {
-    public class Marquee : Box
+    public class Marquee : BoxWidget
     {
         private string[] _items;
         public string[] Items

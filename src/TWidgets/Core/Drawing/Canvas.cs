@@ -1,8 +1,6 @@
-﻿using TWidgets.Util;
-using System;
-using System.Collections.Generic;
+﻿using System.Linq;
 using System.Text;
-using System.Linq;
+using TWidgets.Util;
 
 namespace TWidgets.Core.Drawing
 {
@@ -109,16 +107,6 @@ namespace TWidgets.Core.Drawing
         public void Clear()
         {
             _builder.Clear();
-        }
-
-        public void SetForegroundColor(ConsoleColor color)
-        {
-            //TODO: Implement Color change support
-        }
-
-        public void SetBackgroundColor(ConsoleColor color)
-        {
-            //TODO: Implement Color change support
         }
     }
 }

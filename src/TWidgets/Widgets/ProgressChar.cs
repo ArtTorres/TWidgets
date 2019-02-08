@@ -1,34 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using TWidgets.Core.Drawing;
+using TWidgets.Util;
 
-namespace QApp.Widgets
+namespace TWidgets.Widgets
 {
-    class ProgressChar : ProgressWidget
+    public class ProgressChar : Message
     {
-        public override void Draw()
+        public char[] Animation { get; set; }
+
+        private int _frame = 0;
+
+        public ProgressChar(string id) : base(id)
         {
-            throw new NotImplementedException();
+            this.Animation = TextAnimation.BARS;
+            base.Position = Position.Fixed;
+        }
+
+        public override void Draw(Graphics g)
+        {
+            g.Draw(new Text(
+                $"{Animation[_frame]} {this.Text}",
+                this.Margin
+                )
+            );
         }
 
         public override void DrawComplete()
         {
-            throw new NotImplementedException();
-        }
-
-        public override void Init()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void Load()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void Unload()
-        {
-            throw new NotImplementedException();
+            if (++_frame >= Animation.Length) _frame = 0;
         }
     }
 }

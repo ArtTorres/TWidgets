@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace QApp.Widgets
+namespace TWidgets.Widgets
 {
-    abstract class InputWidget:Widget
+    class SelectInput
     {
     }
 }
