@@ -1,23 +1,7 @@
-﻿using System;
-
-namespace TWidgets.Core.Input
+﻿namespace TWidgets.Core.Input
 {
     internal sealed class InputFlow
     {
-        #region Instance
-
-        private static readonly Lazy<InputFlow> instance = new Lazy<InputFlow>(() => new InputFlow());
-
-        public static InputFlow Instance
-        {
-            get
-            {
-                return instance.Value;
-            }
-        }
-
-        #endregion
-
         public enum States
         {
             Start,
@@ -40,7 +24,7 @@ namespace TWidgets.Core.Input
 
         private States[,] _stateMachine;
 
-        private InputFlow()
+        public InputFlow()
         {
             _stateMachine = new States[,] {
             //    Start           Header          Capture           Error           Control         Footer      End
