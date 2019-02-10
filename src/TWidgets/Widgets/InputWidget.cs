@@ -2,7 +2,7 @@
 using TWidgets.Core.Drawing;
 using TWidgets.Core.Input;
 
-namespace TWidgets.Core
+namespace TWidgets.Widgets
 {
     public abstract class InputWidget : Widget, IInputWidget
     {

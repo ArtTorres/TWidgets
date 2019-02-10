@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using TWidgets.Core.Drawing;
+﻿using TWidgets.Core.Drawing;
 
-namespace TWidgets.Core
+namespace TWidgets.Widgets
 {
     public abstract class BoxWidget : Widget, IBordeable
     {
