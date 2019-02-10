@@ -21,6 +21,14 @@ namespace TWidgets
             }
         }
 
+        public static IWidget Widget
+        {
+            get
+            {
+                return Instance._widget;
+            }
+        }
+
         public static void Mount(IWidget widget)
         {
             Instance.MountWidget(widget);
@@ -33,7 +41,9 @@ namespace TWidgets
 
         #endregion
 
-        public IWidget Widget { get; private set; }
+        private InputFlow _inputFlow;
+
+        private IWidget _widget;
 
         private IEnumerable<string> _errorMessages;
 
@@ -43,33 +53,35 @@ namespace TWidgets
             RenderEngine.Instance.RenderComplete += OnRenderComplete;
 
             InputEngine.Instance.Captured += OnCaptured;
+
+            _inputFlow = new InputFlow();
         }
 
         private void MountWidget(IWidget widget, bool autoplay = true)
         {
-            if (null != Widget)
+            if (null != _widget)
             {
                 this.UnMountWidget();
             }
 
-            Widget = widget;
+            _widget = widget;
 
             // Set Events
-            Widget.StateChanged += OnStateChanged;
+            _widget.StateChanged += OnStateChanged;
 
             // Save initial position for Fixed widgets
-            if (Position.Fixed == Widget.Position)
+            if (Position.Fixed == _widget.Position)
             {
                 InputEngine.Instance.SaveSystemCursor();
             }
 
-            if (Widget is IInputWidget)
+            if (_widget is IInputWidget)
             {
-                InputFlow.Instance.Start();
+                _inputFlow.Start();
             }
 
             // Launch Mount Event
-            Widget.Mount();
+            _widget.Mount();
 
             if (autoplay)
                 this.PlayWidget();
@@ -78,24 +90,24 @@ namespace TWidgets
         private void UnMountWidget()
         {
             // Unset Events
-            Widget.StateChanged -= OnStateChanged;
+            _widget.StateChanged -= OnStateChanged;
 
-            Widget.UnMount();
-            Widget = null;
+            _widget.UnMount();
+            _widget = null;
         }
 
         private void PlayWidget()
         {
             // Before Draw
-            Widget.BeforeDraw();
+            _widget.BeforeDraw();
 
-            if (Widget is IInputWidget)
+            if (_widget is IInputWidget)
             {
-                this.DrawInputWidget(Widget);
+                this.DrawInputWidget(_widget);
             }
             else
             {
-                this.DrawSimpleWidget(Widget);
+                this.DrawSimpleWidget(_widget);
             }
         }
 
@@ -119,7 +131,7 @@ namespace TWidgets
 
             do
             {
-                switch (InputFlow.Instance.NextState())
+                switch (_inputFlow.NextState())
                 {
                     case InputFlow.States.Header:
                         this.HeaderStep(input);
@@ -135,18 +147,18 @@ namespace TWidgets
                         if (ix < actions.Length - 1)
                         {
                             ix++;
-                            InputFlow.Instance.Action = InputFlow.Actions.Continue;
+                            _inputFlow.Action = InputFlow.Actions.Continue;
                         }
                         else
                         {
-                            InputFlow.Instance.Action = InputFlow.Actions.Ok;
+                            _inputFlow.Action = InputFlow.Actions.Ok;
                         }
                         break;
                     case InputFlow.States.Footer:
                         this.FooterStep(input);
                         break;
                 }
-            } while (InputFlow.Instance.State != InputFlow.States.End);
+            } while (_inputFlow.State != InputFlow.States.End);
         }
 
         private Graphics GetGraphics()
@@ -162,8 +174,8 @@ namespace TWidgets
         private void Display(Graphics g)
         {
             RenderEngine.Instance.SaveSystemColor();
-            RenderEngine.Instance.SetForegroundColor(Widget.ForegroundColor);
-            RenderEngine.Instance.SetBackgroundColor(Widget.BackgroundColor);
+            RenderEngine.Instance.SetForegroundColor(_widget.ForegroundColor);
+            RenderEngine.Instance.SetBackgroundColor(_widget.BackgroundColor);
             RenderEngine.Instance.Display(g.Canvas);
         }
 
@@ -177,7 +189,7 @@ namespace TWidgets
 
             this.Display(g);
 
-            InputFlow.Instance.Action = InputFlow.Actions.Continue;
+            _inputFlow.Action = InputFlow.Actions.Continue;
         }
 
         private void CaptureStep(InputAction action, IInputWidget widget)
@@ -208,11 +220,11 @@ namespace TWidgets
             }
             if (action.action == ValidateAction.Repeat)
             {
-                InputFlow.Instance.Action = InputFlow.Actions.Ok;
+                _inputFlow.Action = InputFlow.Actions.Ok;
             }
             else
             {
-                InputFlow.Instance.Action = InputFlow.Actions.Continue;
+                _inputFlow.Action = InputFlow.Actions.Continue;
             }
         }
 
@@ -224,7 +236,7 @@ namespace TWidgets
 
             this.Display(g);
 
-            InputFlow.Instance.Action = InputFlow.Actions.Continue;
+            _inputFlow.Action = InputFlow.Actions.Continue;
         }
 
         #endregion
@@ -233,7 +245,7 @@ namespace TWidgets
 
         private void OnStateChanged(object sender, EventArgs e)
         {
-            this.DrawSimpleWidget((IWidget)sender);
+            this.PlayWidget();
         }
 
         #endregion
@@ -243,7 +255,7 @@ namespace TWidgets
         private void OnBeforeRender(object sender, EventArgs e)
         {
             // Restart position for Fixed widgets
-            if (Position.Fixed == Widget.Position)
+            if (Position.Fixed == _widget.Position)
             {
                 InputEngine.Instance.Cursor = InputEngine.Instance.SystemCursor;
             }
@@ -252,7 +264,7 @@ namespace TWidgets
         private void OnRenderComplete(object sender, EventArgs e)
         {
             // Launch DrawComplete Event
-            Widget.DrawComplete();
+            _widget.DrawComplete();
 
             // Reset Colors
             RenderEngine.Instance.LoadSystemColor();
@@ -264,20 +276,20 @@ namespace TWidgets
 
         private void OnCaptured(object sender, Core.Events.InputEventArgs e)
         {
-            var result = (Widget as IInputWidget).ValidateInput(e.Id, e.Value);
+            var result = (_widget as IInputWidget).ValidateInput(e.Id, e.Value);
 
             switch (result.State)
             {
                 case ValidationState.Invalid:
                     _errorMessages = result.Messages;
-                    InputFlow.Instance.Action = InputFlow.Actions.Error;
+                    _inputFlow.Action = InputFlow.Actions.Error;
                     break;
                 case ValidationState.Repeat:
-                    InputFlow.Instance.Action = InputFlow.Actions.Continue;
+                    _inputFlow.Action = InputFlow.Actions.Continue;
                     break;
                 case ValidationState.Valid:
-                    (Widget as IInputWidget).MapValues(e.Id, e.Value);
-                    InputFlow.Instance.Action = InputFlow.Actions.Ok;
+                    (_widget as IInputWidget).MapValues(e.Id, e.Value);
+                    _inputFlow.Action = InputFlow.Actions.Ok;
                     break;
             }
         }
