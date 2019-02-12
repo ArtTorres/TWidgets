@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>netcoreapp2.0;netstandard2.0;net40;net45</TargetFrameworks>
-    <Version>0.3.0-alpha</Version>
+    <Version>0.4.0-alpha</Version>
     <Authors>Arturo Torres</Authors>
     <PackageId>TWidgets</PackageId>
     <Company>Arturo Torres</Company>
@@ -13,21 +13,16 @@
     <PackageTags>console framework widgets</PackageTags>
     <Description>A Text-based widget framework for console applications.</Description>
     <RepositoryType>Git</RepositoryType>
-    <PackageReleaseNotes>Input Widgets support.
-Added ProgressBar widget.
-Added ProgressChar widget.
-Added TextInput widget.
+    <PackageReleaseNotes>Adding ProgressList widget.
+Adding OptionInput widget.
+Adding StopMessage widget.
+Adding NumberList widget.
 Minor improvements.</PackageReleaseNotes>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <SignAssembly>false</SignAssembly>
     <PackageIconUrl></PackageIconUrl>
-    <AssemblyVersion>0.3.0.0</AssemblyVersion>
-    <FileVersion>0.3.0.0</FileVersion>
+    <AssemblyVersion>0.4.0.0</AssemblyVersion>
+    <FileVersion>0.4.0.0</FileVersion>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Compile Remove="Widgets\ProgressList.cs" />
-    <Compile Remove="Widgets\SelectInput.cs" />
-  </ItemGroup>
 
 </Project>
