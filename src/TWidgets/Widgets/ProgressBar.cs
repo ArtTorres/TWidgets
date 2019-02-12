@@ -1,5 +1,4 @@
 ﻿using System;
-using TWidgets.Core;
 using TWidgets.Core.Drawing;
 using TWidgets.Util;
 
@@ -93,24 +92,24 @@ namespace TWidgets.Widgets
                 this.Margin
                 )
             );
+
+            string ComposeBar(int canvasWidth)
+            {
+                double width = (this.Width == 0 ? canvasWidth : this.Width) - 2 - this.Margin.Left - this.Margin.Right;
+
+                int filled = (int)(Value * width / Maximum);
+                int background = (int)(width - filled);
+
+                return string.Concat(
+                    new string(Template[ProgressBarTemplate.BAR_FILLED], filled),
+                    new string(Template[ProgressBarTemplate.BAR_BACKGROUND], background)
+                );
+            }
         }
 
         public void PerformStep()
         {
             this.Value += this.Step;
-        }
-
-        private string ComposeBar(int canvasWidth)
-        {
-            double width = (this.Width == 0 ? canvasWidth : this.Width) - 2 - this.Margin.Left - this.Margin.Right;
-
-            int filled = (int)(Value * width / Maximum);
-            int background = (int)(width - filled);
-
-            return string.Concat(
-                new string(Template[ProgressBarTemplate.BAR_FILLED], filled),
-                new string(Template[ProgressBarTemplate.BAR_BACKGROUND], background)
-            );
         }
     }
 }

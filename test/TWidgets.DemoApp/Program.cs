@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Threading;
 using TWidgets;
 using TWidgets.Util;
@@ -119,6 +120,65 @@ namespace DemoApp
             }
 
             Console.WriteLine("--END--");
+        }
+
+        static void StopMessageSample()
+        {
+            var widget = new StopMessage("txt")
+            {
+                Text = "-- Press to Continue --"
+            };
+
+            WidgetPlayer.Mount(widget);
+
+            Console.WriteLine("--END--");
+        }
+
+        static void OptionInputSample()
+        {
+            var widget = new OptionInput("cinput")
+            {
+                InstructionsText = "Select an option >>",
+                ErrorText = "Option no available, select one of the list!",
+                Items = new string[] {
+                    "Item A",
+                    "Item B",
+                    "Item C"
+                },
+                NumberSeparator = ')'
+            };
+            widget.Margin.All = 1;
+
+            WidgetPlayer.Mount(widget);
+
+            Console.WriteLine("--END--");
+        }
+
+        static void ProgressListSample()
+        {
+            var widget = new ProgressList("plist");
+            widget.Width = 20;
+            widget.Margin.All = 1;
+            widget.Items.Add(new ProgressItem() { Text = "Item A" });
+            widget.Items.Add(new ProgressItem() { Text = "Item B" });
+            widget.Items.Add(new ProgressItem() { Text = "Item C" });
+
+            var random = new Random();
+
+            WidgetPlayer.Mount(widget);
+
+            do
+            {
+                widget.Items[random.Next(widget.Items.Count)].PerformStep();
+                Thread.Sleep(500);
+            } while (!AreTasksFinished());
+
+            Console.WriteLine("--END--");
+
+            bool AreTasksFinished()
+            {
+                return 100 == widget.Items.Select(s => s.Value).Sum() / widget.Items.Count;
+            }
         }
     }
 }
