@@ -1,5 +1,4 @@
-﻿using TWidgets.Core;
-using TWidgets.Core.Drawing;
+﻿using TWidgets.Core.Drawing;
 using TWidgets.Util;
 
 namespace TWidgets.Widgets
@@ -58,6 +57,9 @@ namespace TWidgets.Widgets
                     ),
                     textMargin
                 )
+                {
+                    Align = this.TextAlign
+                }
             );
         }
     }

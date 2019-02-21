@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace TWidgets.Core.Drawing
+﻿namespace TWidgets.Core.Drawing
 {
-    public class Text : IMarginable
+    public class Text : IMarginable, IAlignable
     {
         public string Value { get; set; }
+
+        /// <summary>
+        /// Gets or sets the align of text.
+        /// </summary>
+        public Align Align { get; set; }
 
         public Margin Margin { get; set; }
 

@@ -21,6 +21,8 @@ namespace TWidgets.Widgets
 
         public Position Position { get; set; }
 
+        public Align TextAlign { get; set; }
+
         public WidgetColor ForegroundColor { get; set; }
 
         public WidgetColor BackgroundColor { get; set; }
@@ -32,6 +34,7 @@ namespace TWidgets.Widgets
             this.Id = id;
 
             this.Position = Position.Relative;
+            this.TextAlign = Align.Left;
             this.Margin = new Margin();
 
             this.ForegroundColor = WidgetColor.System;

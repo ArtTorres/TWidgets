@@ -27,7 +27,7 @@ namespace TWidgets.Widgets
 
         public override void Draw(Graphics g)
         {
-            g.Draw(new Text(this.Text, this.Margin));
+            g.Draw(new Text(this.Text, this.Margin) { Align = this.TextAlign });
         }
 
         public override IEnumerable<InputAction> InputActions()

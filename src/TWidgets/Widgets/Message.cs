@@ -1,8 +1,4 @@
 ﻿using TWidgets.Core.Drawing;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using TWidgets.Core;
 
 namespace TWidgets.Widgets
 {
@@ -27,7 +23,7 @@ namespace TWidgets.Widgets
 
         public override void Draw(Graphics g)
         {
-            g.Draw(new Text(this.Text, this.Margin));
+            g.Draw(new Text(this.Text, this.Margin) { Align = this.TextAlign });
         }
     }
 }

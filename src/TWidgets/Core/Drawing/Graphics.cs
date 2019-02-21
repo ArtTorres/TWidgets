@@ -28,7 +28,7 @@ namespace TWidgets.Core.Drawing
             int x = this.Canvas.ColumnCursor + line.Margin.Left;
             int xp = this.Canvas.Width - line.Margin.Right;
 
-            this.Canvas.DrawLine(new string(line.Border.Top, xp - x), x, this.Canvas.RowCursor);
+            this.Canvas.DrawLine(new string(line.Border.Top, xp - x), x);
 
             // Draw bottom margin
             this.Canvas.DrawSpace(line.Margin.Bottom);
@@ -43,7 +43,7 @@ namespace TWidgets.Core.Drawing
 
             foreach (var item in list.Items)
             {
-                this.Canvas.DrawLine(item, x, this.Canvas.RowCursor);
+                this.Canvas.DrawLine(item, x, list.Align);
             }
 
             // Draw bottom margin
@@ -119,7 +119,7 @@ namespace TWidgets.Core.Drawing
             // Draw top margin
             this.Canvas.DrawSpace(text.Margin.Top);
 
-            this.Canvas.DrawLine(text.Value, x, y);
+            this.Canvas.DrawLine(text.Value, x, text.Align);
 
             // Draw bottom margin
             this.Canvas.DrawSpace(text.Margin.Bottom);
