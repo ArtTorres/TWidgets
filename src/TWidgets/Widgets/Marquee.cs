@@ -49,11 +49,12 @@ namespace TWidgets.Widgets
                 Margin.Right + Border.Width + Padding.Right
             );
 
+            int maxWidth = g.Canvas.Width - textMargin.Left - textMargin.Right;
             g.Draw(
                 new List(
                     TextUtils.ResizeLines(
                         this.Items,
-                        g.Canvas.Width
+                        maxWidth
                     ),
                     textMargin
                 )

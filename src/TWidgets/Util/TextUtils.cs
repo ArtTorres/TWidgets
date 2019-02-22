@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace TWidgets.Util
 {
@@ -25,12 +22,12 @@ namespace TWidgets.Util
             }
         }
 
-        public static string Normalize(string value, int maxLength)
+        public static string Normalize(string value, int maxLength, char background = ' ')
         {
             if (value.Length < maxLength)
             {
                 // Fill with empty characters
-                return string.Concat(value, new string(' ', maxLength - value.Length));
+                return string.Concat(value, new string(background, maxLength - value.Length));
             }
             else if (value.Length == maxLength)
             {
@@ -53,7 +50,7 @@ namespace TWidgets.Util
                 if (line.Length > maxWidth)
                 {
                     output.AddRange(
-                        TextUtils.Split(line, maxWidth)
+                        Split(line, maxWidth)
                     );
                 }
                 else

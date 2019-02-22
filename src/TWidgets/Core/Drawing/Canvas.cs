@@ -5,7 +5,7 @@ using TWidgets.Util;
 namespace TWidgets.Core.Drawing
 {
     /// <summary>
-    /// Represents the area of drawing.
+    /// Represents the area of drawing. This class cannot be inherited.
     /// </summary>
     public sealed class Canvas
     {
@@ -107,14 +107,12 @@ namespace TWidgets.Core.Drawing
         /// Draws a text in the current position.
         /// </summary>
         /// <param name="value">A text value.</param>
-        /// <param name="align">The align of text.</param>
-        public void Draw(string value, Align align = Align.Left)
+        public void Draw(string value)
         {
             this.Draw(
                 value,
                 this.ColumnCursor,
-                this.RowCursor,
-                align
+                this.RowCursor
             );
         }
 
@@ -124,30 +122,10 @@ namespace TWidgets.Core.Drawing
         /// <param name="value">A text value.</param>
         /// <param name="column">The column position.</param>
         /// <param name="row">The row position.</param>
-        /// <param name="align">The align of text.</param>
-        public void Draw(string value, int column, int row, Align align = Align.Left)
+        public void Draw(string value, int column, int row)
         {
-            int start = row * Width; // start position
-            int end = start + Width; // end position
-
-            int ix = -1;  // index
-            int lix = -1; // last index
-
-            switch (align)
-            {
-                case Align.Left:
-                    ix = LeftIndex();
-                    lix = LeftLastIndex();
-                    break;
-                case Align.Center:
-                    ix = CenterIndex();
-                    lix = CenterLastIndex();
-                    break;
-                case Align.Right:
-                    ix = RightIndex();
-                    lix = RightLastIndex();
-                    break;
-            }
+            int ix = row * Width + column;  // index
+            int lix = ix + value.Length; // last index
 
             if (lix > _map.Length)
             {
@@ -159,41 +137,15 @@ namespace TWidgets.Core.Drawing
 
             _map.Remove(ix, value.Length);
             _map.Insert(ix, value);
-
-            int LeftIndex()
-            {
-                return start + column;
-            }
-            int LeftLastIndex()
-            {
-                return ix + value.Length;
-            }
-            int CenterIndex()
-            {
-                return start + (Width / 2) - (value.Length / 2);
-            }
-            int CenterLastIndex()
-            {
-                return ix + value.Length;
-            }
-            int RightIndex()
-            {
-                return end - value.Length;
-            }
-            int RightLastIndex()
-            {
-                return end;
-            }
         }
 
         /// <summary>
         /// Draws a text in the current position and increase the row position.
         /// </summary>
         /// <param name="value">A text value.</param>
-        /// <param name="align">The align of text.</param>
-        public void DrawLine(string value, Align align = Align.Left)
+        public void DrawLine(string value)
         {
-            this.Draw(value, align);
+            this.Draw(value);
 
             this.ColumnCursor = 0;
             this.RowCursor += 1;
@@ -204,10 +156,9 @@ namespace TWidgets.Core.Drawing
         /// </summary>
         /// <param name="value">A text value.</param>
         /// <param name="column">The column position.</param>
-        /// <param name="align">The align of text.</param>
-        public void DrawLine(string value, int column, Align align = Align.Left)
+        public void DrawLine(string value, int column)
         {
-            this.Draw(value, column, this.RowCursor, align);
+            this.Draw(value, column, this.RowCursor);
 
             this.ColumnCursor = 0;
             this.RowCursor += 1;
