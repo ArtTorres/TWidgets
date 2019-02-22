@@ -1,12 +1,9 @@
-﻿using TWidgets.Util;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace TWidgets.Core.Drawing
+﻿namespace TWidgets.Core.Drawing
 {
-    public class Graphics
+    /// <summary>
+    /// Encapsulates a drawing surface. This class cannot be inherited.
+    /// </summary>
+    public sealed class Graphics
     {
         public Canvas Canvas { get; private set; }
 
@@ -15,9 +12,19 @@ namespace TWidgets.Core.Drawing
             this.Canvas = canvas;
         }
 
-        public void Draw(string raw)
+        public void Draw(string value)
         {
-            this.Canvas.Draw(raw);
+            this.Canvas.Draw(value);
+        }
+
+        public void Draw(string value, int column)
+        {
+            this.Canvas.Draw(value, column, this.Canvas.RowCursor);
+        }
+
+        public void Draw(string value, int column, int row)
+        {
+            this.Canvas.Draw(value, column, row);
         }
 
         public void Draw(Line line)
@@ -28,7 +35,7 @@ namespace TWidgets.Core.Drawing
             int x = this.Canvas.ColumnCursor + line.Margin.Left;
             int xp = this.Canvas.Width - line.Margin.Right;
 
-            this.Canvas.DrawLine(new string(line.Border.Top, xp - x), x, this.Canvas.RowCursor);
+            this.Canvas.DrawLine(new string(line.Border.Top, xp - x), x);
 
             // Draw bottom margin
             this.Canvas.DrawSpace(line.Margin.Bottom);
@@ -39,11 +46,18 @@ namespace TWidgets.Core.Drawing
             // Draw top margin
             this.Canvas.DrawSpace(list.Margin.Top);
 
-            int x = this.Canvas.ColumnCursor + list.Margin.Left;
-
+            // Draw items
             foreach (var item in list.Items)
             {
-                this.Canvas.DrawLine(item, x, this.Canvas.RowCursor);
+                int x = this.CalculateAlignedPosition(
+                    this.Canvas.Width,
+                    item.Length,
+                    this.Canvas.ColumnCursor,
+                    list.Margin,
+                    list.Align
+                );
+
+                this.Canvas.DrawLine(item, x);
             }
 
             // Draw bottom margin
@@ -113,26 +127,23 @@ namespace TWidgets.Core.Drawing
 
         public void Draw(Text text, int column, int row)
         {
-            int x = this.Canvas.ColumnCursor + text.Margin.Left;
-            int y = this.Canvas.RowCursor + text.Margin.Top;
-
             // Draw top margin
             this.Canvas.DrawSpace(text.Margin.Top);
 
-            this.Canvas.DrawLine(text.Value, x, y);
+            // Draw Text component
+            int x = this.CalculateAlignedPosition(
+                this.Canvas.Width,
+                text.Value.Length,
+                this.Canvas.ColumnCursor,
+                text.Margin,
+                text.Align
+            );
+            int y = this.Canvas.RowCursor + text.Margin.Top;
+
+            this.Canvas.DrawLine(text.Value, x);
 
             // Draw bottom margin
             this.Canvas.DrawSpace(text.Margin.Bottom);
-        }
-
-        public void Draw(string value, int column)
-        {
-            this.Canvas.Draw(value, column, this.Canvas.RowCursor);
-        }
-
-        public void Draw(string value, int column, int row)
-        {
-            this.Canvas.Draw(value, column, row);
         }
 
         public void ResetCursors()
@@ -144,6 +155,41 @@ namespace TWidgets.Core.Drawing
         public void Clear()
         {
             this.Canvas.Clear();
+        }
+
+        private int CalculateAlignedPosition(int width, int length, int column, Margin margin, Align align)
+        {
+            int ix = -1;  // index
+
+            switch (align)
+            {
+                case Align.Left:
+                    return ix = CalculateLeftIndex();
+                case Align.Center:
+                    return ix = CalculateCenterIndex();
+                case Align.Right:
+                    return ix = CalculateRightIndex();
+                default:
+                    return ix;
+            }
+
+            int CalculateLeftIndex()
+            {
+                return column + margin.Left;
+            }
+            int CalculateCenterIndex()
+            {
+                int center = (width / 2);
+                int offset = (length + margin.Left + margin.Right) / 2;
+
+                int inc = (center - offset) * 2 % 2 == 0 ? 0 : 1;
+
+                return center - offset - column + margin.Left + inc;
+            }
+            int CalculateRightIndex()
+            {
+                return width - (column + margin.Right) - length;
+            }
         }
     }
 }

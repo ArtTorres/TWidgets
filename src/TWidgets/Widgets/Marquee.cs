@@ -1,5 +1,4 @@
-﻿using TWidgets.Core;
-using TWidgets.Core.Drawing;
+﻿using TWidgets.Core.Drawing;
 using TWidgets.Util;
 
 namespace TWidgets.Widgets
@@ -50,14 +49,18 @@ namespace TWidgets.Widgets
                 Margin.Right + Border.Width + Padding.Right
             );
 
+            int maxWidth = g.Canvas.Width - textMargin.Left - textMargin.Right;
             g.Draw(
                 new List(
                     TextUtils.ResizeLines(
                         this.Items,
-                        g.Canvas.Width
+                        maxWidth
                     ),
                     textMargin
                 )
+                {
+                    Align = this.TextAlign
+                }
             );
         }
     }

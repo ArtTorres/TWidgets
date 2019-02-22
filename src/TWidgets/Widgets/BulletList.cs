@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using TWidgets.Core;
 using TWidgets.Core.Drawing;
 using TWidgets.Util;
 
@@ -39,6 +38,9 @@ namespace TWidgets.Widgets
                     ),
                     this.Margin
                 )
+                {
+                    Align = this.TextAlign
+                }
             );
         }
 

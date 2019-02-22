@@ -22,7 +22,7 @@ namespace TWidgets.Widgets
         }
 
         public NumberList(string id) : base(id)
-        {}
+        { }
 
         public override void Draw(Graphics g)
         {
@@ -34,6 +34,9 @@ namespace TWidgets.Widgets
                     ),
                     this.Margin
                 )
+                {
+                    Align = this.TextAlign
+                }
             );
         }
 
