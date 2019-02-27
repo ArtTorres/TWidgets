@@ -3,8 +3,14 @@ using TWidgets.Util;
 
 namespace TWidgets.Core.Drawing
 {
+    /// <summary>
+    /// Draws a border, background, or both around another element.
+    /// </summary>
     public class Border
     {
+        /// <summary>
+        /// Gets or sets the top-left character in the border template.
+        /// </summary>
         public char TopLeft
         {
             get
@@ -17,6 +23,9 @@ namespace TWidgets.Core.Drawing
             }
         }
 
+        /// <summary>
+        /// Gets or sets the top character in the border template.
+        /// </summary>
         public char Top
         {
             get
@@ -29,6 +38,9 @@ namespace TWidgets.Core.Drawing
             }
         }
 
+        /// <summary>
+        /// Gets or sets the top-right character in the border template.
+        /// </summary>
         public char TopRight
         {
             get
@@ -41,6 +53,9 @@ namespace TWidgets.Core.Drawing
             }
         }
 
+        /// <summary>
+        /// Gets or sets the left character in the border template.
+        /// </summary>
         public char Left
         {
             get
@@ -53,6 +68,9 @@ namespace TWidgets.Core.Drawing
             }
         }
 
+        /// <summary>
+        /// Gets or sets the background character in the border template.
+        /// </summary>
         public char Background
         {
             get
@@ -65,6 +83,9 @@ namespace TWidgets.Core.Drawing
             }
         }
 
+        /// <summary>
+        /// Gets or sets the right character in the border template.
+        /// </summary>
         public char Right
         {
             get
@@ -77,6 +98,9 @@ namespace TWidgets.Core.Drawing
             }
         }
 
+        /// <summary>
+        /// Gets or sets the bottom-left character in the border template.
+        /// </summary>
         public char BottomLeft
         {
             get
@@ -89,6 +113,9 @@ namespace TWidgets.Core.Drawing
             }
         }
 
+        /// <summary>
+        /// Gets or sets the bottom character in the border template.
+        /// </summary>
         public char Bottom
         {
             get
@@ -101,6 +128,9 @@ namespace TWidgets.Core.Drawing
             }
         }
 
+        /// <summary>
+        /// Gets or sets the bottom-right character in the border template.
+        /// </summary>
         public char BottomRight
         {
             get
@@ -113,7 +143,9 @@ namespace TWidgets.Core.Drawing
             }
         }
 
-        private char[] _template;
+        /// <summary>
+        /// Gets or sets the border template.
+        /// </summary>
         public char[] Template
         {
             get
@@ -128,7 +160,11 @@ namespace TWidgets.Core.Drawing
                 _template = value;
             }
         }
+        private char[] _template;
 
+        /// <summary>
+        /// Gets the width of the border.
+        /// </summary>
         public int Width
         {
             get
@@ -137,11 +173,18 @@ namespace TWidgets.Core.Drawing
             }
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Border"/> class.
+        /// </summary>
         public Border()
         {
             _template = BorderTemplate.SOLID;
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Border"/> class.
+        /// </summary>
+        /// <param name="template">The character template for the border.</param>
         public Border(char[] template)
         {
             _template = template;

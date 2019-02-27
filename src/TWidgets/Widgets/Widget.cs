@@ -5,11 +5,21 @@ using TWidgets.Util;
 
 namespace TWidgets.Widgets
 {
+    /// <summary>
+    /// Implements the basic functionality common to widgets.
+    /// </summary>
     public abstract class Widget : IWidget, IMarginable
     {
         #region Events
 
+        /// <summary>
+        /// Occurs when a value of the widget changes.
+        /// </summary>
         public event EventHandler<EventArgs> StateChanged;
+
+        /// <summary>
+        /// Raises the <see cref="StateChanged"/> event.
+        /// </summary>
         public void OnStateChanged()
         {
             this.StateChanged?.Invoke(this, new EventArgs());
@@ -17,18 +27,40 @@ namespace TWidgets.Widgets
 
         #endregion
 
+        /// <summary>
+        /// Gets the identified of the widget.
+        /// </summary>
         public string Id { get; private set; }
 
+        /// <summary>
+        /// Gets or sets the position of the widget.
+        /// </summary>
         public Position Position { get; set; }
 
+        /// <summary>
+        /// Gets or sets the align property of the widget.
+        /// </summary>
         public Align TextAlign { get; set; }
 
-        public WidgetColor ForegroundColor { get; set; }
-
-        public WidgetColor BackgroundColor { get; set; }
-
+        /// <summary>
+        /// Gets or sets the margin property of the widget.
+        /// </summary>
         public Margin Margin { get; set; }
 
+        /// <summary>
+        /// Gets or sets the foreground color of the widget.
+        /// </summary>
+        public WidgetColor ForegroundColor { get; set; }
+
+        /// <summary>
+        /// Gets or sets the background color of the widget.
+        /// </summary>
+        public WidgetColor BackgroundColor { get; set; }
+
+        /// <summary>
+        /// Initializes an instance of <see cref="Widget"/>.
+        /// </summary>
+        /// <param name="id">The identifier of the widget.</param>
         public Widget(string id)
         {
             this.Id = id;
@@ -41,23 +73,48 @@ namespace TWidgets.Widgets
             this.BackgroundColor = WidgetColor.System;
         }
 
+        /// <summary>
+        /// Destroys the instance of <see cref="Widget"/>.
+        /// </summary>
         ~Widget()
         {
             this.UnMount();
         }
 
+        /// <summary>
+        /// Executes when the widget get mounted.
+        /// </summary>
         public virtual void Mount() { }
 
+        /// <summary>
+        /// Executes when the widget is loaded.
+        /// </summary>
         public virtual void Load() { }
 
+        /// <summary>
+        /// Executes before the widget is drawn.
+        /// </summary>
         public virtual void BeforeDraw() { }
 
+        /// <summary>
+        /// Executes to draw the widget.
+        /// </summary>
+        /// <param name="g">A <see cref="Graphics"/> object.</param>
         public abstract void Draw(Graphics g);
 
+        /// <summary>
+        /// Executes just before the widget is drawn.
+        /// </summary>
         public virtual void DrawComplete() { }
 
+        /// <summary>
+        /// Executes just after the widget is unloaded.
+        /// </summary>
         public virtual void Unload() { }
 
+        /// <summary>
+        /// Executes before the widget get unmounted.
+        /// </summary>
         public virtual void UnMount() { }
     }
 }

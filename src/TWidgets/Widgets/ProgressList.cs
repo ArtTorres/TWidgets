@@ -6,9 +6,14 @@ using TWidgets.Util;
 
 namespace TWidgets.Widgets
 {
+    /// <summary>
+    /// Represents a collection of progressive text bars in the <see cref="Console"/>.
+    /// </summary>
     public class ProgressList : BoxWidget
     {
-        private char[] _template;
+        /// <summary>
+        /// Gets or sets the progress bar template.
+        /// </summary>
         public char[] Template
         {
             get
@@ -23,9 +28,18 @@ namespace TWidgets.Widgets
                 _template = value;
             }
         }
+        private char[] _template;
 
+        /// <summary>
+        /// Gets or sets items in the <see cref="ProgressList"/>.
+        /// </summary>
         public ObservableCollection<ProgressItem> Items { get; set; }
 
+
+        /// <summary>
+        /// Initializes an instance of <see cref="ProgressBar"/>.
+        /// </summary>
+        /// <param name="id">The identifier of the widget.</param>
         public ProgressList(string id) : base(id)
         {
             _template = ProgressBarTemplate.SIMPLE;
@@ -35,6 +49,10 @@ namespace TWidgets.Widgets
             this.Items.CollectionChanged += OnCollectionChanged;
         }
 
+        /// <summary>
+        /// Executes to draw the widget.
+        /// </summary>
+        /// <param name="g">A <see cref="Graphics"/> object.</param>
         public override void Draw(Graphics g)
         {
             int ix = 0;

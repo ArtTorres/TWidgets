@@ -5,28 +5,54 @@
     /// </summary>
     public sealed class Graphics
     {
+        /// <summary>
+        /// Gets the current <see cref="Canvas"/>.
+        /// </summary>
         public Canvas Canvas { get; private set; }
 
+        /// <summary>
+        /// Initializes a new instance of <see cref="Graphics"/> class with a initial <see cref="Canvas"/>.
+        /// </summary>
+        /// <param name="canvas">The initial <see cref="Canvas"/>.</param>
         public Graphics(Canvas canvas)
         {
             this.Canvas = canvas;
         }
 
+        /// <summary>
+        /// Draws a value on <see cref="Canvas"/>.
+        /// </summary>
+        /// <param name="value">The value to be drawn.</param>
         public void Draw(string value)
         {
             this.Canvas.Draw(value);
         }
 
+        /// <summary>
+        /// Draws a value on <see cref="Canvas"/> in a specified column.
+        /// </summary>
+        /// <param name="value">The value to be drawn.</param>
+        /// <param name="column">A column position.</param>
         public void Draw(string value, int column)
         {
             this.Canvas.Draw(value, column, this.Canvas.RowCursor);
         }
 
+        /// <summary>
+        /// Draws a value on <see cref="Canvas"/> in a specific column and row.
+        /// </summary>
+        /// <param name="value">The value to be drawn.</param>
+        /// <param name="column">A column position.</param>
+        /// <param name="row">A row position.</param>
         public void Draw(string value, int column, int row)
         {
             this.Canvas.Draw(value, column, row);
         }
 
+        /// <summary>
+        /// Draws a <see cref="Line"/> on <see cref="Canvas"/>.
+        /// </summary>
+        /// <param name="line">The line object.</param>
         public void Draw(Line line)
         {
             // Draw top margin
@@ -41,6 +67,10 @@
             this.Canvas.DrawSpace(line.Margin.Bottom);
         }
 
+        /// <summary>
+        /// Draws a <see cref="List"/> on <see cref="Canvas"/>.
+        /// </summary>
+        /// <param name="list">The list object.</param>
         public void Draw(List list)
         {
             // Draw top margin
@@ -64,6 +94,10 @@
             this.Canvas.DrawSpace(list.Margin.Bottom);
         }
 
+        /// <summary>
+        /// Draws a <see cref="Rectangle"/> on <see cref="Canvas"/>.
+        /// </summary>
+        /// <param name="rectangle">The rectangle object.</param>
         public void Draw(Rectangle rectangle)
         {
             // Draw top margin
@@ -115,16 +149,31 @@
             this.Canvas.DrawSpace(rectangle.Margin.Bottom);
         }
 
+        /// <summary>
+        /// Draws a <see cref="Text"/> on <see cref="Canvas"/>.
+        /// </summary>
+        /// <param name="text">The text object.</param>
         public void Draw(Text text)
         {
             this.Draw(text, this.Canvas.ColumnCursor);
         }
 
+        /// <summary>
+        /// Draws a <see cref="Text"/> on <see cref="Canvas"/> in a specific column.
+        /// </summary>
+        /// <param name="text">The text object.</param>
+        /// <param name="column">A column position.</param>
         public void Draw(Text text, int column)
         {
             this.Draw(text, column, this.Canvas.RowCursor);
         }
 
+        /// <summary>
+        /// Draws a <see cref="Text"/> on <see cref="Canvas"/> in a specific column and row.
+        /// </summary>
+        /// <param name="text">The text object.</param>
+        /// <param name="column">A column position.</param>
+        /// <param name="row">A row position.</param>
         public void Draw(Text text, int column, int row)
         {
             // Draw top margin
@@ -146,17 +195,32 @@
             this.Canvas.DrawSpace(text.Margin.Bottom);
         }
 
+        /// <summary>
+        /// Sets to initial positions all <see cref="Canvas"/> cursors.
+        /// </summary>
         public void ResetCursors()
         {
             this.Canvas.ColumnCursor = 0;
             this.Canvas.RowCursor = 0;
         }
 
+        /// <summary>
+        /// Removes all content on <see cref="Canvas"/>.
+        /// </summary>
         public void Clear()
         {
             this.Canvas.Clear();
         }
 
+        /// <summary>
+        /// Calculate the initial position of a value based in a specified align.
+        /// </summary>
+        /// <param name="width">The width of the <see cref="Canvas"/>.</param>
+        /// <param name="length">The length of the value.</param>
+        /// <param name="column">The value of the column position.</param>
+        /// <param name="margin">The value of <see cref="Margin"/>.</param>
+        /// <param name="align">The specified <see cref="Align"/>.</param>
+        /// <returns>The position value of the initial position.</returns>
         private int CalculateAlignedPosition(int width, int length, int column, Margin margin, Align align)
         {
             int ix = -1;  // index

@@ -89,6 +89,7 @@ namespace TWidgets.Core.Drawing
         /// </summary>
         /// <param name="width">The width of the canvas.</param>
         /// <param name="height">The height of the canvas.</param>
+        /// <param name="background">The default background character.</param>
         public Canvas(int width, int height, char background = ' ')
         {
             Width = width;

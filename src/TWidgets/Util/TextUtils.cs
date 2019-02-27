@@ -2,8 +2,17 @@
 
 namespace TWidgets.Util
 {
+    /// <summary>
+    /// Provides utilities to process text.
+    /// </summary>
     public static class TextUtils
     {
+        /// <summary>
+        /// Split a text in pieces of the same size.
+        /// </summary>
+        /// <param name="value">The text value.</param>
+        /// <param name="size">The size of the chunks.</param>
+        /// <returns>A collection of <see cref="string"/>.</returns>
         public static IEnumerable<string> Split(string value, int size)
         {
             int chunk = value.Length / size;
@@ -22,6 +31,14 @@ namespace TWidgets.Util
             }
         }
 
+        /// <summary>
+        /// Evaluates a text value, if it's shorter fills with background characters to the max length, 
+        /// if longer, the value will be trim to the max length.
+        /// </summary>
+        /// <param name="value">The text value.</param>
+        /// <param name="maxLength">The max length of the text.</param>
+        /// <param name="background">A background character.</param>
+        /// <returns>A normalized text.</returns>
         public static string Normalize(string value, int maxLength, char background = ' ')
         {
             if (value.Length < maxLength)
@@ -41,6 +58,12 @@ namespace TWidgets.Util
             }
         }
 
+        /// <summary>
+        /// Resizes the text values who overpass a maximum width.
+        /// </summary>
+        /// <param name="lines">A collection of text lines.</param>
+        /// <param name="maxWidth">The max length of the text.</param>
+        /// <returns>A collection of <see cref="string"/>.</returns>
         public static string[] ResizeLines(string[] lines, int maxWidth)
         {
             var output = new List<string>();

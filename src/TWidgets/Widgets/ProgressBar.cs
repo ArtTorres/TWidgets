@@ -4,9 +4,14 @@ using TWidgets.Util;
 
 namespace TWidgets.Widgets
 {
+    /// <summary>
+    /// Represents a progressive text bar in the <see cref="Console"/>.
+    /// </summary>
     public class ProgressBar : BoxWidget
     {
-        private double _maximum;
+        /// <summary>
+        /// Gets or sets the maximum value of the <see cref="ProgressBar"/>.
+        /// </summary>
         public double Maximum
         {
             get
@@ -21,8 +26,11 @@ namespace TWidgets.Widgets
                 _maximum = value;
             }
         }
+        private double _maximum;
 
-        private double _minimum;
+        /// <summary>
+        /// Gets or sets the minimal value of the <see cref="ProgressBar"/>.
+        /// </summary>
         public double Minimum
         {
             get
@@ -37,8 +45,11 @@ namespace TWidgets.Widgets
                 _minimum = value;
             }
         }
+        private double _minimum;
 
-        private double _value;
+        /// <summary>
+        /// Gets or sets the value of the <see cref="ProgressBar"/>.
+        /// </summary>
         public double Value
         {
             get
@@ -57,10 +68,16 @@ namespace TWidgets.Widgets
                 this.OnStateChanged();
             }
         }
+        private double _value;
 
+        /// <summary>
+        /// Gets or sets the size of the value increments.
+        /// </summary>
         public double Step { get; set; } = 10.0d;
 
-        private char[] _template;
+        /// <summary>
+        /// Gets or sets the progress bar template.
+        /// </summary>
         public char[] Template
         {
             get
@@ -75,7 +92,12 @@ namespace TWidgets.Widgets
                 _template = value;
             }
         }
+        private char[] _template;
 
+        /// <summary>
+        /// Initializes an instance of <see cref="ProgressBar"/>.
+        /// </summary>
+        /// <param name="id">The identifier of the widget.</param>
         public ProgressBar(string id) : base(id)
         {
             _maximum = 100.0d;
@@ -85,6 +107,10 @@ namespace TWidgets.Widgets
             this.Position = Position.Fixed;
         }
 
+        /// <summary>
+        /// Executes to draw the widget.
+        /// </summary>
+        /// <param name="g">A <see cref="Graphics"/> object.</param>
         public override void Draw(Graphics g)
         {
             g.Draw(new Text(
@@ -107,6 +133,9 @@ namespace TWidgets.Widgets
             }
         }
 
+        /// <summary>
+        /// Performs a increment on the value in the <see cref="ProgressBar"/>.
+        /// </summary>
         public void PerformStep()
         {
             this.Value += this.Step;

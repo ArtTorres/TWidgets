@@ -1,11 +1,22 @@
-﻿using TWidgets.Core.Drawing;
+﻿using System;
+using TWidgets.Core.Drawing;
 using TWidgets.Util;
 
 namespace TWidgets.Widgets
 {
+    /// <summary>
+    /// Represents a text marquee in the <see cref="Console"/>.
+    /// </summary>
     public class Marquee : BoxWidget
     {
-        private string[] _items;
+        /// <summary>
+        /// Gets or sets the <see cref="Marquee"/> padding.
+        /// </summary>
+        public Padding Padding { get; set; }
+
+        /// <summary>
+        /// Gets or sets the list items.
+        /// </summary>
         public string[] Items
         {
             get
@@ -18,14 +29,22 @@ namespace TWidgets.Widgets
                 this.OnStateChanged();
             }
         }
+        private string[] _items;
 
-        public Padding Padding { get; set; }
-
+        /// <summary>
+        /// Initializes an instance of <see cref="Marquee"/>.
+        /// </summary>
+        /// <param name="id">The identifier of the widget.</param>
         public Marquee(string id) : base(id)
         {
             this.Padding = new Padding();
+            this.TextAlign = Align.Center;
         }
 
+        /// <summary>
+        /// Executes to draw the widget.
+        /// </summary>
+        /// <param name="g">A <see cref="Graphics"/> object.</param>
         public override void Draw(Graphics g)
         {
             // Draw Rectangle
