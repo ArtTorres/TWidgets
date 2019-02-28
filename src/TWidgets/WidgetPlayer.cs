@@ -7,20 +7,28 @@ using TWidgets.Core.Input;
 
 namespace TWidgets
 {
-    public class WidgetPlayer
+    /// <summary>
+    /// Displays the mounted <see cref="IWidget"/> in the system <see cref="Console"/>.This class cannot be inherited.
+    /// </summary>
+    public sealed class WidgetPlayer
     {
         #region Instance
 
-        private static readonly Lazy<WidgetPlayer> instance = new Lazy<WidgetPlayer>(() => new WidgetPlayer());
-
+        /// <summary>
+        /// Gets an instance of <see cref="WidgetPlayer"/>.
+        /// </summary>
         private static WidgetPlayer Instance
         {
             get
             {
-                return instance.Value;
+                return _instance.Value;
             }
         }
+        private static readonly Lazy<WidgetPlayer> _instance = new Lazy<WidgetPlayer>(() => new WidgetPlayer());
 
+        /// <summary>
+        /// Gets the <see cref="IWidget"/> mounted.
+        /// </summary>
         public static IWidget Widget
         {
             get
@@ -29,25 +37,33 @@ namespace TWidgets
             }
         }
 
+        /// <summary>
+        /// Mounts a <see cref="IWidget"/> in the player.
+        /// </summary>
+        /// <param name="widget"></param>
         public static void Mount(IWidget widget)
         {
             Instance.MountWidget(widget);
         }
 
-        public static void UnMount()
+        /// <summary>
+        /// Unmounts a <see cref="IWidget"/> from the player.
+        /// </summary>
+        public static void Unmount()
         {
-            Instance.UnMountWidget();
+            Instance.UnmountWidget();
         }
 
         #endregion
 
         private InputFlow _inputFlow;
-
         private IWidget _widget;
-
         private IEnumerable<string> _errorMessages;
 
-        public WidgetPlayer()
+        /// <summary>
+        /// Initializes an instance of <see cref="WidgetPlayer"/>.
+        /// </summary>
+        private WidgetPlayer()
         {
             RenderEngine.Instance.BeforeRender += OnBeforeRender;
             RenderEngine.Instance.RenderComplete += OnRenderComplete;
@@ -57,11 +73,16 @@ namespace TWidgets
             _inputFlow = new InputFlow();
         }
 
+        /// <summary>
+        /// Initializes an instance of <see cref="WidgetPlayer"/>.
+        /// </summary>
+        /// <param name="widget">The widget to be played.</param>
+        /// <param name="autoplay">Play on mount.</param>
         private void MountWidget(IWidget widget, bool autoplay = true)
         {
             if (null != _widget)
             {
-                this.UnMountWidget();
+                this.UnmountWidget();
             }
 
             _widget = widget;
@@ -87,7 +108,10 @@ namespace TWidgets
                 this.PlayWidget();
         }
 
-        private void UnMountWidget()
+        /// <summary>
+        /// Unmounts the mounted <see cref="IWidget"/>.
+        /// </summary>
+        private void UnmountWidget()
         {
             // Unset Events
             _widget.StateChanged -= OnStateChanged;
@@ -96,6 +120,9 @@ namespace TWidgets
             _widget = null;
         }
 
+        /// <summary>
+        /// Displays the <see cref="IWidget"/> in the system <see cref="Console"/>.
+        /// </summary>
         private void PlayWidget()
         {
             // Before Draw
@@ -111,10 +138,14 @@ namespace TWidgets
             }
         }
 
+        /// <summary>
+        /// Displays the <see cref="IWidget"/> in the system <see cref="Console"/>.
+        /// </summary>
+        /// <param name="widget">The widget to be displayed.</param>
         private void DrawSimpleWidget(IWidget widget)
         {
             // Draw Widget
-            var g = this.GetGraphics();
+            var g = this.GetNewGraphics();
 
             widget.Draw(g);
 
@@ -122,6 +153,10 @@ namespace TWidgets
             this.Display(g);
         }
 
+        /// <summary>
+        /// Displays the <see cref="IInputWidget"/> in the system <see cref="Console"/>.
+        /// </summary>
+        /// <param name="widget">The widget to be displayed.</param>
         private void DrawInputWidget(IWidget widget)
         {
             var input = (IInputWidget)widget;
@@ -134,14 +169,14 @@ namespace TWidgets
                 switch (_inputFlow.NextState())
                 {
                     case InputFlow.States.Header:
-                        this.HeaderStep(input);
+                        HeaderStep();
                         break;
                     case InputFlow.States.Capture:
-                        this.CaptureStep(actions[ix], input);
+                        CaptureStep(actions[ix]);
                         break;
                     case InputFlow.States.Error:
 
-                        this.ErrorStep(actions[ix], input);
+                        ErrorStep(actions[ix]);
                         break;
                     case InputFlow.States.Control:
                         if (ix < actions.Length - 1)
@@ -155,13 +190,78 @@ namespace TWidgets
                         }
                         break;
                     case InputFlow.States.Footer:
-                        this.FooterStep(input);
+                        FooterStep();
                         break;
                 }
             } while (_inputFlow.State != InputFlow.States.End);
+
+            void HeaderStep()
+            {
+                var g = GetNewGraphics();
+
+                input.DrawHeader(g);
+
+                this.Display(g);
+
+                _inputFlow.Action = InputFlow.Actions.Continue;
+            }
+
+            // Displays Input on capture messages.
+            void CaptureStep(InputAction action)
+            {
+                var g = GetNewGraphics();
+
+                (widget as IWidget).Draw(g);
+
+                this.Display(g);
+
+                InputEngine.Instance.SaveSystemCursor();
+                InputEngine.Instance.Cursor = new InputCursor(
+                    input.CursorPosition.X,
+                    InputEngine.Instance.SystemCursor.Y + input.CursorPosition.Y - 1
+                );
+                InputEngine.Instance.Capture(action.Id, action.Method);
+            }
+
+            // Displays Input Errors
+            void ErrorStep(InputAction action)
+            {
+                if (action.Action != ValidateAction.Ignore)
+                {
+                    var g = GetNewGraphics();
+
+                    input.DrawError(g, _errorMessages);
+
+                    this.Display(g);
+                }
+                if (action.Action == ValidateAction.Repeat)
+                {
+                    _inputFlow.Action = InputFlow.Actions.Ok;
+                }
+                else
+                {
+                    _inputFlow.Action = InputFlow.Actions.Continue;
+                }
+            }
+
+            // Displays Input Footer
+            void FooterStep()
+            {
+                var g = GetNewGraphics();
+
+                input.DrawFooter(g);
+
+                this.Display(g);
+
+                _inputFlow.Action = InputFlow.Actions.Continue;
+            }
         }
 
-        private Graphics GetGraphics()
+        /// <summary>
+        /// Gets a new instance of <see cref="Graphics"/>.
+        /// </summary>
+        /// <returns></returns>
+        private Graphics GetNewGraphics()
         {
             return new Graphics(
                 new Canvas(
@@ -171,6 +271,10 @@ namespace TWidgets
             );
         }
 
+        /// <summary>
+        /// Displays a <see cref="Graphics"/> in the <see cref="RenderEngine"/>.
+        /// </summary>
+        /// <param name="g">A <see cref="Graphics"/> object.</param>
         private void Display(Graphics g)
         {
             RenderEngine.Instance.SaveSystemColor();
@@ -181,68 +285,17 @@ namespace TWidgets
 
         #region Input Steps
 
-        private void HeaderStep(IInputWidget widget)
-        {
-            var g = GetGraphics();
 
-            widget.DrawHeader(g);
-
-            this.Display(g);
-
-            _inputFlow.Action = InputFlow.Actions.Continue;
-        }
-
-        private void CaptureStep(InputAction action, IInputWidget widget)
-        {
-            var g = GetGraphics();
-
-            (widget as IWidget).Draw(g);
-
-            this.Display(g);
-
-            InputEngine.Instance.SaveSystemCursor();
-            InputEngine.Instance.Cursor = new InputCursor(
-                widget.CursorPosition.X,
-                InputEngine.Instance.SystemCursor.Y + widget.CursorPosition.Y - 1
-            );
-            InputEngine.Instance.Capture(action.id, action.method);
-        }
-
-        private void ErrorStep(InputAction action, IInputWidget widget)
-        {
-            if (action.action != ValidateAction.Ignore)
-            {
-                var g = GetGraphics();
-
-                widget.DrawError(g, _errorMessages);
-
-                this.Display(g);
-            }
-            if (action.action == ValidateAction.Repeat)
-            {
-                _inputFlow.Action = InputFlow.Actions.Ok;
-            }
-            else
-            {
-                _inputFlow.Action = InputFlow.Actions.Continue;
-            }
-        }
-
-        private void FooterStep(IInputWidget widget)
-        {
-            var g = GetGraphics();
-
-            widget.DrawFooter(g);
-
-            this.Display(g);
-
-            _inputFlow.Action = InputFlow.Actions.Continue;
-        }
 
         #endregion
 
         #region Widget Events
 
+        /// <summary>
+        /// Invoked when the state of a <see cref="IWidget"/> changed.
+        /// </summary>
+        /// <param name="sender">The sender object.</param>
+        /// <param name="e">The event object.</param>
         private void OnStateChanged(object sender, EventArgs e)
         {
             this.PlayWidget();
@@ -252,6 +305,11 @@ namespace TWidgets
 
         #region RenderEngine Events
 
+        /// <summary>
+        /// Invoked before the Render occurres on <see cref="RenderEngine"/>.
+        /// </summary>
+        /// <param name="sender">The sender object.</param>
+        /// <param name="e">The event object.</param>
         private void OnBeforeRender(object sender, EventArgs e)
         {
             // Restart position for Fixed widgets
@@ -261,6 +319,11 @@ namespace TWidgets
             }
         }
 
+        /// <summary>
+        /// Invoked after the Render occurres on <see cref="RenderEngine"/>.
+        /// </summary>
+        /// <param name="sender">The sender object.</param>
+        /// <param name="e">The event object.</param>
         private void OnRenderComplete(object sender, EventArgs e)
         {
             // Launch DrawComplete Event
@@ -274,6 +337,11 @@ namespace TWidgets
 
         #region InputEngine Events
 
+        /// <summary>
+        /// Invoked when a captured event occurres on <see cref="InputEngine"/>.
+        /// </summary>
+        /// <param name="sender">The sender object.</param>
+        /// <param name="e">The event object.</param>
         private void OnCaptured(object sender, Core.Events.InputEventArgs e)
         {
             var result = (_widget as IInputWidget).ValidateInput(e.Id, e.Value);
