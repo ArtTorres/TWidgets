@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TWidgets.Widgets
+namespace TWidgets
 {
     /// <summary>
     /// Represents a progressive text bar with text.

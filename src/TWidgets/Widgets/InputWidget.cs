@@ -2,12 +2,12 @@
 using TWidgets.Core.Drawing;
 using TWidgets.Core.Input;
 
-namespace TWidgets.Widgets
+namespace TWidgets
 {
     /// <summary>
     /// Implements the basic functionality common to input type widgets.
     /// </summary>
-    public abstract class InputWidget : Widget, IInputWidget
+    public abstract class InputWidget : TWidget, IInputWidget
     {
         /// <summary>
         /// Gets the input values.

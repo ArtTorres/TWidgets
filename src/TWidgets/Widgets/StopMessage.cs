@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TWidgets.Core.Drawing;
 using TWidgets.Core.Input;
 
-namespace TWidgets.Widgets
+namespace TWidgets
 {
     /// <summary>
     /// Represents a text message in the <see cref="Console"/> and then stops waiting for a key input.

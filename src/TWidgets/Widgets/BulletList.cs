@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using TWidgets.Core.Drawing;
-using TWidgets.Util;
+using TWidgets.Core.Utils;
 
-namespace TWidgets.Widgets
+namespace TWidgets
 {
     /// <summary>
     /// Represents a bulleted list in the <see cref="Console"/>.
     /// </summary>
-    public class BulletList : Widget
+    public class BulletList : TWidget
     {
         /// <summary>
         /// Gets or sets the bullet character.

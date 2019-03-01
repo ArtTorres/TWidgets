@@ -2,9 +2,9 @@
 using System.Linq;
 using TWidgets.Core.Drawing;
 using TWidgets.Core.Input;
-using TWidgets.Util;
+using TWidgets.Core.Utils;
 
-namespace TWidgets.Widgets
+namespace TWidgets
 {
     /// <summary>
     /// Represents a widget who displays a list of instructions and waits for a selection..

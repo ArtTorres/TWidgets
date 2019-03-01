@@ -10,21 +10,21 @@ namespace TWidgets
     /// <summary>
     /// Displays the mounted <see cref="IWidget"/> in the system <see cref="Console"/>.This class cannot be inherited.
     /// </summary>
-    public sealed class WidgetPlayer
+    public sealed class TWidgetPlayer
     {
         #region Instance
 
         /// <summary>
-        /// Gets an instance of <see cref="WidgetPlayer"/>.
+        /// Gets an instance of <see cref="TWidgetPlayer"/>.
         /// </summary>
-        private static WidgetPlayer Instance
+        private static TWidgetPlayer Instance
         {
             get
             {
                 return _instance.Value;
             }
         }
-        private static readonly Lazy<WidgetPlayer> _instance = new Lazy<WidgetPlayer>(() => new WidgetPlayer());
+        private static readonly Lazy<TWidgetPlayer> _instance = new Lazy<TWidgetPlayer>(() => new TWidgetPlayer());
 
         /// <summary>
         /// Gets the <see cref="IWidget"/> mounted.
@@ -61,9 +61,9 @@ namespace TWidgets
         private IEnumerable<string> _errorMessages;
 
         /// <summary>
-        /// Initializes an instance of <see cref="WidgetPlayer"/>.
+        /// Initializes an instance of <see cref="TWidgetPlayer"/>.
         /// </summary>
-        private WidgetPlayer()
+        private TWidgetPlayer()
         {
             RenderEngine.Instance.BeforeRender += OnBeforeRender;
             RenderEngine.Instance.RenderComplete += OnRenderComplete;
@@ -74,7 +74,7 @@ namespace TWidgets
         }
 
         /// <summary>
-        /// Initializes an instance of <see cref="WidgetPlayer"/>.
+        /// Initializes an instance of <see cref="TWidgetPlayer"/>.
         /// </summary>
         /// <param name="widget">The widget to be played.</param>
         /// <param name="autoplay">Play on mount.</param>

@@ -1,14 +1,13 @@
 ﻿using System;
 using TWidgets.Core;
 using TWidgets.Core.Drawing;
-using TWidgets.Util;
 
-namespace TWidgets.Widgets
+namespace TWidgets
 {
     /// <summary>
     /// Implements the basic functionality common to widgets.
     /// </summary>
-    public abstract class Widget : IWidget, IMarginable
+    public abstract class TWidget : IWidget, IMarginable
     {
         #region Events
 
@@ -50,18 +49,18 @@ namespace TWidgets.Widgets
         /// <summary>
         /// Gets or sets the foreground color of the widget.
         /// </summary>
-        public WidgetColor ForegroundColor { get; set; }
+        public TWidgetColor ForegroundColor { get; set; }
 
         /// <summary>
         /// Gets or sets the background color of the widget.
         /// </summary>
-        public WidgetColor BackgroundColor { get; set; }
+        public TWidgetColor BackgroundColor { get; set; }
 
         /// <summary>
-        /// Initializes an instance of <see cref="Widget"/>.
+        /// Initializes an instance of <see cref="TWidget"/>.
         /// </summary>
         /// <param name="id">The identifier of the widget.</param>
-        public Widget(string id)
+        public TWidget(string id)
         {
             this.Id = id;
 
@@ -69,14 +68,14 @@ namespace TWidgets.Widgets
             this.TextAlign = Align.Left;
             this.Margin = new Margin();
 
-            this.ForegroundColor = WidgetColor.System;
-            this.BackgroundColor = WidgetColor.System;
+            this.ForegroundColor = TWidgetColor.System;
+            this.BackgroundColor = TWidgetColor.System;
         }
 
         /// <summary>
-        /// Destroys the instance of <see cref="Widget"/>.
+        /// Destroys the instance of <see cref="TWidget"/>.
         /// </summary>
-        ~Widget()
+        ~TWidget()
         {
             this.UnMount();
         }

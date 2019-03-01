@@ -1,6 +1,5 @@
 ﻿using System;
 using TWidgets.Core.Drawing;
-using TWidgets.Util;
 
 namespace TWidgets.Core
 {
@@ -27,12 +26,12 @@ namespace TWidgets.Core
         /// <summary>
         /// Gets or sets the foreground color of the widget.
         /// </summary>
-        WidgetColor ForegroundColor { get; set; }
+        TWidgetColor ForegroundColor { get; set; }
 
         /// <summary>
         /// Gets or sets the background color of the widget.
         /// </summary>
-        WidgetColor BackgroundColor { get; set; }
+        TWidgetColor BackgroundColor { get; set; }
 
         /// <summary>
         /// Executes when the widget get mounted.

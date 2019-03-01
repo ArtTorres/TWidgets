@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 using System.Text;
-using TWidgets.Util;
+using TWidgets.Core.Utils;
 
 namespace TWidgets.Core.Drawing
 {
