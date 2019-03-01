@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace TWidgets.Util
+namespace TWidgets.Core.Utils
 {
     /// <summary>
     /// Provides utilities to process text.
