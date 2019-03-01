@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TWidgets", "src\TWidgets\TW
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TWidgets.Test", "test\TWidgets.Test\TWidgets.Test.csproj", "{C83B4B6C-590F-4F29-AE15-5B2A9F176C0F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TWidgets.Test.DemoApp", "test\TWidgets.DemoApp\TWidgets.Test.DemoApp.csproj", "{94906A33-D3F3-4853-B1E7-6397D1B17E48}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TWidgets.DemoApp", "examples\TWidgets.DemoApp\TWidgets.DemoApp.csproj", "{3595794D-94A9-4258-B514-D8A96C400764}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{C83B4B6C-590F-4F29-AE15-5B2A9F176C0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C83B4B6C-590F-4F29-AE15-5B2A9F176C0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C83B4B6C-590F-4F29-AE15-5B2A9F176C0F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{94906A33-D3F3-4853-B1E7-6397D1B17E48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{94906A33-D3F3-4853-B1E7-6397D1B17E48}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{94906A33-D3F3-4853-B1E7-6397D1B17E48}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{94906A33-D3F3-4853-B1E7-6397D1B17E48}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3595794D-94A9-4258-B514-D8A96C400764}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3595794D-94A9-4258-B514-D8A96C400764}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3595794D-94A9-4258-B514-D8A96C400764}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3595794D-94A9-4258-B514-D8A96C400764}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

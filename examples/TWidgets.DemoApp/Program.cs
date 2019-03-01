@@ -2,8 +2,6 @@
 using System.Linq;
 using System.Threading;
 using TWidgets;
-using TWidgets.Util;
-using TWidgets.Widgets;
 
 namespace DemoApp
 {
@@ -21,9 +19,9 @@ namespace DemoApp
                 Text = "Hello World"
             };
             msg.Margin.All = 1;
-            msg.ForegroundColor = WidgetColor.Red;
+            msg.ForegroundColor = TWidgetColor.Red;
 
-            WidgetPlayer.Mount(msg);
+            TWidgetPlayer.Mount(msg);
 
             Console.WriteLine("--END--");
         }
@@ -38,9 +36,9 @@ namespace DemoApp
             marquee.Margin.All = 1;
             marquee.Padding.All = 1;
             marquee.Border.Template = BorderTemplate.DOTTED;
-            marquee.ForegroundColor = WidgetColor.Blue;
+            marquee.ForegroundColor = TWidgetColor.Blue;
 
-            WidgetPlayer.Mount(marquee);
+            TWidgetPlayer.Mount(marquee);
 
             Console.WriteLine("--END--");
         }
@@ -49,9 +47,9 @@ namespace DemoApp
         {
             var separator = new Separator("sep");
             separator.Margin.All = 1;
-            separator.ForegroundColor = WidgetColor.Yellow;
+            separator.ForegroundColor = TWidgetColor.Yellow;
 
-            WidgetPlayer.Mount(separator);
+            TWidgetPlayer.Mount(separator);
 
             Console.WriteLine("--END--");
         }
@@ -60,15 +58,15 @@ namespace DemoApp
         {
             var list = new BulletList("lst");
             list.Margin.All = 1;
-            list.BackgroundColor = WidgetColor.DarkBlue;
-            list.ForegroundColor = WidgetColor.White;
+            list.BackgroundColor = TWidgetColor.DarkBlue;
+            list.ForegroundColor = TWidgetColor.White;
             list.Items = new string[] {
                 "Uno",
                 "Dos",
                 "Tres"
             };
 
-            WidgetPlayer.Mount(list);
+            TWidgetPlayer.Mount(list);
 
             Console.WriteLine("--END--");
         }
@@ -78,7 +76,7 @@ namespace DemoApp
             var tInput = new TextInput("txi");
             tInput.HeaderText = "Example Header";
 
-            WidgetPlayer.Mount(tInput);
+            TWidgetPlayer.Mount(tInput);
 
             Console.WriteLine("--END--");
 
@@ -95,7 +93,7 @@ namespace DemoApp
             progress.Margin.All = 1;
             progress.Template = ProgressBarTemplate.ARROW;
 
-            WidgetPlayer.Mount(progress);
+            TWidgetPlayer.Mount(progress);
 
             for (int i = 0; i < 10; i++)
             {
@@ -111,7 +109,7 @@ namespace DemoApp
             var progress = new ProgressChar("pc");
             progress.Text = "Start Message";
 
-            WidgetPlayer.Mount(progress);
+            TWidgetPlayer.Mount(progress);
 
             for (int i = 0; i < 5;)
             {
@@ -129,7 +127,7 @@ namespace DemoApp
                 Text = "-- Press to Continue --"
             };
 
-            WidgetPlayer.Mount(widget);
+            TWidgetPlayer.Mount(widget);
 
             Console.WriteLine("--END--");
         }
@@ -149,7 +147,7 @@ namespace DemoApp
             };
             widget.Margin.All = 1;
 
-            WidgetPlayer.Mount(widget);
+            TWidgetPlayer.Mount(widget);
 
             Console.WriteLine("--END--");
         }
@@ -165,7 +163,7 @@ namespace DemoApp
 
             var random = new Random();
 
-            WidgetPlayer.Mount(widget);
+            TWidgetPlayer.Mount(widget);
 
             do
             {
