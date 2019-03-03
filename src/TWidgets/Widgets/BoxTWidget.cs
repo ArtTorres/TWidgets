@@ -5,7 +5,7 @@ namespace TWidgets
     /// <summary>
     /// Implements the basic functionality common to box type widgets.
     /// </summary>
-    public abstract class BoxTWidget : TWidget, IBordeable
+    public abstract class BoxTWidget : TWidgetBase, IBordeable
     {
         /// <summary>
         ///  Gets the border property of the widget.

@@ -9,7 +9,7 @@ namespace TWidgets
     /// <summary>
     /// Represents a bulleted list in the <see cref="Console"/>.
     /// </summary>
-    public class BulletList : TWidget
+    public class BulletList : TWidgetBase
     {
         /// <summary>
         /// Gets or sets the bullet character.

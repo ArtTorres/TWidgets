@@ -6,7 +6,7 @@ namespace TWidgets.Core
     /// <summary>
     /// Provides the functions to implement a widget.
     /// </summary>
-    public interface IWidget
+    public interface ITWidget
     {
         /// <summary>
         /// Occurs when a value of the widget changes.

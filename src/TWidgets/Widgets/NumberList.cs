@@ -9,7 +9,7 @@ namespace TWidgets
     /// <summary>
     /// Represents a numbered list in the <see cref="Console"/>.
     /// </summary>
-    public class NumberList : TWidget
+    public class NumberList : TWidgetBase
     {
         /// <summary>
         /// Gets or sets the list items.

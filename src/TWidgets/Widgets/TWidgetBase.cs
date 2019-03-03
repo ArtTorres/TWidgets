@@ -7,7 +7,7 @@ namespace TWidgets
     /// <summary>
     /// Implements the basic functionality common to widgets.
     /// </summary>
-    public abstract class TWidget : IWidget, IMarginable
+    public abstract class TWidgetBase : ITWidget, IMarginable
     {
         #region Events
 
@@ -57,10 +57,10 @@ namespace TWidgets
         public TWidgetColor BackgroundColor { get; set; }
 
         /// <summary>
-        /// Initializes an instance of <see cref="TWidget"/>.
+        /// Initializes an instance of <see cref="TWidgetBase"/>.
         /// </summary>
         /// <param name="id">The identifier of the widget.</param>
-        public TWidget(string id)
+        public TWidgetBase(string id)
         {
             this.Id = id;
 
@@ -73,9 +73,9 @@ namespace TWidgets
         }
 
         /// <summary>
-        /// Destroys the instance of <see cref="TWidget"/>.
+        /// Destroys the instance of <see cref="TWidgetBase"/>.
         /// </summary>
-        ~TWidget()
+        ~TWidgetBase()
         {
             this.UnMount();
         }

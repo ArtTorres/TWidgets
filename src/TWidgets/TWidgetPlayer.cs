@@ -8,7 +8,7 @@ using TWidgets.Core.Input;
 namespace TWidgets
 {
     /// <summary>
-    /// Displays the mounted <see cref="IWidget"/> in the system <see cref="Console"/>.This class cannot be inherited.
+    /// Displays the mounted <see cref="ITWidget"/> in the system <see cref="Console"/>.This class cannot be inherited.
     /// </summary>
     public sealed class TWidgetPlayer
     {
@@ -27,9 +27,9 @@ namespace TWidgets
         private static readonly Lazy<TWidgetPlayer> _instance = new Lazy<TWidgetPlayer>(() => new TWidgetPlayer());
 
         /// <summary>
-        /// Gets the <see cref="IWidget"/> mounted.
+        /// Gets the <see cref="ITWidget"/> mounted.
         /// </summary>
-        public static IWidget Widget
+        public static ITWidget Widget
         {
             get
             {
@@ -38,16 +38,16 @@ namespace TWidgets
         }
 
         /// <summary>
-        /// Mounts a <see cref="IWidget"/> in the player.
+        /// Mounts a <see cref="ITWidget"/> in the player.
         /// </summary>
         /// <param name="widget"></param>
-        public static void Mount(IWidget widget)
+        public static void Mount(ITWidget widget)
         {
             Instance.MountWidget(widget);
         }
 
         /// <summary>
-        /// Unmounts a <see cref="IWidget"/> from the player.
+        /// Unmounts a <see cref="ITWidget"/> from the player.
         /// </summary>
         public static void Unmount()
         {
@@ -57,7 +57,7 @@ namespace TWidgets
         #endregion
 
         private InputFlow _inputFlow;
-        private IWidget _widget;
+        private ITWidget _widget;
         private IEnumerable<string> _errorMessages;
 
         /// <summary>
@@ -78,7 +78,7 @@ namespace TWidgets
         /// </summary>
         /// <param name="widget">The widget to be played.</param>
         /// <param name="autoplay">Play on mount.</param>
-        private void MountWidget(IWidget widget, bool autoplay = true)
+        private void MountWidget(ITWidget widget, bool autoplay = true)
         {
             if (null != _widget)
             {
@@ -109,7 +109,7 @@ namespace TWidgets
         }
 
         /// <summary>
-        /// Unmounts the mounted <see cref="IWidget"/>.
+        /// Unmounts the mounted <see cref="ITWidget"/>.
         /// </summary>
         private void UnmountWidget()
         {
@@ -121,7 +121,7 @@ namespace TWidgets
         }
 
         /// <summary>
-        /// Displays the <see cref="IWidget"/> in the system <see cref="Console"/>.
+        /// Displays the <see cref="ITWidget"/> in the system <see cref="Console"/>.
         /// </summary>
         private void PlayWidget()
         {
@@ -139,10 +139,10 @@ namespace TWidgets
         }
 
         /// <summary>
-        /// Displays the <see cref="IWidget"/> in the system <see cref="Console"/>.
+        /// Displays the <see cref="ITWidget"/> in the system <see cref="Console"/>.
         /// </summary>
         /// <param name="widget">The widget to be displayed.</param>
-        private void DrawSimpleWidget(IWidget widget)
+        private void DrawSimpleWidget(ITWidget widget)
         {
             // Draw Widget
             var g = this.GetNewGraphics();
@@ -157,7 +157,7 @@ namespace TWidgets
         /// Displays the <see cref="IInputWidget"/> in the system <see cref="Console"/>.
         /// </summary>
         /// <param name="widget">The widget to be displayed.</param>
-        private void DrawInputWidget(IWidget widget)
+        private void DrawInputWidget(ITWidget widget)
         {
             var input = (IInputWidget)widget;
 
@@ -211,7 +211,7 @@ namespace TWidgets
             {
                 var g = GetNewGraphics();
 
-                (widget as IWidget).Draw(g);
+                (widget as ITWidget).Draw(g);
 
                 this.Display(g);
 
@@ -292,7 +292,7 @@ namespace TWidgets
         #region Widget Events
 
         /// <summary>
-        /// Invoked when the state of a <see cref="IWidget"/> changed.
+        /// Invoked when the state of a <see cref="ITWidget"/> changed.
         /// </summary>
         /// <param name="sender">The sender object.</param>
         /// <param name="e">The event object.</param>

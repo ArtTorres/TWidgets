@@ -7,7 +7,7 @@ namespace TWidgets
     /// <summary>
     /// Implements the basic functionality common to input type widgets.
     /// </summary>
-    public abstract class InputWidget : TWidget, IInputWidget
+    public abstract class InputWidget : TWidgetBase, IInputWidget
     {
         /// <summary>
         /// Gets the input values.
