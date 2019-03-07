@@ -1,9 +1,9 @@
-﻿namespace TWidgets.Core.Input
+﻿namespace TWidgets.Core.Interactive
 {
     /// <summary>
     /// Specifies constants that defines the behavior after a validation.
     /// </summary>
-    public enum ValidateAction
+    public enum ErrorAction
     {
         /// <summary>
         /// Repeat the input.

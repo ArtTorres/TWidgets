@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using TWidgets.Core.Drawing;
-using TWidgets.Core.Input;
+using TWidgets.Core.Interactive;
 
 namespace TWidgets
 {
     /// <summary>
     /// Represents a the input of text in the <see cref="Console"/>.
     /// </summary>
-    public class TextInput : InputWidget, IBordeable
+    public class TextInput : InteractiveTWidget, IBordeable
     {
         /// <summary>
         /// Gets the footer line border.
@@ -19,7 +19,7 @@ namespace TWidgets
         /// <summary>
         /// Gets or sets the validation behavior.
         /// </summary>
-        public ValidateAction Action { get; set; }
+        public ErrorAction Action { get; set; }
 
         /// <summary>
         /// Gets or sets the header text.
@@ -89,7 +89,7 @@ namespace TWidgets
         /// <returns>A collection of instances of <see cref="InputAction"/>.</returns>
         public override IEnumerable<InputAction> InputActions()
         {
-            yield return new InputAction("text-input.value", InputMethod.ReadLine, ValidateAction.Repeat);
+            yield return new InputAction("text-input.value", InputMethod.ReadLine, ErrorAction.Repeat);
         }
 
         /// <summary>
@@ -98,15 +98,15 @@ namespace TWidgets
         /// <param name="id">The id of the input value.</param>
         /// <param name="value">The input value.</param>
         /// <returns>The result of the validation.</returns>
-        public override ValidationResult ValidateInput(string id, string value)
+        public override ValidateAction ValidateAction(string id, string value)
         {
             if (string.IsNullOrEmpty(value))
             {
-                return new ValidationResult(ValidationState.Invalid, "Empty Input");
+                return new ValidateAction(ValidationState.Reject, "Empty Input");
             }
             else
             {
-                return new ValidationResult(ValidationState.Valid);
+                return new ValidateAction(ValidationState.Accept);
             }
         }
     }

@@ -1,24 +1,26 @@
-﻿namespace TWidgets.Core.Input
+﻿using TWidgets.Core.Input;
+
+namespace TWidgets.Core.Interactive
 {
     /// <summary>
-    /// Represents the input actions to perform for a <see cref="IInputWidget"/>.
+    /// Represents the input actions to perform for a <see cref="IInteractive"/>.
     /// </summary>
-    public class InputAction
+    public struct InputAction
     {
         /// <summary>
-        /// Gets or sets the identifier of the input value
+        /// Gets the identifier of the input value
         /// </summary>
-        public string Id { get; set; }
+        public string Id { get; private set; }
 
         /// <summary>
-        /// Gets or sets the input method.
+        /// Gets the input method.
         /// </summary>
-        public InputMethod Method { get; set; }
+        public InputMethod Method { get; private set; }
 
         /// <summary>
-        /// Gets or sets the validation action.
+        /// Gets the validation action.
         /// </summary>
-        public ValidateAction Action { get; set; }
+        public ErrorAction Action { get; private set; }
 
         /// <summary>
         /// Initializes an instance of <see cref="InputAction"/>.
@@ -26,7 +28,7 @@
         /// <param name="id">The identifier of the input value.</param>
         /// <param name="method">The input method.</param>
         /// <param name="action">The validation action.</param>
-        public InputAction(string id, InputMethod method, ValidateAction action)
+        public InputAction(string id, InputMethod method, ErrorAction action)
         {
             this.Id = id;
             this.Method = method;

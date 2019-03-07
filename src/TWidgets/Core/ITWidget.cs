@@ -4,7 +4,7 @@ using TWidgets.Core.Drawing;
 namespace TWidgets.Core
 {
     /// <summary>
-    /// Provides the functions to implement a widget.
+    /// Provides the functions to implement a TWidget.
     /// </summary>
     public interface ITWidget
     {

@@ -4,6 +4,7 @@ using System.Linq;
 using TWidgets.Core;
 using TWidgets.Core.Drawing;
 using TWidgets.Core.Input;
+using TWidgets.Core.Interactive;
 
 namespace TWidgets
 {
@@ -56,7 +57,7 @@ namespace TWidgets
 
         #endregion
 
-        private InputFlow _inputFlow;
+        private IWorkflow Workflow { get; set; }
         private ITWidget _widget;
         private IEnumerable<string> _errorMessages;
 
@@ -70,7 +71,7 @@ namespace TWidgets
 
             InputEngine.Instance.Captured += OnCaptured;
 
-            _inputFlow = new InputFlow();
+            this.Workflow = new BasicWorkflow();
         }
 
         /// <summary>
@@ -96,9 +97,9 @@ namespace TWidgets
                 InputEngine.Instance.SaveSystemCursor();
             }
 
-            if (_widget is IInputWidget)
+            if (_widget is IInteractive)
             {
-                _inputFlow.Start();
+                Workflow.Start();
             }
 
             // Launch Mount Event
@@ -128,13 +129,13 @@ namespace TWidgets
             // Before Draw
             _widget.BeforeDraw();
 
-            if (_widget is IInputWidget)
+            if (_widget is IInteractive)
             {
-                this.DrawInputWidget(_widget);
+                this.DrawInteractiveWidget(_widget);
             }
             else
             {
-                this.DrawSimpleWidget(_widget);
+                this.DrawBasicWidget(_widget);
             }
         }
 
@@ -142,7 +143,7 @@ namespace TWidgets
         /// Displays the <see cref="ITWidget"/> in the system <see cref="Console"/>.
         /// </summary>
         /// <param name="widget">The widget to be displayed.</param>
-        private void DrawSimpleWidget(ITWidget widget)
+        private void DrawBasicWidget(ITWidget widget)
         {
             // Draw Widget
             var g = this.GetNewGraphics();
@@ -154,46 +155,46 @@ namespace TWidgets
         }
 
         /// <summary>
-        /// Displays the <see cref="IInputWidget"/> in the system <see cref="Console"/>.
+        /// Displays the <see cref="IInteractive"/> in the system <see cref="Console"/>.
         /// </summary>
         /// <param name="widget">The widget to be displayed.</param>
-        private void DrawInputWidget(ITWidget widget)
+        private void DrawInteractiveWidget(ITWidget widget)
         {
-            var input = (IInputWidget)widget;
+            var input = (IInteractive)widget;
 
             var actions = input.InputActions().ToArray();
             int ix = 0;
 
             do
             {
-                switch (_inputFlow.NextState())
+                switch (Workflow.NextState())
                 {
-                    case InputFlow.States.Header:
+                    case FlowStates.Header:
                         HeaderStep();
                         break;
-                    case InputFlow.States.Capture:
+                    case FlowStates.Capture:
                         CaptureStep(actions[ix]);
                         break;
-                    case InputFlow.States.Error:
+                    case FlowStates.Error:
 
                         ErrorStep(actions[ix]);
                         break;
-                    case InputFlow.States.Control:
+                    case FlowStates.Control:
                         if (ix < actions.Length - 1)
                         {
                             ix++;
-                            _inputFlow.Action = InputFlow.Actions.Continue;
+                            Workflow.Action = FlowActions.Continue;
                         }
                         else
                         {
-                            _inputFlow.Action = InputFlow.Actions.Ok;
+                            Workflow.Action = FlowActions.Ok;
                         }
                         break;
-                    case InputFlow.States.Footer:
+                    case FlowStates.Footer:
                         FooterStep();
                         break;
                 }
-            } while (_inputFlow.State != InputFlow.States.End);
+            } while (Workflow.State != FlowStates.End);
 
             void HeaderStep()
             {
@@ -203,7 +204,7 @@ namespace TWidgets
 
                 this.Display(g);
 
-                _inputFlow.Action = InputFlow.Actions.Continue;
+                Workflow.Action = FlowActions.Continue;
             }
 
             // Displays Input on capture messages.
@@ -216,7 +217,7 @@ namespace TWidgets
                 this.Display(g);
 
                 InputEngine.Instance.SaveSystemCursor();
-                InputEngine.Instance.Cursor = new InputCursor(
+                InputEngine.Instance.Cursor = new ConsoleCursor(
                     input.CursorPosition.X,
                     InputEngine.Instance.SystemCursor.Y + input.CursorPosition.Y - 1
                 );
@@ -226,7 +227,7 @@ namespace TWidgets
             // Displays Input Errors
             void ErrorStep(InputAction action)
             {
-                if (action.Action != ValidateAction.Ignore)
+                if (action.Action != ErrorAction.Ignore)
                 {
                     var g = GetNewGraphics();
 
@@ -234,13 +235,14 @@ namespace TWidgets
 
                     this.Display(g);
                 }
-                if (action.Action == ValidateAction.Repeat)
+
+                if (action.Action == ErrorAction.Repeat)
                 {
-                    _inputFlow.Action = InputFlow.Actions.Ok;
+                    Workflow.Action = FlowActions.Ok;
                 }
                 else
                 {
-                    _inputFlow.Action = InputFlow.Actions.Continue;
+                    Workflow.Action = FlowActions.Continue;
                 }
             }
 
@@ -253,7 +255,7 @@ namespace TWidgets
 
                 this.Display(g);
 
-                _inputFlow.Action = InputFlow.Actions.Continue;
+                Workflow.Action = FlowActions.Continue;
             }
         }
 
@@ -342,22 +344,22 @@ namespace TWidgets
         /// </summary>
         /// <param name="sender">The sender object.</param>
         /// <param name="e">The event object.</param>
-        private void OnCaptured(object sender, Core.Events.InputEventArgs e)
+        private void OnCaptured(object sender, Core.Events.InteractiveEventArgs e)
         {
-            var result = (_widget as IInputWidget).ValidateInput(e.Id, e.Value);
+            var result = (_widget as IInteractive).ValidateAction(e.Id, e.Value);
 
             switch (result.State)
             {
-                case ValidationState.Invalid:
+                case ValidationState.Reject:
                     _errorMessages = result.Messages;
-                    _inputFlow.Action = InputFlow.Actions.Error;
+                    Workflow.Action = FlowActions.Error;
                     break;
                 case ValidationState.Repeat:
-                    _inputFlow.Action = InputFlow.Actions.Continue;
+                    Workflow.Action = FlowActions.Continue;
                     break;
-                case ValidationState.Valid:
-                    (_widget as IInputWidget).MapValues(e.Id, e.Value);
-                    _inputFlow.Action = InputFlow.Actions.Ok;
+                case ValidationState.Accept:
+                    (_widget as IInteractive).MapValues(e.Id, e.Value);
+                    Workflow.Action = FlowActions.Ok;
                     break;
             }
         }
