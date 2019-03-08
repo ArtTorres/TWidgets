@@ -41,18 +41,6 @@ namespace TWidgets
         }
 
         /// <summary>
-        /// Executes to draw a header before the capture of inputs.
-        /// </summary>
-        /// <param name="g">A graphics object.</param>
-        public virtual void DrawHeader(Graphics g) { }
-
-        /// <summary>
-        /// Executes to draw a footer after the capture of inputs.
-        /// </summary>
-        /// <param name="g">A graphics object.</param>
-        public virtual void DrawFooter(Graphics g) { }
-
-        /// <summary>
         /// Executes to draw a list of error messages.
         /// </summary>
         /// <param name="g">A graphics object.</param>

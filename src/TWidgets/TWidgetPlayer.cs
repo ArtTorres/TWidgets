@@ -169,10 +169,7 @@ namespace TWidgets
             {
                 switch (Workflow.NextState())
                 {
-                    case FlowStates.Header:
-                        HeaderStep();
-                        break;
-                    case FlowStates.Capture:
+                    case FlowStates.Input:
                         CaptureStep(actions[ix]);
                         break;
                     case FlowStates.Error:
@@ -190,22 +187,8 @@ namespace TWidgets
                             Workflow.Action = FlowActions.Ok;
                         }
                         break;
-                    case FlowStates.Footer:
-                        FooterStep();
-                        break;
                 }
             } while (Workflow.State != FlowStates.End);
-
-            void HeaderStep()
-            {
-                var g = GetNewGraphics();
-
-                input.DrawHeader(g);
-
-                this.Display(g);
-
-                Workflow.Action = FlowActions.Continue;
-            }
 
             // Displays Input on capture messages.
             void CaptureStep(InputAction action)
@@ -214,12 +197,13 @@ namespace TWidgets
 
                 (widget as ITWidget).Draw(g);
 
+                InputEngine.Instance.SaveSystemCursor();
+
                 this.Display(g);
 
-                InputEngine.Instance.SaveSystemCursor();
                 InputEngine.Instance.Cursor = new ConsoleCursor(
                     input.CursorPosition.X,
-                    InputEngine.Instance.SystemCursor.Y + input.CursorPosition.Y - 1
+                    InputEngine.Instance.SystemCursor.Y + input.CursorPosition.Y
                 );
                 InputEngine.Instance.Capture(action.Id, action.Method);
             }
@@ -244,18 +228,6 @@ namespace TWidgets
                 {
                     Workflow.Action = FlowActions.Continue;
                 }
-            }
-
-            // Displays Input Footer
-            void FooterStep()
-            {
-                var g = GetNewGraphics();
-
-                input.DrawFooter(g);
-
-                this.Display(g);
-
-                Workflow.Action = FlowActions.Continue;
             }
         }
 

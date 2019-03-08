@@ -8,19 +8,8 @@ namespace TWidgets
     /// <summary>
     /// Represents a the input of text in the <see cref="Console"/>.
     /// </summary>
-    public class TextInput : InteractiveTWidget, IBordeable
+    public class TextInput : InteractiveTWidget
     {
-        /// <summary>
-        /// Gets the footer line border.
-        /// </summary>
-        public Border Border { get; private set; }
-
-        // TODO: Evaluate the position of this property
-        /// <summary>
-        /// Gets or sets the validation behavior.
-        /// </summary>
-        public ErrorAction Action { get; set; }
-
         /// <summary>
         /// Gets or sets the header text.
         /// </summary>
@@ -37,9 +26,7 @@ namespace TWidgets
         /// <param name="id">The identifier of the widget.</param>
         public TextInput(string id) : base(id)
         {
-            this.Border = new Border();
-            this.CursorPosition.X = CursorText.Length + 1;
-            this.CursorPosition.Y = 0;
+            this.CursorPosition.X = this.Margin.Left + CursorText.Length + 1;
         }
 
         /// <summary>
@@ -48,26 +35,36 @@ namespace TWidgets
         /// <param name="g">A <see cref="Graphics"/> object.</param>
         public override void Draw(Graphics g)
         {
-            g.Draw(new Text($"{CursorText} ", this.Margin));
-        }
+            bool headerEnabled = !string.IsNullOrEmpty(this.HeaderText);
 
-        /// <summary>
-        /// Executes to draw a header before the capture of inputs.
-        /// </summary>
-        /// <param name="g">A graphics object.</param>
-        public override void DrawHeader(Graphics g)
-        {
-            if (!string.IsNullOrEmpty(this.HeaderText))
-                g.Draw(new Text(this.HeaderText, this.Margin));
-        }
+            if (headerEnabled)
+            {
+                g.Draw(
+                    new Text(
+                        this.HeaderText,
+                        new Margin(
+                            this.Margin.Top,
+                            this.Margin.Left,
+                            0,
+                            this.Margin.Right
+                        )
+                    )
+                );
+            }
 
-        /// <summary>
-        /// Executes to draw a footer after the capture of inputs.
-        /// </summary>
-        /// <param name="g">A graphics object.</param>
-        public override void DrawFooter(Graphics g)
-        {
-            g.Draw(new Line(this.Margin, this.Border));
+            this.CursorPosition.Y = g.Canvas.Rows;
+
+            g.Draw(
+                new Text(
+                    $"{CursorText} ",
+                    new Margin(
+                        headerEnabled ? 0 : this.Margin.Top,
+                        this.Margin.Left,
+                        this.Margin.Bottom,
+                        this.Margin.Right
+                    )
+                )
+            );
         }
 
         /// <summary>

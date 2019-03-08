@@ -44,7 +44,6 @@ namespace TWidgets
         public override void BeforeDraw()
         {
             this.CursorPosition.X = InstructionsText.Length + Margin.Left + 1;
-            this.CursorPosition.Y = -Margin.Bottom;
         }
 
         /// <summary>
@@ -53,29 +52,34 @@ namespace TWidgets
         /// <param name="g">A <see cref="Graphics"/> object.</param>
         public override void Draw(Graphics g)
         {
-            var marginA = new Margin(
-                Margin.Top,
-                Margin.Left,
-                0,
-                Margin.Right
-            );
-            var marginB = new Margin(
-                0,
-                Margin.Left,
-                Margin.Bottom,
-                Margin.Right
-            );
-
             g.Draw(
                 new List(
                     TextUtils.ResizeLines(
                         JoinNumbers(this.Items).ToArray(),
                         g.Canvas.Width
                     ),
-                    marginA
+                    new Margin(
+                        Margin.Top,
+                        Margin.Left,
+                        1,
+                        Margin.Right
+                    )
                 )
             );
-            g.Draw(new Text(this.InstructionsText, marginB));
+
+            this.CursorPosition.Y = g.Canvas.Rows;
+
+            g.Draw(
+                new Text(
+                    this.InstructionsText, 
+                    new Margin(
+                        0,
+                        Margin.Left,
+                        Margin.Bottom,
+                        Margin.Right
+                    )
+                )
+            );
         }
 
         /// <summary>

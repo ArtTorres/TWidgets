@@ -41,18 +41,6 @@ namespace TWidgets.Core.Input
         ValidateAction ValidateAction(string id, string value);
 
         /// <summary>
-        /// Executes to draw a header before the capture of inputs.
-        /// </summary>
-        /// <param name="g">A graphics object.</param>
-        void DrawHeader(Graphics g);
-
-        /// <summary>
-        /// Executes to draw a footer after the capture of inputs.
-        /// </summary>
-        /// <param name="g">A graphics object.</param>
-        void DrawFooter(Graphics g);
-
-        /// <summary>
         /// Executes to draw a list of error messages.
         /// </summary>
         /// <param name="g">A graphics object.</param>

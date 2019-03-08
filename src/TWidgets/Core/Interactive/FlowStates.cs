@@ -11,14 +11,9 @@
         Start,
 
         /// <summary>
-        /// Represents the header phase.
-        /// </summary>
-        Header,
-
-        /// <summary>
         /// Represents the capture phase.
         /// </summary>
-        Capture,
+        Input,
 
         /// <summary>
         /// Represents the error phase.
@@ -29,11 +24,6 @@
         /// Represents a flow evaluation phase.
         /// </summary>
         Control,
-
-        /// <summary>
-        /// Represents the footer phase.
-        /// </summary>
-        Footer,
 
         /// <summary>
         /// Represents the end phase.
