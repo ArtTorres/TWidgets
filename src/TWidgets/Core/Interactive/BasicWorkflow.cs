@@ -23,10 +23,11 @@
         public BasicWorkflow()
         {
             _stateMachine = new FlowStates[,] {
-            //    Start             Capture             Error                 Control             End
-                { FlowStates.Input, FlowStates.Input,   FlowStates.Control,   FlowStates.Input,   FlowStates.End }, // Continue
-                { FlowStates.Input, FlowStates.Error,   FlowStates.Input,     FlowStates.End,     FlowStates.End }, // Error
-                { FlowStates.Input, FlowStates.Control, FlowStates.Input,     FlowStates.End,     FlowStates.End }  // Ok
+            //    Start             Capture             Error               Control             End
+                { FlowStates.Input, FlowStates.Input,   FlowStates.Control, FlowStates.Input,   FlowStates.End },   // Continue
+                { FlowStates.Input, FlowStates.Error,   FlowStates.Input,   FlowStates.End,     FlowStates.End },   // Error
+                { FlowStates.Input, FlowStates.Control, FlowStates.Input,   FlowStates.End,     FlowStates.End },   // Ok
+                { FlowStates.End,   FlowStates.End,     FlowStates.End,     FlowStates.End,     FlowStates.End }    // Abort
             };
         }
 

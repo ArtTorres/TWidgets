@@ -18,6 +18,11 @@
         /// <summary>
         /// Continue the flow to the next valid state.
         /// </summary>
-        Ok
+        Ok,
+
+        /// <summary>
+        /// Ends the flow immediately.
+        /// </summary>
+        Abort
     }
 }
