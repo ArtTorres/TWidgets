@@ -11,6 +11,11 @@ namespace TWidgets
     public abstract class InteractiveTWidget : TWidgetBase, IInteractive
     {
         /// <summary>
+        /// Gets or sets the interaction workflow.
+        /// </summary>
+        public IWorkflow Workflow { get; set; }
+
+        /// <summary>
         /// Gets the input values.
         /// </summary>
         public Dictionary<string, string> Values { get; private set; }
@@ -28,6 +33,7 @@ namespace TWidgets
         {
             this.Values = new Dictionary<string, string>();
             this.CursorPosition = new ConsoleCursor();
+            this.Workflow = new BasicWorkflow();
         }
 
         /// <summary>

@@ -10,6 +10,11 @@ namespace TWidgets.Core.Input
     public interface IInteractive
     {
         /// <summary>
+        /// Gets the interaction workflow.
+        /// </summary>
+        IWorkflow Workflow { get; }
+
+        /// <summary>
         /// Gets the input values.
         /// </summary>
         Dictionary<string, string> Values { get; }
