@@ -10,15 +10,21 @@ namespace TWidgets
     /// </summary>
     public class TextInput : InteractiveTWidget
     {
+        //public ITWidget ErrorTWidget { get; set; }
+
         /// <summary>
         /// Gets or sets the header text.
         /// </summary>
         public string HeaderText { get; set; }
 
         /// <summary>
+        /// Gets or sets the message displayed on empty entry.
+        /// </summary>
+        public string EmptyErrorMessage { get; set; } = "[Entry cannot be empty, try again!]";
+
         /// Gets or sets the text cursor placed before the input.
         /// </summary>
-        public string CursorText { get; set; } = ">>";
+        public string CursorText { get; set; } = ">";
 
         /// <summary>
         /// Initializes an instance of <see cref="TextInput"/>.
@@ -76,7 +82,17 @@ namespace TWidgets
         {
             foreach (var message in messages)
             {
-                g.Draw(new Text(message, this.Margin));
+                g.Draw(
+                    new Text(
+                        message,
+                        new Margin(
+                            0,
+                            this.Margin.Left,
+                            0,
+                            this.Margin.Right
+                        )
+                    )
+                );
             }
         }
 
@@ -99,7 +115,7 @@ namespace TWidgets
         {
             if (string.IsNullOrEmpty(value))
             {
-                return new ValidateAction(ValidationState.Reject, "Empty Input");
+                return new ValidateAction(ValidationState.Reject, this.EmptyErrorMessage);
             }
             else
             {

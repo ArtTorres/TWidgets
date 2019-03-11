@@ -57,7 +57,6 @@ namespace TWidgets
 
         #endregion
 
-        private IWorkflow Workflow { get; set; }
         private ITWidget _widget;
         private IEnumerable<string> _errorMessages;
 
@@ -70,8 +69,6 @@ namespace TWidgets
             RenderEngine.Instance.RenderComplete += OnRenderComplete;
 
             InputEngine.Instance.Captured += OnCaptured;
-
-            this.Workflow = new BasicWorkflow();
         }
 
         /// <summary>
@@ -95,11 +92,6 @@ namespace TWidgets
             if (Position.Fixed == _widget.Position)
             {
                 InputEngine.Instance.SaveSystemCursor();
-            }
-
-            if (_widget is IInteractive)
-            {
-                Workflow.Start();
             }
 
             // Launch Mount Event
@@ -126,15 +118,17 @@ namespace TWidgets
         /// </summary>
         private void PlayWidget()
         {
-            // Before Draw
+            // Before draw
             _widget.BeforeDraw();
 
+            // Perform input
             if (_widget is IInteractive)
             {
-                this.DrawInteractiveWidget(_widget);
+                this.DrawInteractiveWidget(_widget as IInteractive);
             }
             else
             {
+                // Draw widget
                 this.DrawBasicWidget(_widget);
             }
         }
@@ -145,9 +139,10 @@ namespace TWidgets
         /// <param name="widget">The widget to be displayed.</param>
         private void DrawBasicWidget(ITWidget widget)
         {
-            // Draw Widget
+            // New graphics
             var g = this.GetNewGraphics();
 
+            // Draw widget
             widget.Draw(g);
 
             // Display on Console
@@ -158,54 +153,61 @@ namespace TWidgets
         /// Displays the <see cref="IInteractive"/> in the system <see cref="Console"/>.
         /// </summary>
         /// <param name="widget">The widget to be displayed.</param>
-        private void DrawInteractiveWidget(ITWidget widget)
+        private void DrawInteractiveWidget(IInteractive widget)
         {
-            var input = (IInteractive)widget;
+            widget.Workflow.Start();
 
-            var actions = input.InputActions().ToArray();
+            var actions = widget.InputActions().ToArray();
             int ix = 0;
 
             do
             {
-                switch (Workflow.NextState())
+                switch (widget.Workflow.NextState())
                 {
                     case FlowStates.Input:
                         CaptureStep(actions[ix]);
                         break;
                     case FlowStates.Error:
-
                         ErrorStep(actions[ix]);
                         break;
                     case FlowStates.Control:
                         if (ix < actions.Length - 1)
                         {
                             ix++;
-                            Workflow.Action = FlowActions.Continue;
+                            widget.Workflow.Action = FlowActions.Continue;
                         }
                         else
                         {
-                            Workflow.Action = FlowActions.Ok;
+                            widget.Workflow.Action = FlowActions.Ok;
                         }
                         break;
                 }
-            } while (Workflow.State != FlowStates.End);
+
+            } while (widget.Workflow.State != FlowStates.End);
 
             // Displays Input on capture messages.
             void CaptureStep(InputAction action)
             {
-                var g = GetNewGraphics();
+                int startRow = InputEngine.Instance.Cursor.Y;
 
-                (widget as ITWidget).Draw(g);
+                this.DrawBasicWidget(widget as ITWidget);
 
-                InputEngine.Instance.SaveSystemCursor();
+                int size = InputEngine.Instance.Cursor.Y - startRow;
 
-                this.Display(g);
-
+                // Set cursor position
                 InputEngine.Instance.Cursor = new ConsoleCursor(
-                    input.CursorPosition.X,
-                    InputEngine.Instance.SystemCursor.Y + input.CursorPosition.Y
+                    widget.CursorPosition.X,
+                    startRow + widget.CursorPosition.Y
                 );
+
+                // Perform capture
                 InputEngine.Instance.Capture(action.Id, action.Method);
+
+                // Restore drawing position
+                InputEngine.Instance.Cursor = new ConsoleCursor(
+                    0,
+                    startRow + size
+                );
             }
 
             // Displays Input Errors
@@ -215,18 +217,18 @@ namespace TWidgets
                 {
                     var g = GetNewGraphics();
 
-                    input.DrawError(g, _errorMessages);
+                    widget.DrawError(g, _errorMessages);
 
                     this.Display(g);
                 }
 
                 if (action.Action == ErrorAction.Repeat)
                 {
-                    Workflow.Action = FlowActions.Ok;
+                    widget.Workflow.Action = FlowActions.Ok;
                 }
                 else
                 {
-                    Workflow.Action = FlowActions.Continue;
+                    widget.Workflow.Action = FlowActions.Continue;
                 }
             }
         }
@@ -318,20 +320,21 @@ namespace TWidgets
         /// <param name="e">The event object.</param>
         private void OnCaptured(object sender, Core.Events.InteractiveEventArgs e)
         {
-            var result = (_widget as IInteractive).ValidateAction(e.Id, e.Value);
+            var iWidget = (_widget as IInteractive);
+            var result = iWidget.ValidateAction(e.Id, e.Value);
 
             switch (result.State)
             {
                 case ValidationState.Reject:
                     _errorMessages = result.Messages;
-                    Workflow.Action = FlowActions.Error;
+                    iWidget.Workflow.Action = FlowActions.Error;
                     break;
                 case ValidationState.Repeat:
-                    Workflow.Action = FlowActions.Continue;
+                    iWidget.Workflow.Action = FlowActions.Continue;
                     break;
                 case ValidationState.Accept:
-                    (_widget as IInteractive).MapValues(e.Id, e.Value);
-                    Workflow.Action = FlowActions.Ok;
+                    iWidget.MapValues(e.Id, e.Value);
+                    iWidget.Workflow.Action = FlowActions.Ok;
                     break;
             }
         }

@@ -33,7 +33,6 @@ namespace TWidgets
         /// <param name="id">The identifier of the widget.</param>
         public StopMessage(string id) : base(id)
         {
-            this.CursorPosition.Y = 1;
         }
 
         /// <summary>
@@ -43,6 +42,8 @@ namespace TWidgets
         public override void Draw(Graphics g)
         {
             g.Draw(new Text(this.Text, this.Margin) { Align = this.TextAlign });
+
+            this.CursorPosition.Y = g.Canvas.Rows;
         }
 
         /// <summary>
