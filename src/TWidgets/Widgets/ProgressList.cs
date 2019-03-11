@@ -2,14 +2,13 @@
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using TWidgets.Core.Drawing;
-using TWidgets.Util;
 
-namespace TWidgets.Widgets
+namespace TWidgets
 {
     /// <summary>
     /// Represents a collection of progressive text bars in the <see cref="Console"/>.
     /// </summary>
-    public class ProgressList : BoxWidget
+    public class ProgressList : BoxTWidget
     {
         /// <summary>
         /// Gets or sets the progress bar template.

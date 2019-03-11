@@ -4,32 +4,33 @@ using System.Linq;
 using TWidgets.Core;
 using TWidgets.Core.Drawing;
 using TWidgets.Core.Input;
+using TWidgets.Core.Interactive;
 
 namespace TWidgets
 {
     /// <summary>
-    /// Displays the mounted <see cref="IWidget"/> in the system <see cref="Console"/>.This class cannot be inherited.
+    /// Displays the mounted <see cref="ITWidget"/> in the system <see cref="Console"/>.This class cannot be inherited.
     /// </summary>
-    public sealed class WidgetPlayer
+    public sealed class TWidgetPlayer
     {
         #region Instance
 
         /// <summary>
-        /// Gets an instance of <see cref="WidgetPlayer"/>.
+        /// Gets an instance of <see cref="TWidgetPlayer"/>.
         /// </summary>
-        private static WidgetPlayer Instance
+        private static TWidgetPlayer Instance
         {
             get
             {
                 return _instance.Value;
             }
         }
-        private static readonly Lazy<WidgetPlayer> _instance = new Lazy<WidgetPlayer>(() => new WidgetPlayer());
+        private static readonly Lazy<TWidgetPlayer> _instance = new Lazy<TWidgetPlayer>(() => new TWidgetPlayer());
 
         /// <summary>
-        /// Gets the <see cref="IWidget"/> mounted.
+        /// Gets the <see cref="ITWidget"/> mounted.
         /// </summary>
-        public static IWidget Widget
+        public static ITWidget Widget
         {
             get
             {
@@ -38,16 +39,16 @@ namespace TWidgets
         }
 
         /// <summary>
-        /// Mounts a <see cref="IWidget"/> in the player.
+        /// Mounts a <see cref="ITWidget"/> in the player.
         /// </summary>
         /// <param name="widget"></param>
-        public static void Mount(IWidget widget)
+        public static void Mount(ITWidget widget)
         {
             Instance.MountWidget(widget);
         }
 
         /// <summary>
-        /// Unmounts a <see cref="IWidget"/> from the player.
+        /// Unmounts a <see cref="ITWidget"/> from the player.
         /// </summary>
         public static void Unmount()
         {
@@ -56,29 +57,26 @@ namespace TWidgets
 
         #endregion
 
-        private InputFlow _inputFlow;
-        private IWidget _widget;
+        private ITWidget _widget;
         private IEnumerable<string> _errorMessages;
 
         /// <summary>
-        /// Initializes an instance of <see cref="WidgetPlayer"/>.
+        /// Initializes an instance of <see cref="TWidgetPlayer"/>.
         /// </summary>
-        private WidgetPlayer()
+        private TWidgetPlayer()
         {
             RenderEngine.Instance.BeforeRender += OnBeforeRender;
             RenderEngine.Instance.RenderComplete += OnRenderComplete;
 
             InputEngine.Instance.Captured += OnCaptured;
-
-            _inputFlow = new InputFlow();
         }
 
         /// <summary>
-        /// Initializes an instance of <see cref="WidgetPlayer"/>.
+        /// Initializes an instance of <see cref="TWidgetPlayer"/>.
         /// </summary>
         /// <param name="widget">The widget to be played.</param>
         /// <param name="autoplay">Play on mount.</param>
-        private void MountWidget(IWidget widget, bool autoplay = true)
+        private void MountWidget(ITWidget widget, bool autoplay = true)
         {
             if (null != _widget)
             {
@@ -96,11 +94,6 @@ namespace TWidgets
                 InputEngine.Instance.SaveSystemCursor();
             }
 
-            if (_widget is IInputWidget)
-            {
-                _inputFlow.Start();
-            }
-
             // Launch Mount Event
             _widget.Mount();
 
@@ -109,7 +102,7 @@ namespace TWidgets
         }
 
         /// <summary>
-        /// Unmounts the mounted <see cref="IWidget"/>.
+        /// Unmounts the mounted <see cref="ITWidget"/>.
         /// </summary>
         private void UnmountWidget()
         {
@@ -121,32 +114,35 @@ namespace TWidgets
         }
 
         /// <summary>
-        /// Displays the <see cref="IWidget"/> in the system <see cref="Console"/>.
+        /// Displays the <see cref="ITWidget"/> in the system <see cref="Console"/>.
         /// </summary>
         private void PlayWidget()
         {
-            // Before Draw
+            // Before draw
             _widget.BeforeDraw();
 
-            if (_widget is IInputWidget)
+            // Perform input
+            if (_widget is IInteractive)
             {
-                this.DrawInputWidget(_widget);
+                this.DrawInteractiveWidget(_widget as IInteractive);
             }
             else
             {
-                this.DrawSimpleWidget(_widget);
+                // Draw widget
+                this.DrawBasicWidget(_widget);
             }
         }
 
         /// <summary>
-        /// Displays the <see cref="IWidget"/> in the system <see cref="Console"/>.
+        /// Displays the <see cref="ITWidget"/> in the system <see cref="Console"/>.
         /// </summary>
         /// <param name="widget">The widget to be displayed.</param>
-        private void DrawSimpleWidget(IWidget widget)
+        private void DrawBasicWidget(ITWidget widget)
         {
-            // Draw Widget
+            // New graphics
             var g = this.GetNewGraphics();
 
+            // Draw widget
             widget.Draw(g);
 
             // Display on Console
@@ -154,106 +150,86 @@ namespace TWidgets
         }
 
         /// <summary>
-        /// Displays the <see cref="IInputWidget"/> in the system <see cref="Console"/>.
+        /// Displays the <see cref="IInteractive"/> in the system <see cref="Console"/>.
         /// </summary>
         /// <param name="widget">The widget to be displayed.</param>
-        private void DrawInputWidget(IWidget widget)
+        private void DrawInteractiveWidget(IInteractive widget)
         {
-            var input = (IInputWidget)widget;
+            widget.Workflow.Start();
 
-            var actions = input.InputActions().ToArray();
+            var actions = widget.InputActions().ToArray();
             int ix = 0;
 
             do
             {
-                switch (_inputFlow.NextState())
+                switch (widget.Workflow.NextState())
                 {
-                    case InputFlow.States.Header:
-                        HeaderStep();
-                        break;
-                    case InputFlow.States.Capture:
+                    case FlowStates.Input:
                         CaptureStep(actions[ix]);
                         break;
-                    case InputFlow.States.Error:
-
+                    case FlowStates.Error:
                         ErrorStep(actions[ix]);
                         break;
-                    case InputFlow.States.Control:
+                    case FlowStates.Control:
                         if (ix < actions.Length - 1)
                         {
                             ix++;
-                            _inputFlow.Action = InputFlow.Actions.Continue;
+                            widget.Workflow.Action = FlowActions.Continue;
                         }
                         else
                         {
-                            _inputFlow.Action = InputFlow.Actions.Ok;
+                            widget.Workflow.Action = FlowActions.Ok;
                         }
                         break;
-                    case InputFlow.States.Footer:
-                        FooterStep();
-                        break;
                 }
-            } while (_inputFlow.State != InputFlow.States.End);
 
-            void HeaderStep()
-            {
-                var g = GetNewGraphics();
-
-                input.DrawHeader(g);
-
-                this.Display(g);
-
-                _inputFlow.Action = InputFlow.Actions.Continue;
-            }
+            } while (widget.Workflow.State != FlowStates.End);
 
             // Displays Input on capture messages.
             void CaptureStep(InputAction action)
             {
-                var g = GetNewGraphics();
+                int startRow = InputEngine.Instance.Cursor.Y;
 
-                (widget as IWidget).Draw(g);
+                this.DrawBasicWidget(widget as ITWidget);
 
-                this.Display(g);
+                int size = InputEngine.Instance.Cursor.Y - startRow;
 
-                InputEngine.Instance.SaveSystemCursor();
-                InputEngine.Instance.Cursor = new InputCursor(
-                    input.CursorPosition.X,
-                    InputEngine.Instance.SystemCursor.Y + input.CursorPosition.Y - 1
+                // Set cursor position
+                InputEngine.Instance.Cursor = new ConsoleCursor(
+                    widget.CursorPosition.X,
+                    startRow + widget.CursorPosition.Y
                 );
+
+                // Perform capture
                 InputEngine.Instance.Capture(action.Id, action.Method);
+
+                // Restore drawing position
+                InputEngine.Instance.Cursor = new ConsoleCursor(
+                    0,
+                    startRow + size
+                );
             }
 
             // Displays Input Errors
             void ErrorStep(InputAction action)
             {
-                if (action.Action != ValidateAction.Ignore)
+                if (action.Action != ErrorAction.Ignore)
                 {
                     var g = GetNewGraphics();
 
-                    input.DrawError(g, _errorMessages);
+                    widget.DrawError(g, _errorMessages);
 
                     this.Display(g);
                 }
-                if (action.Action == ValidateAction.Repeat)
+
+                if (action.Action == ErrorAction.Repeat)
                 {
-                    _inputFlow.Action = InputFlow.Actions.Ok;
+                    widget.Workflow.Action = FlowActions.Ok;
                 }
                 else
                 {
-                    _inputFlow.Action = InputFlow.Actions.Continue;
+                    widget.Workflow.Action = FlowActions.Continue;
                 }
-            }
-
-            // Displays Input Footer
-            void FooterStep()
-            {
-                var g = GetNewGraphics();
-
-                input.DrawFooter(g);
-
-                this.Display(g);
-
-                _inputFlow.Action = InputFlow.Actions.Continue;
             }
         }
 
@@ -292,7 +268,7 @@ namespace TWidgets
         #region Widget Events
 
         /// <summary>
-        /// Invoked when the state of a <see cref="IWidget"/> changed.
+        /// Invoked when the state of a <see cref="ITWidget"/> changed.
         /// </summary>
         /// <param name="sender">The sender object.</param>
         /// <param name="e">The event object.</param>
@@ -342,22 +318,23 @@ namespace TWidgets
         /// </summary>
         /// <param name="sender">The sender object.</param>
         /// <param name="e">The event object.</param>
-        private void OnCaptured(object sender, Core.Events.InputEventArgs e)
+        private void OnCaptured(object sender, Core.Events.InteractiveEventArgs e)
         {
-            var result = (_widget as IInputWidget).ValidateInput(e.Id, e.Value);
+            var iWidget = (_widget as IInteractive);
+            var result = iWidget.ValidateAction(e.Id, e.Value);
 
             switch (result.State)
             {
-                case ValidationState.Invalid:
+                case ValidationState.Reject:
                     _errorMessages = result.Messages;
-                    _inputFlow.Action = InputFlow.Actions.Error;
+                    iWidget.Workflow.Action = FlowActions.Error;
                     break;
                 case ValidationState.Repeat:
-                    _inputFlow.Action = InputFlow.Actions.Continue;
+                    iWidget.Workflow.Action = FlowActions.Continue;
                     break;
-                case ValidationState.Valid:
-                    (_widget as IInputWidget).MapValues(e.Id, e.Value);
-                    _inputFlow.Action = InputFlow.Actions.Ok;
+                case ValidationState.Accept:
+                    iWidget.MapValues(e.Id, e.Value);
+                    iWidget.Workflow.Action = FlowActions.Ok;
                     break;
             }
         }

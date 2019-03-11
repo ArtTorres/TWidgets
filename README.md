@@ -1,10 +1,10 @@
 # TWidgets
 
-Twidgets is a framework for building text-based widgets that can be displayed in the console.
+TWidgets is a framework for building text-based widgets that can be displayed in the console.
 
 It already implement a collection of Twidgets to start with. If they're not enought, you can build your own Twidgets in a few steps.
 
-Input Twidgets are available for scenarios where you need user interaction.
+Input TWidgets are available for scenarios where you need user interaction.
 
 Give it a try and share your experience.
 
@@ -28,14 +28,14 @@ using Twidgets;
 class Program
 {
     static void Main(string[] args){
-        var widget=new Marquee("demo");
+        var twidget=new Marquee("demo");
 
-        widget.Items = new string[] {
+        twidget.Items = new string[] {
             "Welcome to Twidgets",
             "<Get Started>"
         };
         
-        WidgetPlayer.Mount(widget);
+        TWidgetPlayer.Mount(twidget);
     }
 }
 ```
@@ -44,7 +44,7 @@ Output:
 
 ``` shell
 ┌─────────────────────────────┐
-│     Welcome to Twidgets     │
+│     Welcome to TWidgets     │
 │        <Get Started>        │
 └─────────────────────────────┘
 ```
@@ -57,9 +57,9 @@ Output:
 - [Documentation](https://github.com/arttorres/TWidgets/wiki/Documentation)
 - [Nuget Package](https://www.nuget.org/packages/TWidgets)
 - [Release Notes](https://github.com/arttorres/TWidgets/releases)
-- [Contributing Guidelines](https://github.com/arttorres/TWidgets/.github/CONTRIBUTING)
+- [Contributing Guidelines](https://github.com/arttorres/TWidgets/.github/CONTRIBUTING.md)
 - [License](https://github.com/arttorres/TWidgets/LICENSE)
 
 ## Related Projects
-- [EasyApp. A easy and ready application framework.](https://github.com/arttorres/EasyApp)
+- [EasyApp. A simple and ready application framework.](https://github.com/arttorres/EasyApp)
 - [MagnetArgs. An argument parser with magnetism.](https://github.com/arttorres/MagnetArgs)

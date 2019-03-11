@@ -1,25 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using TWidgets.Core.Drawing;
-using TWidgets.Core.Input;
+using TWidgets.Core.Interactive;
 
-namespace TWidgets.Widgets
+namespace TWidgets
 {
     /// <summary>
     /// Represents a the input of text in the <see cref="Console"/>.
     /// </summary>
-    public class TextInput : InputWidget, IBordeable
+    public class TextInput : InteractiveTWidget
     {
-        /// <summary>
-        /// Gets the footer line border.
-        /// </summary>
-        public Border Border { get; private set; }
-
-        // TODO: Evaluate the position of this property
-        /// <summary>
-        /// Gets or sets the validation behavior.
-        /// </summary>
-        public ValidateAction Action { get; set; }
+        //public ITWidget ErrorTWidget { get; set; }
 
         /// <summary>
         /// Gets or sets the header text.
@@ -27,9 +18,13 @@ namespace TWidgets.Widgets
         public string HeaderText { get; set; }
 
         /// <summary>
+        /// Gets or sets the message displayed on empty entry.
+        /// </summary>
+        public string EmptyErrorMessage { get; set; } = "[Entry cannot be empty, try again!]";
+
         /// Gets or sets the text cursor placed before the input.
         /// </summary>
-        public string CursorText { get; set; } = ">>";
+        public string CursorText { get; set; } = ">";
 
         /// <summary>
         /// Initializes an instance of <see cref="TextInput"/>.
@@ -37,9 +32,7 @@ namespace TWidgets.Widgets
         /// <param name="id">The identifier of the widget.</param>
         public TextInput(string id) : base(id)
         {
-            this.Border = new Border();
-            this.CursorPosition.X = CursorText.Length + 1;
-            this.CursorPosition.Y = 0;
+            this.CursorPosition.X = this.Margin.Left + CursorText.Length + 1;
         }
 
         /// <summary>
@@ -48,26 +41,36 @@ namespace TWidgets.Widgets
         /// <param name="g">A <see cref="Graphics"/> object.</param>
         public override void Draw(Graphics g)
         {
-            g.Draw(new Text($"{CursorText} ", this.Margin));
-        }
+            bool headerEnabled = !string.IsNullOrEmpty(this.HeaderText);
 
-        /// <summary>
-        /// Executes to draw a header before the capture of inputs.
-        /// </summary>
-        /// <param name="g">A graphics object.</param>
-        public override void DrawHeader(Graphics g)
-        {
-            if (!string.IsNullOrEmpty(this.HeaderText))
-                g.Draw(new Text(this.HeaderText, this.Margin));
-        }
+            if (headerEnabled)
+            {
+                g.Draw(
+                    new Text(
+                        this.HeaderText,
+                        new Margin(
+                            this.Margin.Top,
+                            this.Margin.Left,
+                            0,
+                            this.Margin.Right
+                        )
+                    )
+                );
+            }
 
-        /// <summary>
-        /// Executes to draw a footer after the capture of inputs.
-        /// </summary>
-        /// <param name="g">A graphics object.</param>
-        public override void DrawFooter(Graphics g)
-        {
-            g.Draw(new Line(this.Margin, this.Border));
+            this.CursorPosition.Y = g.Canvas.Rows;
+
+            g.Draw(
+                new Text(
+                    $"{CursorText} ",
+                    new Margin(
+                        headerEnabled ? 0 : this.Margin.Top,
+                        this.Margin.Left,
+                        this.Margin.Bottom,
+                        this.Margin.Right
+                    )
+                )
+            );
         }
 
         /// <summary>
@@ -79,7 +82,17 @@ namespace TWidgets.Widgets
         {
             foreach (var message in messages)
             {
-                g.Draw(new Text(message, this.Margin));
+                g.Draw(
+                    new Text(
+                        message,
+                        new Margin(
+                            0,
+                            this.Margin.Left,
+                            0,
+                            this.Margin.Right
+                        )
+                    )
+                );
             }
         }
 
@@ -89,7 +102,7 @@ namespace TWidgets.Widgets
         /// <returns>A collection of instances of <see cref="InputAction"/>.</returns>
         public override IEnumerable<InputAction> InputActions()
         {
-            yield return new InputAction("text-input.value", InputMethod.ReadLine, ValidateAction.Repeat);
+            yield return new InputAction("text-input.value", InputMethod.ReadLine, ErrorAction.Repeat);
         }
 
         /// <summary>
@@ -98,15 +111,15 @@ namespace TWidgets.Widgets
         /// <param name="id">The id of the input value.</param>
         /// <param name="value">The input value.</param>
         /// <returns>The result of the validation.</returns>
-        public override ValidationResult ValidateInput(string id, string value)
+        public override ValidateAction ValidateAction(string id, string value)
         {
             if (string.IsNullOrEmpty(value))
             {
-                return new ValidationResult(ValidationState.Invalid, "Empty Input");
+                return new ValidateAction(ValidationState.Reject, this.EmptyErrorMessage);
             }
             else
             {
-                return new ValidationResult(ValidationState.Valid);
+                return new ValidateAction(ValidationState.Accept);
             }
         }
     }

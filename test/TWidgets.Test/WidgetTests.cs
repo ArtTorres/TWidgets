@@ -1,5 +1,4 @@
 ﻿using TWidgets.Core.Drawing;
-using TWidgets.Widgets;
 using Xunit;
 
 namespace TWidgets.Test
@@ -81,6 +80,7 @@ namespace TWidgets.Test
                 "Nine"
             };
 
+            widget.TextAlign = Align.Left;
             widget.Draw(graphics);
 
             Assert.Equal("┌──────────────────┐", canvas.Map[0]);

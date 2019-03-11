@@ -1,11 +1,11 @@
 ﻿using System;
 
-namespace TWidgets.Util
+namespace TWidgets
 {
     /// <summary>
     /// Specifies constants that define foreground and background colors for the console.
     /// </summary>
-    public enum WidgetColor
+    public enum TWidgetColor
     {
         /// <summary>
         /// The color black.

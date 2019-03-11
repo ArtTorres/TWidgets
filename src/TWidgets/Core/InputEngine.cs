@@ -1,5 +1,6 @@
 ﻿using System;
 using TWidgets.Core.Events;
+using TWidgets.Core.Interactive;
 
 namespace TWidgets.Core.Input
 {
@@ -55,14 +56,14 @@ namespace TWidgets.Core.Input
         /// <summary>
         /// Occurs just after a input is captured.
         /// </summary>
-        public event EventHandler<InputEventArgs> Captured;
+        public event EventHandler<InteractiveEventArgs> Captured;
 
         /// <summary>
         /// Raises the <see cref="Captured"/> event.
         /// </summary>
         public void OnCaptured(string id, char value)
         {
-            this.Captured?.Invoke(this, new InputEventArgs(id, value));
+            this.Captured?.Invoke(this, new InteractiveEventArgs(id, value));
         }
 
         /// <summary>
@@ -70,7 +71,7 @@ namespace TWidgets.Core.Input
         /// </summary>
         public void OnCaptured(string id, string value)
         {
-            this.Captured?.Invoke(this, new InputEventArgs(id, value));
+            this.Captured?.Invoke(this, new InteractiveEventArgs(id, value));
         }
 
         #endregion
@@ -78,16 +79,16 @@ namespace TWidgets.Core.Input
         /// <summary>
         /// Gets cursor values.
         /// </summary>
-        public InputCursor SystemCursor { get; private set; }
+        public ConsoleCursor SystemCursor { get; private set; }
 
         /// <summary>
         /// Gets or sets cursor values in the <see cref="Console"/>.
         /// </summary>
-        public InputCursor Cursor
+        public ConsoleCursor Cursor
         {
             get
             {
-                return new InputCursor()
+                return new ConsoleCursor()
                 {
                     X = Console.CursorLeft,
                     Y = Console.CursorTop
@@ -105,7 +106,7 @@ namespace TWidgets.Core.Input
         /// </summary>
         private InputEngine()
         {
-            SystemCursor = new InputCursor();
+            SystemCursor = new ConsoleCursor();
         }
 
         /// <summary>

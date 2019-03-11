@@ -1,9 +1,9 @@
-﻿namespace TWidgets.Core.Input
+﻿namespace TWidgets.Core.Interactive
 {
     /// <summary>
     /// Represents the position of the input cursor.
     /// </summary>
-    public class InputCursor
+    public class ConsoleCursor
     {
         /// <summary>
         /// Gets or sets the X axis position.
@@ -16,17 +16,17 @@
         public int Y { get; set; }
 
         /// <summary>
-        /// Initializes an instance of <see cref="InputCursor"/>.
+        /// Initializes an instance of <see cref="ConsoleCursor"/>.
         /// </summary>
-        public InputCursor()
+        public ConsoleCursor()
         { }
 
         /// <summary>
-        /// Initializes an instance of <see cref="InputCursor"/>.
+        /// Initializes an instance of <see cref="ConsoleCursor"/>.
         /// </summary>
         /// <param name="x">The X axis position.</param>
         /// <param name="y">The Y axis position.</param>
-        public InputCursor(int x, int y)
+        public ConsoleCursor(int x, int y)
         {
             this.X = x;
             this.Y = y;

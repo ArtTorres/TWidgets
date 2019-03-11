@@ -1,13 +1,13 @@
 ﻿using System;
 using TWidgets.Core.Drawing;
-using TWidgets.Util;
+using TWidgets.Core.Utils;
 
-namespace TWidgets.Widgets
+namespace TWidgets
 {
     /// <summary>
     /// Represents a text marquee in the <see cref="Console"/>.
     /// </summary>
-    public class Marquee : BoxWidget
+    public class Marquee : BoxTWidget
     {
         /// <summary>
         /// Gets or sets the <see cref="Marquee"/> padding.

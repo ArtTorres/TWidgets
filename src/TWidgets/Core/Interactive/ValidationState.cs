@@ -1,4 +1,4 @@
-﻿namespace TWidgets.Core.Input
+﻿namespace TWidgets.Core.Interactive
 {
     /// <summary>
     /// Specifies constants that defines the state of a validation.
@@ -8,12 +8,12 @@
         /// <summary>
         /// The validation is acceptable.
         /// </summary>
-        Valid,
+        Accept,
 
         /// <summary>
         /// The validation is not acceptable.
         /// </summary>
-        Invalid,
+        Reject,
 
         /// <summary>
         /// The validation must be repeated.

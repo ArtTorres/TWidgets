@@ -1,6 +1,5 @@
 ﻿using System;
 using TWidgets.Core.Drawing;
-using TWidgets.Util;
 
 namespace TWidgets.Core
 {
@@ -146,9 +145,9 @@ namespace TWidgets.Core
         /// Sets the foreground color in <see cref="Console"/>.
         /// </summary>
         /// <param name="color"></param>
-        public void SetForegroundColor(WidgetColor color)
+        public void SetForegroundColor(TWidgetColor color)
         {
-            if (WidgetColor.System == color)
+            if (TWidgetColor.System == color)
                 Console.ForegroundColor = (ConsoleColor)this.WindowForegroundColor;
             else
                 Console.ForegroundColor = (ConsoleColor)(int)color;
@@ -157,10 +156,10 @@ namespace TWidgets.Core
         /// <summary>
         /// Sets the background color in <see cref="Console"/>.
         /// </summary>
-        /// <param name="color">A specified <see cref="WidgetColor"/>.</param>
-        public void SetBackgroundColor(WidgetColor color)
+        /// <param name="color">A specified <see cref="TWidgetColor"/>.</param>
+        public void SetBackgroundColor(TWidgetColor color)
         {
-            if (WidgetColor.System == color)
+            if (TWidgetColor.System == color)
                 Console.BackgroundColor = (ConsoleColor)this.WindowBackgroundColor;
             else
                 Console.BackgroundColor = (ConsoleColor)(int)color;

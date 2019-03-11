@@ -1,12 +1,12 @@
 ﻿using System;
 using TWidgets.Core.Drawing;
 
-namespace TWidgets.Widgets
+namespace TWidgets
 {
     /// <summary>
     /// Represents a line separator in the <see cref="Console"/>.
     /// </summary>
-    public class Separator : BoxWidget
+    public class Separator : BoxTWidget
     {
         /// <summary>
         /// Initializes an instance of <see cref="Separator"/>.

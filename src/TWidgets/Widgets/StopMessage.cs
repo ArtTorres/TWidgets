@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using TWidgets.Core.Drawing;
-using TWidgets.Core.Input;
+using TWidgets.Core.Interactive;
 
-namespace TWidgets.Widgets
+namespace TWidgets
 {
     /// <summary>
     /// Represents a text message in the <see cref="Console"/> and then stops waiting for a key input.
     /// </summary>
-    public class StopMessage : InputWidget
+    public class StopMessage : InteractiveTWidget
     {
         /// <summary>
         /// Gets or sets the text of the message.
@@ -33,7 +33,6 @@ namespace TWidgets.Widgets
         /// <param name="id">The identifier of the widget.</param>
         public StopMessage(string id) : base(id)
         {
-            this.CursorPosition.Y = 1;
         }
 
         /// <summary>
@@ -43,6 +42,8 @@ namespace TWidgets.Widgets
         public override void Draw(Graphics g)
         {
             g.Draw(new Text(this.Text, this.Margin) { Align = this.TextAlign });
+
+            this.CursorPosition.Y = g.Canvas.Rows;
         }
 
         /// <summary>
@@ -51,7 +52,7 @@ namespace TWidgets.Widgets
         /// <returns>A collection of instances of <see cref="InputAction"/>.</returns>
         public override IEnumerable<InputAction> InputActions()
         {
-            yield return new InputAction("stop-message.value", InputMethod.ReadKey, ValidateAction.Ignore);
+            yield return new InputAction("stop-message.value", InputMethod.ReadKey, ErrorAction.Ignore);
         }
 
         /// <summary>
@@ -60,9 +61,9 @@ namespace TWidgets.Widgets
         /// <param name="id">The id of the input value.</param>
         /// <param name="value">The input value.</param>
         /// <returns>The result of the validation.</returns>
-        public override ValidationResult ValidateInput(string id, string value)
+        public override ValidateAction ValidateAction(string id, string value)
         {
-            return new ValidationResult(ValidationState.Valid);
+            return new ValidateAction(ValidationState.Accept);
         }
     }
 }

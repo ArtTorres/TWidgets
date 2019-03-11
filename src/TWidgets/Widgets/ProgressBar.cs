@@ -1,13 +1,12 @@
 ﻿using System;
 using TWidgets.Core.Drawing;
-using TWidgets.Util;
 
-namespace TWidgets.Widgets
+namespace TWidgets
 {
     /// <summary>
     /// Represents a progressive text bar in the <see cref="Console"/>.
     /// </summary>
-    public class ProgressBar : BoxWidget
+    public class ProgressBar : BoxTWidget
     {
         /// <summary>
         /// Gets or sets the maximum value of the <see cref="ProgressBar"/>.

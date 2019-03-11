@@ -1,14 +1,20 @@
 ﻿using System.Collections.Generic;
 using TWidgets.Core.Drawing;
 using TWidgets.Core.Input;
+using TWidgets.Core.Interactive;
 
-namespace TWidgets.Widgets
+namespace TWidgets
 {
     /// <summary>
     /// Implements the basic functionality common to input type widgets.
     /// </summary>
-    public abstract class InputWidget : Widget, IInputWidget
+    public abstract class InteractiveTWidget : TWidgetBase, IInteractive
     {
+        /// <summary>
+        /// Gets or sets the interaction workflow.
+        /// </summary>
+        public IWorkflow Workflow { get; set; }
+
         /// <summary>
         /// Gets the input values.
         /// </summary>
@@ -17,16 +23,17 @@ namespace TWidgets.Widgets
         /// <summary>
         /// 
         /// </summary>
-        public InputCursor CursorPosition { get; private set; }
+        public ConsoleCursor CursorPosition { get; private set; }
 
         /// <summary>
-        /// Initializes an instance of <see cref="InputWidget"/>.
+        /// Initializes an instance of <see cref="InteractiveTWidget"/>.
         /// </summary>
         /// <param name="id">The identifier of the widget.</param>
-        public InputWidget(string id) : base(id)
+        public InteractiveTWidget(string id) : base(id)
         {
             this.Values = new Dictionary<string, string>();
-            this.CursorPosition = new InputCursor();
+            this.CursorPosition = new ConsoleCursor();
+            this.Workflow = new BasicWorkflow();
         }
 
         /// <summary>
@@ -38,18 +45,6 @@ namespace TWidgets.Widgets
         {
             this.Values.Add(id, value);
         }
-
-        /// <summary>
-        /// Executes to draw a header before the capture of inputs.
-        /// </summary>
-        /// <param name="g">A graphics object.</param>
-        public virtual void DrawHeader(Graphics g) { }
-
-        /// <summary>
-        /// Executes to draw a footer after the capture of inputs.
-        /// </summary>
-        /// <param name="g">A graphics object.</param>
-        public virtual void DrawFooter(Graphics g) { }
 
         /// <summary>
         /// Executes to draw a list of error messages.
@@ -71,6 +66,6 @@ namespace TWidgets.Widgets
         /// <param name="id">The id of the input value.</param>
         /// <param name="value">The input value.</param>
         /// <returns>The result of the validation.</returns>
-        public abstract ValidationResult ValidateInput(string id, string value);
+        public abstract ValidateAction ValidateAction(string id, string value);
     }
 }

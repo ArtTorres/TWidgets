@@ -1,13 +1,12 @@
 ﻿using System;
 using TWidgets.Core.Drawing;
-using TWidgets.Util;
 
 namespace TWidgets.Core
 {
     /// <summary>
-    /// Provides the functions to implement a widget.
+    /// Provides the functions to implement a TWidget.
     /// </summary>
-    public interface IWidget
+    public interface ITWidget
     {
         /// <summary>
         /// Occurs when a value of the widget changes.
@@ -27,12 +26,12 @@ namespace TWidgets.Core
         /// <summary>
         /// Gets or sets the foreground color of the widget.
         /// </summary>
-        WidgetColor ForegroundColor { get; set; }
+        TWidgetColor ForegroundColor { get; set; }
 
         /// <summary>
         /// Gets or sets the background color of the widget.
         /// </summary>
-        WidgetColor BackgroundColor { get; set; }
+        TWidgetColor BackgroundColor { get; set; }
 
         /// <summary>
         /// Executes when the widget get mounted.

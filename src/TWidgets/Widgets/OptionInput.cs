@@ -1,15 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using TWidgets.Core.Drawing;
-using TWidgets.Core.Input;
-using TWidgets.Util;
+using TWidgets.Core.Interactive;
+using TWidgets.Core.Utils;
 
-namespace TWidgets.Widgets
+namespace TWidgets
 {
     /// <summary>
     /// Represents a widget who displays a list of instructions and waits for a selection..
     /// </summary>
-    public class OptionInput : InputWidget
+    public class OptionInput : InteractiveTWidget
     {
         /// <summary>
         /// Gets or sets the header instruction text.
@@ -44,7 +44,6 @@ namespace TWidgets.Widgets
         public override void BeforeDraw()
         {
             this.CursorPosition.X = InstructionsText.Length + Margin.Left + 1;
-            this.CursorPosition.Y = -Margin.Bottom;
         }
 
         /// <summary>
@@ -53,29 +52,34 @@ namespace TWidgets.Widgets
         /// <param name="g">A <see cref="Graphics"/> object.</param>
         public override void Draw(Graphics g)
         {
-            var marginA = new Margin(
-                Margin.Top,
-                Margin.Left,
-                0,
-                Margin.Right
-            );
-            var marginB = new Margin(
-                0,
-                Margin.Left,
-                Margin.Bottom,
-                Margin.Right
-            );
-
             g.Draw(
                 new List(
                     TextUtils.ResizeLines(
                         JoinNumbers(this.Items).ToArray(),
                         g.Canvas.Width
                     ),
-                    marginA
+                    new Margin(
+                        Margin.Top,
+                        Margin.Left,
+                        1,
+                        Margin.Right
+                    )
                 )
             );
-            g.Draw(new Text(this.InstructionsText, marginB));
+
+            this.CursorPosition.Y = g.Canvas.Rows;
+
+            g.Draw(
+                new Text(
+                    this.InstructionsText, 
+                    new Margin(
+                        0,
+                        Margin.Left,
+                        Margin.Bottom,
+                        Margin.Right
+                    )
+                )
+            );
         }
 
         /// <summary>
@@ -104,7 +108,7 @@ namespace TWidgets.Widgets
         /// <returns>A collection of instances of <see cref="InputAction"/>.</returns>
         public override IEnumerable<InputAction> InputActions()
         {
-            yield return new InputAction("choice-input.value", InputMethod.ReadLine, ValidateAction.Repeat);
+            yield return new InputAction("choice-input.value", InputMethod.ReadLine, ErrorAction.Repeat);
         }
 
         /// <summary>
@@ -113,11 +117,11 @@ namespace TWidgets.Widgets
         /// <param name="id">The id of the input value.</param>
         /// <param name="value">The input value.</param>
         /// <returns>The result of the validation.</returns>
-        public override ValidationResult ValidateInput(string id, string value)
+        public override ValidateAction ValidateAction(string id, string value)
         {
             if (string.IsNullOrEmpty(value))
             {
-                return new ValidationResult(ValidationState.Invalid, this.ErrorText);
+                return new ValidateAction(ValidationState.Reject, this.ErrorText);
             }
             else
             {
@@ -125,11 +129,11 @@ namespace TWidgets.Widgets
 
                 if (result > 0 && result <= Items.Length)
                 {
-                    return new ValidationResult(ValidationState.Valid);
+                    return new ValidateAction(ValidationState.Accept);
                 }
                 else
                 {
-                    return new ValidationResult(ValidationState.Invalid, this.ErrorText);
+                    return new ValidateAction(ValidationState.Reject, this.ErrorText);
                 }
             }
         }

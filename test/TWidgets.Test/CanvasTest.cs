@@ -65,19 +65,5 @@ namespace TWidgets.Test
             Assert.Empty(canvas.Map);
             Assert.Equal(0, canvas.Rows);
         }
-
-        //[Fact]
-        //public void DrawWithAlign()
-        //{
-        //    var canvas = new Canvas(20, 10, '#');
-        //    canvas.DrawLine("Hello World", Align.Left);
-        //    canvas.DrawLine("Hello World", Align.Center);
-        //    canvas.DrawLine("Hello World", Align.Right);
-
-        //    Assert.Equal("Hello World#########", canvas.Map[0]);
-        //    Assert.Equal("#####Hello World####", canvas.Map[1]);
-        //    Assert.Equal("#########Hello World", canvas.Map[2]);
-        //    Assert.Equal(3, canvas.Rows);
-        //}
     }
 }

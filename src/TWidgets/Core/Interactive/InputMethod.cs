@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TWidgets.Core.Input
+namespace TWidgets.Core.Interactive
 {
     /// <summary>
     /// Specifies constants that defines the input method in the <see cref="Console"/>.

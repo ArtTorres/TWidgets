@@ -1,9 +1,9 @@
-﻿namespace TWidgets.Util
+﻿namespace TWidgets
 {
     /// <summary>
     /// Gets a collection of character animations.
     /// </summary>
-    public static class TextAnimation
+    public static class AnimationTemplate
     {
         /// <summary>
         /// Provides a character template for animated widgets.

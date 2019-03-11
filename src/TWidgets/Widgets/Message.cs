@@ -1,12 +1,12 @@
 ﻿using System;
 using TWidgets.Core.Drawing;
 
-namespace TWidgets.Widgets
+namespace TWidgets
 {
     /// <summary>
     /// Represents a text message in the <see cref="Console"/>.
     /// </summary>
-    public class Message : Widget
+    public class Message : TWidgetBase
     {
         /// <summary>
         /// Gets or sets the text of the message.

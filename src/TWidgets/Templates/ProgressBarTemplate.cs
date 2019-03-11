@@ -1,4 +1,4 @@
-﻿namespace TWidgets.Util
+﻿namespace TWidgets
 {
     /// <summary>
     /// Gets a collection of progress bar templates.

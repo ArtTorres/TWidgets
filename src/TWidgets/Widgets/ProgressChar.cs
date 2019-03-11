@@ -1,8 +1,7 @@
 ﻿using System;
 using TWidgets.Core.Drawing;
-using TWidgets.Util;
 
-namespace TWidgets.Widgets
+namespace TWidgets
 {
     /// <summary>
     /// Represents a text message preceded by a character animation in the <see cref="Console"/>.
@@ -22,7 +21,7 @@ namespace TWidgets.Widgets
         /// <param name="id">The identifier of the widget.</param>
         public ProgressChar(string id) : base(id)
         {
-            this.Animation = TextAnimation.BARS;
+            this.Animation = AnimationTemplate.BARS;
             this.Position = Position.Fixed;
         }
 
