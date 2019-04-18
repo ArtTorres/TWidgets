@@ -1,0 +1,738 @@
+{
+  "homepages": [],
+  "source_base_path": "G:/ws_git/DocFX/docfx_project",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TWidgets.AnimationTemplate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TWidgets.AnimationTemplate.html",
+          "hash": "Ck3yx7CkllN3DnaZpdvqZQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TWidgets.BorderTemplate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TWidgets.BorderTemplate.html",
+          "hash": "bGW7V3cT6y+dUcilTL0urw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TWidgets.BoxTWidget.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TWidgets.BoxTWidget.html",
+          "hash": "+eT7cibldlzs0oWCwQKZKg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TWidgets.BulletList.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TWidgets.BulletList.html",
+          "hash": "5ehU/uPFjFrMhRDWoPXyRA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TWidgets.BulletTemplate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TWidgets.BulletTemplate.html",
+          "hash": "71nvFyKGmHhoOTvVsPRsBA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TWidgets.Core.Drawing.Align.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TWidgets.Core.Drawing.Align.html",
+          "hash": "Hl0SrinRnYQk2KjVzoY8sg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TWidgets.Core.Drawing.Border.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TWidgets.Core.Drawing.Border.html",
+          "hash": "iaUFNqxhPP7YTsNcnLzLiA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TWidgets.Core.Drawing.Canvas.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TWidgets.Core.Drawing.Canvas.html",
+          "hash": "E0jv0pyKmQVCNIby4VvHXQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TWidgets.Core.Drawing.Graphics.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TWidgets.Core.Drawing.Graphics.html",
+          "hash": "JQrCEV7G6cx5KwkBy8xa4Q=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TWidgets.Core.Drawing.IAlignable.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TWidgets.Core.Drawing.IAlignable.html",
+          "hash": "8Pd8lRPdd2A9ZgCSKD0OPg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TWidgets.Core.Drawing.IBordeable.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TWidgets.Core.Drawing.IBordeable.html",
+          "hash": "FBuODacPgzL6G5qjp5LV3w=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TWidgets.Core.Drawing.IMarginable.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TWidgets.Core.Drawing.IMarginable.html",
+          "hash": "mFYNB4RsY+TMQkMvVc0Oiw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TWidgets.Core.Drawing.Line.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TWidgets.Core.Drawing.Line.html",
+          "hash": "H+LM6u9YaS7gTLiHcsIsXA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TWidgets.Core.Drawing.List.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TWidgets.Core.Drawing.List.html",
+          "hash": "NP/jLCe/4E6yNII6ABlUuA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TWidgets.Core.Drawing.Margin.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TWidgets.Core.Drawing.Margin.html",
+          "hash": "lAi04DD5waEFwydZabDH4Q=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TWidgets.Core.Drawing.Padding.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TWidgets.Core.Drawing.Padding.html",
+          "hash": "JVdBVwY/w8Bt5hoyn9NXfA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TWidgets.Core.Drawing.Position.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TWidgets.Core.Drawing.Position.html",
+          "hash": "MQANqQkG1VG5kLmojHQ5qQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TWidgets.Core.Drawing.Rectangle.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TWidgets.Core.Drawing.Rectangle.html",
+          "hash": "L3AqdK9QxynDeu4S4Q1rzw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TWidgets.Core.Drawing.Text.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TWidgets.Core.Drawing.Text.html",
+          "hash": "iFuGaxZWDk9EJYy/eN5yTg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TWidgets.Core.Drawing.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TWidgets.Core.Drawing.html",
+          "hash": "gbqZdFP+/5aDEvYuBDp/5w=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TWidgets.Core.Events.InputEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TWidgets.Core.Events.InputEventArgs.html",
+          "hash": "BGF3SLwjYQTo6Nas7dDCpg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TWidgets.Core.Events.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TWidgets.Core.Events.html",
+          "hash": "Wp2WrvI9swZc289arfCAAQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TWidgets.Core.ITWidget.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TWidgets.Core.ITWidget.html",
+          "hash": "7RRbeKIxUQlh7ozwBNH+Mg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TWidgets.Core.Input.IInputWidget.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TWidgets.Core.Input.IInputWidget.html",
+          "hash": "8TZfzKbcnX/ZCX9vXnvoqg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TWidgets.Core.Input.InputAction.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TWidgets.Core.Input.InputAction.html",
+          "hash": "u3mEcaUSdwF1TySJZ3tMxQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TWidgets.Core.Input.InputCursor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TWidgets.Core.Input.InputCursor.html",
+          "hash": "8iT1VX1SPSUZmf+zUr6uBA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TWidgets.Core.Input.InputMethod.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TWidgets.Core.Input.InputMethod.html",
+          "hash": "ZEVaKdI9mWJIF/Mfi+ZSmA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TWidgets.Core.Input.ValidateAction.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TWidgets.Core.Input.ValidateAction.html",
+          "hash": "/SAjnJRHuXk0QBODMHLUZw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TWidgets.Core.Input.ValidationResult.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TWidgets.Core.Input.ValidationResult.html",
+          "hash": "0/G0k0cDtDRATrorqyqaEA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TWidgets.Core.Input.ValidationState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TWidgets.Core.Input.ValidationState.html",
+          "hash": "6ieX1ayOd9Nys8ySduk4uQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TWidgets.Core.Input.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TWidgets.Core.Input.html",
+          "hash": "kkG45O+ImewnTebJum2dpQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TWidgets.Core.Utils.TextUtils.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TWidgets.Core.Utils.TextUtils.html",
+          "hash": "p1CPGWCuLmzu4PIMsobTGg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TWidgets.Core.Utils.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TWidgets.Core.Utils.html",
+          "hash": "2HSPtFQVIxrcSoxa7Lwf8Q=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TWidgets.Core.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TWidgets.Core.html",
+          "hash": "q5sPKfQG4pzSDjO32mCZOQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TWidgets.InputWidget.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TWidgets.InputWidget.html",
+          "hash": "fZzpx3oi+GPvHW6vk9wVnA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TWidgets.Marquee.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TWidgets.Marquee.html",
+          "hash": "PG5G1sFy+NkETjDew03TYQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TWidgets.Message.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TWidgets.Message.html",
+          "hash": "DD3EmksJ+qPqcgYYyjDl6Q=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TWidgets.NumberList.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TWidgets.NumberList.html",
+          "hash": "FPohG+cydtxC8x4WzZ6OVA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TWidgets.OptionInput.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TWidgets.OptionInput.html",
+          "hash": "JWjj6u+8WTdsBZhufiPmkQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TWidgets.ProgressBar.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TWidgets.ProgressBar.html",
+          "hash": "nj2b1zE7cESjdpMhxePDIA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TWidgets.ProgressBarTemplate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TWidgets.ProgressBarTemplate.html",
+          "hash": "tBDudp2yMd0b09cTKULn5w=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TWidgets.ProgressChar.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TWidgets.ProgressChar.html",
+          "hash": "NpliP0kqrYfvbqFk5+XUtQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TWidgets.ProgressItem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TWidgets.ProgressItem.html",
+          "hash": "YwhRqrxPHB98q/0k0uMbFQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TWidgets.ProgressList.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TWidgets.ProgressList.html",
+          "hash": "yBnF7u2IvkZtERuuLIKPzg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TWidgets.Separator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TWidgets.Separator.html",
+          "hash": "TAt2YV3gBafBdg+9ce4JpA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TWidgets.StopMessage.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TWidgets.StopMessage.html",
+          "hash": "QbXrgK+gws+vCDxovL5GEQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TWidgets.TWidgetBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TWidgets.TWidgetBase.html",
+          "hash": "EGNpM1FawEPxI7g0Hb50Zg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TWidgets.TWidgetColor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TWidgets.TWidgetColor.html",
+          "hash": "dAY1KojmOavItE+mKqj8Xw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TWidgets.TWidgetPlayer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TWidgets.TWidgetPlayer.html",
+          "hash": "+HpBT28a6diIIeBC9adOAw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TWidgets.TextInput.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TWidgets.TextInput.html",
+          "hash": "Zvol9TfFUBeXIZYJy1SZRw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TWidgets.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TWidgets.html",
+          "hash": "D60gUVaZjpCLWGKIPuAJGA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/index.html",
+          "hash": "EBckby9Xj+UH8SMFMyRdEw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html",
+          "hash": "BCLIh/dr5FDwBeYu1HczQA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/intro.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/intro.html",
+          "hash": "hvhM4fo3FGeBB4eubGHvGg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "articles/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "articles/toc.html",
+          "hash": "t7iiFrmuYmrKWisdq+lN6Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html",
+          "hash": "3TrSvWGiQNn4estbI0PY8g=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html",
+          "hash": "k+/dkjFuwAVS32HduMpmBw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    }
+  ],
+  "incremental_info": [
+    {
+      "status": {
+        "can_incremental": true,
+        "incrementalPhase": "build",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {
+        "ConceptualDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build",
+          "total_file_count": 3,
+          "skipped_file_count": 3
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build",
+          "total_file_count": 51,
+          "skipped_file_count": 51
+        },
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        }
+      }
+    },
+    {
+      "status": {
+        "can_incremental": true,
+        "details": "Can support incremental post processing.",
+        "incrementalPhase": "postProcessing",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {}
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}
