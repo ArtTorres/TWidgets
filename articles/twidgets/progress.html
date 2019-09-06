@@ -1,0 +1,282 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Progress TWidgets </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Progress TWidgets ">
+    <meta name="generator" content="docfx 2.40.11.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="progress-twidgets">Progress TWidgets</h1>
+
+<p>Displays progress messages.</p>
+<p>The current Progress TWidgets are:</p>
+<ul>
+<li>ProgressChar</li>
+<li>ProgressBar</li>
+<li>ProgressList</li>
+</ul>
+<hr>
+<h2 id="progresschar">ProgressChar</h2>
+<p>Displays an animated character with a message.</p>
+<h3 id="layout">Layout</h3>
+<p>Supports <a href="">text align</a>, <a href="">margin</a> and <a href="">position</a>.</p>
+<h3 id="events">Events</h3>
+<ul>
+<li><a href="">OnStateChanged.</a> Raises when the assigned text changes.</li>
+</ul>
+<h3 id="implementation">Implementation</h3>
+<p>Initialize and mount as the example below.</p>
+<h4 id="source">Source</h4>
+<pre><code class="lang-csharp">// Setup the TWidget
+var progress = new ProgressChar(&quot;twidget_id&quot;);
+progress.Text = &quot;Start Message&quot;;
+
+// Mount and play
+TWidgetPlayer.Mount(progress);
+
+// Execute 4 Cycles
+for (int i = 0; i &lt; 4;)
+{
+    progress.Text = $&quot;Message {++i:00}&quot;;
+    Thread.Sleep(500);
+}
+</code></pre>
+<h4 id="output">Output</h4>
+<p><em>Cycle 1</em></p>
+<pre><code class="lang-shell">/ Message 01
+</code></pre>
+<p><em>Cycle 2</em></p>
+<pre><code class="lang-shell">- Message 02
+</code></pre>
+<p><em>Cycle 3</em></p>
+<pre><code class="lang-shell">\ Message 03
+</code></pre>
+<p><em>Cycle 4</em></p>
+<pre><code class="lang-shell">| Message 04
+</code></pre>
+<h3 id="templates">Templates</h3>
+<p>The following templates are available for this TWidget:</p>
+<ul>
+<li><a href="">Animation Template</a></li>
+</ul>
+<h3 id="documentation">Documentation</h3>
+<ul>
+<li><a href="">API Documentation/ProgressChar</a></li>
+</ul>
+<hr>
+<h2 id="progressbar">ProgressBar</h2>
+<p>Displays an animated bar.</p>
+<h3 id="layout-1">Layout</h3>
+<p>Supports <a href="">text align</a>, <a href="">margin</a>, <a href="">padding</a>, <a href="">border</a> and <a href="">position</a>.</p>
+<h3 id="events-1">Events</h3>
+<ul>
+<li><a href="">OnStateChanged.</a> Raises when the assigned text changes.</li>
+</ul>
+<h3 id="implementation-1">Implementation</h3>
+<p>Initialize and mount as the example below.</p>
+<h4 id="source-1">Source</h4>
+<pre><code class="lang-csharp">// Setup the TWidget
+var progress = new ProgressBar(&quot;twidget_id&quot;);
+
+// Mount and play
+TWidgetPlayer.Mount(progress);
+
+// Execute 5 Cycles
+for (int i = 0; i &lt; 5; i++)
+{
+    progress.PerformStep();
+    Thread.Sleep(200);
+}
+</code></pre>
+<h4 id="output-1">Output</h4>
+<p><em>Mounted</em></p>
+<pre><code class="lang-shell">[                    ]
+</code></pre>
+<p><em>Cycle 1</em></p>
+<pre><code class="lang-shell">[■■■■                ]
+</code></pre>
+<p><em>Cycle 2</em></p>
+<pre><code class="lang-shell">[■■■■■■■■            ]
+</code></pre>
+<p><em>Cycle 3</em></p>
+<pre><code class="lang-shell">[■■■■■■■■■■■■        ]
+</code></pre>
+<p><em>Cycle 4</em></p>
+<pre><code class="lang-shell">[■■■■■■■■■■■■■■■■    ]
+</code></pre>
+<p><em>Cycle 5</em></p>
+<pre><code class="lang-shell">[■■■■■■■■■■■■■■■■■■■■]
+</code></pre>
+<h3 id="templates-1">Templates</h3>
+<p>The following templates are available for this TWidget:</p>
+<ul>
+<li><a href="">ProgressBar Template</a></li>
+<li><a href="">Border Template</a></li>
+</ul>
+<h3 id="documentation-1">Documentation</h3>
+<ul>
+<li><a href="">API Documentation/ProgressBar</a></li>
+</ul>
+<hr>
+<h2 id="progresslist">ProgressList</h2>
+<p>Displays a list of progress bars.</p>
+<h3 id="layout-2">Layout</h3>
+<p>Supports <a href="">text align</a>, <a href="">margin</a>, <a href="">padding</a>, <a href="">border</a> and <a href="">position</a>.</p>
+<h3 id="events-2">Events</h3>
+<ul>
+<li><a href="">OnStateChanged.</a> Raises when the assigned text changes.</li>
+</ul>
+<h3 id="implementation-2">Implementation</h3>
+<p>Initialize and mount as the example below.</p>
+<h4 id="source-2">Source</h4>
+<pre><code class="lang-csharp">// Setup the TWidget
+var list = new ProgressList(&quot;twidget_id&quot;);
+list.Items.Add(new ProgressItem() { Text = &quot;Item A&quot; });
+list.Items.Add(new ProgressItem() { Text = &quot;Item B&quot; });
+list.Items.Add(new ProgressItem() { Text = &quot;Item C&quot; });
+
+// Mount and play
+TWidgetPlayer.Mount(progressList);
+
+// Execute Random Cycles
+do
+{
+    list.Items[random.Next(list.Items.Count)].PerformStep();
+    Thread.Sleep(500);
+} while (!AreTasksFinished());
+
+// Validation Function
+bool AreTasksFinished()
+{
+    return 100 == list.Items.Select(s =&gt; s.Value).Sum() / list.Items.Count;
+}
+</code></pre>
+<h4 id="output-2">Output</h4>
+<p><em>Mount</em></p>
+<pre><code class="lang-shell">[          ] Item A
+[          ] Item B
+[          ] Item C
+</code></pre>
+<p><em>Cycle Random 3</em></p>
+<pre><code class="lang-shell">[■■■■■■■   ] Item A
+[■■■       ] Item B
+[■■■■      ] Item C
+</code></pre>
+<p><em>Cycle Random 6</em></p>
+<pre><code class="lang-shell">[■■■■■■■■  ] Item A
+[■■■■■■■■■ ] Item B
+[■■■■■■■   ] Item C
+</code></pre>
+<p><em>Cycle Random 10</em></p>
+<pre><code class="lang-shell">[■■■■■■■■■■] Item A
+[■■■■■■■■■■] Item B
+[■■■■■■■■■■] Item C
+</code></pre>
+<h3 id="templates-2">Templates</h3>
+<p>The following templates are available for this TWidget:</p>
+<ul>
+<li><a href="">ProgressBar Template</a></li>
+<li><a href="">Border Template</a></li>
+</ul>
+<h3 id="documentation-2">Documentation</h3>
+<ul>
+<li><a href="">API Documentation/ProgressList</a></li>
+</ul>
+<hr>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

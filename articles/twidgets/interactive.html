@@ -1,0 +1,248 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Interactive TWidgets </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Interactive TWidgets ">
+    <meta name="generator" content="docfx 2.40.11.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="interactive-twidgets">Interactive TWidgets</h1>
+
+<p>Displays text and waits to interact with user inputs.</p>
+<p>The current Interactive TWidgets are:</p>
+<ul>
+<li>StopMessage</li>
+<li>TextInput</li>
+<li>OptionInput</li>
+</ul>
+<hr>
+<h2 id="stopmessage">StopMessage</h2>
+<p>Displays a message and stop until a key is pressed.</p>
+<h3 id="layout">Layout</h3>
+<p>Supports <a href="">text align</a>, <a href="">margin</a> and <a href="">position</a>.</p>
+<h3 id="events">Events</h3>
+<p>No events trigger on this TWidget.</p>
+<p><a href="">Press here to see interaction flows</a>.</p>
+<h3 id="validations">Validations</h3>
+<ul>
+<li>Any key input is required.</li>
+</ul>
+<h3 id="implementation">Implementation</h3>
+<p>Initialize and mount as the example below.</p>
+<h4 id="source">Source</h4>
+<pre><code class="lang-csharp">// Setup the TWidget
+var stop = new StopMessage(&quot;twidget_id&quot;);
+message.Text = &quot;-- Press Any Key to Continue --&quot;;
+
+// Mount and play
+TWidgetPlayer.Mount(stop);
+</code></pre>
+<h4 id="output">Output</h4>
+<pre><code class="lang-shell">-- Press Any Key to Continue --
+_
+</code></pre>
+<p>*<em>And waits for key input</em></p>
+<h3 id="templates">Templates</h3>
+<p>No templates available for this TWidget.</p>
+<h3 id="documentation">Documentation</h3>
+<ul>
+<li><a href="">API Documentation/StopMessage</a></li>
+</ul>
+<hr>
+<h2 id="textinput">TextInput</h2>
+<p>Displays a message, stops and waits for text input.</p>
+<p>The captured value can be retrieved by the <strong>Values</strong> property.</p>
+<h3 id="layout-1">Layout</h3>
+<p>Supports <a href="">text align</a>, <a href="">margin</a> and <a href="">position</a>.</p>
+<h3 id="events-1">Events</h3>
+<p>No events trigger on this TWidget.</p>
+<p><a href="">Press here to see interaction flows</a>.</p>
+<h3 id="validations-1">Validations</h3>
+<ul>
+<li>Non empty inputs required.</li>
+</ul>
+<h3 id="implementation-1">Implementation</h3>
+<p>Initialize and mount as the example below.</p>
+<h4 id="source-1">Source</h4>
+<pre><code class="lang-csharp">// Setup the TWidget
+var input = new TextInput(&quot;twidget_id&quot;);
+input.HeaderText = &quot;Enter a city name:&quot;;
+
+// Mount and play
+TWidgetPlayer.Mount(input);
+
+// Retrieve values
+foreach (var value in input.Values)
+{
+    Console.WriteLine(&quot;{0}: {1}&quot;, value.Key, value.Value);
+}
+</code></pre>
+<h4 id="output-1">Output</h4>
+<p><em>perform capture</em></p>
+<pre><code class="lang-shell">Enter a city name:
+&gt; _
+</code></pre>
+<p>*<em>And waits for text input</em></p>
+<p><em>printing values</em></p>
+<pre><code class="lang-shell">text-input.value: Madrid
+</code></pre>
+<h3 id="templates-1">Templates</h3>
+<p>No templates available for this TWidget.</p>
+<h3 id="documentation-1">Documentation</h3>
+<ul>
+<li><a href="">API Documentation/TextInput</a></li>
+</ul>
+<hr>
+<h2 id="optioninput">OptionInput</h2>
+<p>Displays a list of text options and waits for user input.</p>
+<h3 id="layout-2">Layout</h3>
+<p>Supports <a href="">text align</a>, <a href="">margin</a> and <a href="">position</a>.</p>
+<h3 id="events-2">Events</h3>
+<p>No events trigger on this TWidget.</p>
+<p><a href="">Press here to see interaction flows</a>.</p>
+<h3 id="validations-2">Validations</h3>
+<ul>
+<li>Non empty inputs required.</li>
+<li>Input must be a number.</li>
+<li>Input number must be in range of options.</li>
+</ul>
+<h3 id="implementation-2">Implementation</h3>
+<p>Initialize and mount as the example below.</p>
+<h4 id="source-2">Source</h4>
+<pre><code class="lang-csharp">// Setup the TWidget
+var option = new OptionInput(&quot;twidget_id&quot;)
+{
+    InstructionsText = &quot;Select an option &gt;&gt;&quot;,
+    ErrorText = &quot;Option no available, select one of the list!&quot;,
+    Items = new string[] {
+        &quot;Item A&quot;,
+        &quot;Item B&quot;,
+        &quot;Item C&quot;
+    },
+    NumberSeparator = ')'
+};
+
+// Mount and play
+TWidgetPlayer.Mount(option);
+
+// Retrieve values
+foreach (var value in option.Values)
+{
+    Console.WriteLine(&quot;{0}: {1}&quot;, value.Key, value.Value);
+}
+</code></pre>
+<h4 id="output-2">Output</h4>
+<p><em>perform capture</em></p>
+<pre><code class="lang-shell">1) Item A
+2) Item B
+3) Item C
+Select an option &gt;&gt; _
+</code></pre>
+<p>*<em>And waits for text input</em></p>
+<p><em>printing values</em></p>
+<pre><code class="lang-shell">option-input.value: 1
+</code></pre>
+<h3 id="templates-2">Templates</h3>
+<p>No templates available for this TWidget.</p>
+<h3 id="documentation-2">Documentation</h3>
+<ul>
+<li><a href="">API Documentation/OptionInput</a></li>
+</ul>
+<hr>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

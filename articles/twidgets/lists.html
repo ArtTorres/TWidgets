@@ -5,17 +5,17 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>TWidgets </title>
+    <title>TWidget Lists </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="TWidgets ">
+    <meta name="title" content="TWidget Lists ">
     <meta name="generator" content="docfx 2.40.11.0">
     
-    <link rel="shortcut icon" href="../favicon.ico">
-    <link rel="stylesheet" href="../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../styles/docfx.css">
-    <link rel="stylesheet" href="../styles/main.css">
-    <meta property="docfx:navrel" content="../toc.html">
-    <meta property="docfx:tocrel" content="toc.html">
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
     
     
     
@@ -34,8 +34,8 @@
                 <span class="icon-bar"></span>
               </button>
               
-              <a class="navbar-brand" href="../index.html">
-                <img id="logo" class="svg" src="../logo.svg" alt="">
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
               </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
@@ -67,28 +67,86 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="twidgets">TWidgets</h1>
+<h1 id="twidget-lists">TWidget Lists</h1>
 
-<p>TWidgets is a framework for building text-based widgets that can be displayed in the console.</p>
-<p>It already implement a collection of Twidgets to start with. If they're not enought, you can build your own Twidgets in a few steps.</p>
-<p>Interactive TWidgets are available for scenarios where you need user interaction.</p>
-<p>Give it a try and share your experience.</p>
+<p>Displays a list of text items.</p>
+<p>The current List TWidgets are:</p>
+<ul>
+<li>BulletList</li>
+<li>NumberList</li>
+</ul>
 <hr>
-<h2 id="project-references">Project References</h2>
+<h2 id="bulletlist">BulletList</h2>
+<p>Displays a list of bulleted items.</p>
+<h3 id="layout">Layout</h3>
+<p>Supports <a href="">text align</a>, <a href="">margin</a> and <a href="">position</a>.</p>
+<h3 id="events">Events</h3>
 <ul>
-<li><a href="https://github.com/arttorres/Twidgets/wiki">Homepage</a></li>
-<li><a href="https://github.com/arttorres/TWidgets/wiki/Get-Started">Get Started</a></li>
-<li><a href="https://github.com/arttorres/TWidgets/wiki/Documentation">Documentation</a></li>
-<li><a href="https://www.nuget.org/packages/TWidgets">Nuget Package</a></li>
-<li><a href="https://github.com/arttorres/TWidgets/releases">Release Notes</a></li>
-<li><a href="https://github.com/arttorres/TWidgets/.github/CONTRIBUTING.md">Contributing Guidelines</a></li>
-<li><a href="https://github.com/arttorres/TWidgets/LICENSE">License</a></li>
+<li><a href="">OnStateChanged.</a> Raises when the assigned list of text items changes.</li>
 </ul>
-<h2 id="related-projects">Related Projects</h2>
+<h3 id="implementation">Implementation</h3>
+<p>Initialize and mount as the example below.</p>
+<h4 id="source">Source</h4>
+<pre><code class="lang-csharp">// Setup the TWidget
+var list = new BulletList(&quot;twidget_id&quot;);
+list.Items = new string[] {
+    &quot;Uno&quot;,
+    &quot;Dos&quot;,
+    &quot;Tres&quot;
+};
+
+// Mount and play
+TWidgetPlayer.Mount(list);
+</code></pre>
+<h4 id="output">Output</h4>
+<pre><code class="lang-shell">■ Uno
+■ Dos
+■ Tres
+</code></pre>
+<h3 id="templates">Templates</h3>
+<p>The following templates are available for this TWidget:</p>
 <ul>
-<li><a href="https://github.com/arttorres/EasyApp">EasyApp. A simple and ready application framework.</a></li>
-<li><a href="https://github.com/arttorres/MagnetArgs">MagnetArgs. An argument parser with magnetism.</a></li>
+<li><a href="">Bullet Template</a></li>
 </ul>
+<h3 id="documentation">Documentation</h3>
+<ul>
+<li><a href="">API Documentation/BulletList</a></li>
+</ul>
+<hr>
+<h2 id="orderlist">OrderList</h2>
+<p>Displays a list of items with a numerical sequence.</p>
+<h3 id="layout-1">Layout</h3>
+<p>Supports <a href="">text align</a>, <a href="">margin</a> and <a href="">position</a>.</p>
+<h3 id="events-1">Events</h3>
+<ul>
+<li><a href="">OnStateChanged.</a> Raises when the assigned list of items changes.</li>
+</ul>
+<h3 id="implementation-1">Implementation</h3>
+<p>Initialize and mount as the example below.</p>
+<h4 id="source-1">Source</h4>
+<pre><code class="lang-csharp">// Setup the TWidget
+var list = new NumberList(&quot;twidget_id&quot;);
+list.Items = new string[] {
+    &quot;Uno&quot;,
+    &quot;Dos&quot;,
+    &quot;Tres&quot;
+};
+
+// Mount and play
+TWidgetPlayer.Mount(list);
+</code></pre>
+<h4 id="output-1">Output</h4>
+<pre><code class="lang-shell">1. Uno
+2. Dos
+3. Tres
+</code></pre>
+<h3 id="templates-1">Templates</h3>
+<p><em>No templates required for this TWidget.</em></p>
+<h3 id="documentation-1">Documentation</h3>
+<ul>
+<li><a href="">API Documentation/NumberList</a></li>
+</ul>
+<hr>
 </article>
           </div>
           
@@ -120,8 +178,8 @@
       </footer>
     </div>
     
-    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
-    <script type="text/javascript" src="../styles/docfx.js"></script>
-    <script type="text/javascript" src="../styles/main.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
   </body>
 </html>

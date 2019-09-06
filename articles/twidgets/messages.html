@@ -1,0 +1,207 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Message TWidgets </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Message TWidgets ">
+    <meta name="generator" content="docfx 2.40.11.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="message-twidgets">Message TWidgets</h1>
+
+<p>Displays text. Helps to displays values with consistent visual format.</p>
+<p>The current Message TWidgets are:</p>
+<ul>
+<li>Message</li>
+<li>Marquee</li>
+</ul>
+<hr>
+<h2 id="message">Message</h2>
+<p>Displays a text message.</p>
+<h3 id="layout">Layout</h3>
+<p>Supports <a href="">text align</a>, <a href="">margin</a> and <a href="">position</a>.</p>
+<h3 id="events">Events</h3>
+<ul>
+<li><a href="">OnStateChanged.</a> Raises when the assigned text changes.</li>
+</ul>
+<h3 id="implementation">Implementation</h3>
+<p>Initialize and mount as the example below.</p>
+<h4 id="source">Source</h4>
+<pre><code class="lang-csharp">// Setup the TWidget
+var message = new Message(&quot;twidget_id&quot;)
+{
+    Text = &quot;Hello World&quot;
+};
+
+// Mount and play
+TWidgetPlayer.Mount(message);
+</code></pre>
+<h4 id="output">Output</h4>
+<pre><code class="lang-shell">Hello World
+</code></pre>
+<h3 id="documentation">Documentation</h3>
+<ul>
+<li><a href="">API Documentation/Message</a></li>
+</ul>
+<hr>
+<h2 id="marquee">Marquee</h2>
+<p>Displays a text marquee. Each item represent a text line.</p>
+<h3 id="layout-1">Layout</h3>
+<p>Supports <a href="">text align</a>, <a href="">margin</a>, <a href="">padding</a>, <a href="">border</a> and <a href="">position</a>.</p>
+<h3 id="events-1">Events</h3>
+<ul>
+<li>OnStateChanged. Raises when the assigned list of text items changes.</li>
+</ul>
+<h3 id="implementation-1">Implementation</h3>
+<p>Initialize and mount as the example below.</p>
+<h4 id="source-1">Source</h4>
+<pre><code class="lang-csharp">// Setup the TWidget
+var marquee = new Marquee(&quot;twidget_id&quot;);
+marquee.Items = new string[] {
+    &quot;Welcome to TWidgets&quot;,
+    &quot;&lt;Get Started&gt;&quot;
+};
+
+// Mount and play
+TWidgetPlayer.Mount(marquee);
+</code></pre>
+<h4 id="output-1">Output</h4>
+<pre><code class="lang-shell">┌─────────────────────────────┐
+│     Welcome to TWidgets     │
+│        &lt;Get Started&gt;        │
+└─────────────────────────────┘
+</code></pre>
+<h3 id="templates">Templates</h3>
+<p>The following templates are available for this TWidget:</p>
+<ul>
+<li><a href="">Border Template</a></li>
+</ul>
+<h3 id="documentation-1">Documentation</h3>
+<ul>
+<li><a href="">API Documentation/Marquee</a></li>
+</ul>
+<hr>
+<h3 id="separator">Separator</h3>
+<p>Displays a text line.</p>
+<h3 id="layout-2">Layout</h3>
+<p>Supports <a href="">text align</a>, <a href="">margin</a>, <a href="">padding</a>, <a href="">border</a> and <a href="">position</a>.</p>
+<h3 id="events-2">Events</h3>
+<p>No events raised.</p>
+<h3 id="implementation-2">Implementation</h3>
+<p>Initialize and mount as the example below.</p>
+<h4 id="source-2">Source</h4>
+<pre><code class="lang-csharp">// Setup the TWidget
+var separator = new Separator(&quot;twidget_id&quot;);
+
+// Mount and play
+TWidgetPlayer.Mount(separator);
+</code></pre>
+<h4 id="output-2">Output</h4>
+<pre><code class="lang-shell">──────────────────────────────────────────────────────
+</code></pre>
+<h3 id="templates-1">Templates</h3>
+<p>The following templates are available for this TWidget:</p>
+<ul>
+<li><a href="">Border Template</a></li>
+</ul>
+<h3 id="documentation-2">Documentation</h3>
+<ul>
+<li><a href="">API Documentation/Separator</a></li>
+</ul>
+<hr>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>
