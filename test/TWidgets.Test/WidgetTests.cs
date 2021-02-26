@@ -166,7 +166,7 @@ namespace TWidgets.Test
             var canvas = new Canvas(20, 10, '#');
             var graphics = new Graphics(canvas);
 
-            var widget = new NumberList("demo");
+            var widget = new OrderList("demo");
             widget.Items = new string[] {
                 "One",
                 "Two",
