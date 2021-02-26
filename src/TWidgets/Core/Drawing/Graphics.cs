@@ -176,6 +176,9 @@
         /// <param name="row">A row position.</param>
         public void Draw(Text text, int column, int row)
         {
+            this.Canvas.ColumnCursor = column;
+            this.Canvas.RowCursor = row;
+
             // Draw top margin
             this.Canvas.DrawSpace(text.Margin.Top);
 
@@ -201,6 +204,22 @@
         public void ResetCursors()
         {
             this.Canvas.ColumnCursor = 0;
+            this.Canvas.RowCursor = 0;
+        }
+
+        /// <summary>
+        /// Sets to initial position the column <see cref="Canvas"/> cursor.
+        /// </summary>
+        public void ResetColumnCursor()
+        {
+            this.Canvas.ColumnCursor = 0;
+        }
+
+        /// <summary>
+        /// Sets to initial position the row <see cref="Canvas"/> cursor.
+        /// </summary>
+        public void ResetRowCursor()
+        {
             this.Canvas.RowCursor = 0;
         }
 

@@ -21,7 +21,7 @@ namespace DemoApp
             msg.Margin.All = 1;
             msg.ForegroundColor = TWidgetColor.Red;
 
-            TWidgetPlayer.Mount(msg);
+            Player.Mount(msg);
 
             Console.WriteLine("--END--");
         }
@@ -38,7 +38,7 @@ namespace DemoApp
             marquee.Border.Template = BorderTemplate.DOTTED;
             marquee.ForegroundColor = TWidgetColor.Blue;
 
-            TWidgetPlayer.Mount(marquee);
+            Player.Mount(marquee);
 
             Console.WriteLine("--END--");
         }
@@ -49,7 +49,7 @@ namespace DemoApp
             separator.Margin.All = 1;
             separator.ForegroundColor = TWidgetColor.Yellow;
 
-            TWidgetPlayer.Mount(separator);
+            Player.Mount(separator);
 
             Console.WriteLine("--END--");
         }
@@ -66,7 +66,7 @@ namespace DemoApp
                 "Tres"
             };
 
-            TWidgetPlayer.Mount(list);
+            Player.Mount(list);
 
             Console.WriteLine("--END--");
         }
@@ -76,7 +76,7 @@ namespace DemoApp
             var tInput = new TextInput("txi");
             tInput.HeaderText = "Example Header";
 
-            TWidgetPlayer.Mount(tInput);
+            Player.Mount(tInput);
 
             Console.WriteLine("--END--");
 
@@ -93,7 +93,7 @@ namespace DemoApp
             progress.Margin.All = 1;
             progress.Template = ProgressBarTemplate.ARROW;
 
-            TWidgetPlayer.Mount(progress);
+            Player.Mount(progress);
 
             for (int i = 0; i < 10; i++)
             {
@@ -109,7 +109,7 @@ namespace DemoApp
             var progress = new ProgressChar("pc");
             progress.Text = "Start Message";
 
-            TWidgetPlayer.Mount(progress);
+            Player.Mount(progress);
 
             for (int i = 0; i < 5;)
             {
@@ -127,7 +127,7 @@ namespace DemoApp
                 Text = "-- Press to Continue --"
             };
 
-            TWidgetPlayer.Mount(widget);
+            Player.Mount(widget);
 
             Console.WriteLine("--END--");
         }
@@ -147,7 +147,7 @@ namespace DemoApp
             };
             widget.Margin.All = 1;
 
-            TWidgetPlayer.Mount(widget);
+            Player.Mount(widget);
 
             Console.WriteLine("--END--");
         }
@@ -163,7 +163,7 @@ namespace DemoApp
 
             var random = new Random();
 
-            TWidgetPlayer.Mount(widget);
+            Player.Mount(widget);
 
             do
             {

@@ -9,7 +9,7 @@ namespace TWidgets
     /// <summary>
     /// Represents a numbered list in the <see cref="Console"/>.
     /// </summary>
-    public class NumberList : TWidgetBase
+    public class OrderList : TWidgetBase
     {
         /// <summary>
         /// Gets or sets the list items.
@@ -29,10 +29,10 @@ namespace TWidgets
         private string[] _items;
 
         /// <summary>
-        /// Initializes an instance of <see cref="NumberList"/>.
+        /// Initializes an instance of <see cref="OrderList"/>.
         /// </summary>
         /// <param name="id">The identifier of the widget.</param>
-        public NumberList(string id) : base(id)
+        public OrderList(string id) : base(id)
         { }
 
         /// <summary>
