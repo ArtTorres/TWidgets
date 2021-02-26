@@ -108,7 +108,7 @@ namespace TWidgets
         /// <returns>A collection of instances of <see cref="InputAction"/>.</returns>
         public override IEnumerable<InputAction> InputActions()
         {
-            yield return new InputAction("choice-input.value", InputMethod.ReadLine, ErrorAction.Repeat);
+            yield return new InputAction("option-input.value", InputMethod.ReadLine, ErrorAction.Repeat);
         }
 
         /// <summary>
