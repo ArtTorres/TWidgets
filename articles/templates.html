@@ -8,7 +8,7 @@
     <title>Templates </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Templates ">
-    <meta name="generator" content="docfx 2.40.11.0">
+    <meta name="generator" content="docfx 2.56.6.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -69,14 +69,247 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="templates">Templates</h1>
 
-<h2 id="animation-template">Animation Template</h2>
-<p>Provides a collection of pre-selected animations.</p>
 <ul>
-<li>Moving Bars.</li>
+<li>Animation Template</li>
+<li>Border Template</li>
+<li>Bullet Template</li>
+<li>Progress Bar Template</li>
 </ul>
+<hr>
+<h2 id="animation-template">Animation Template</h2>
+<p>Provides a collection of pre-defined animations.</p>
+<ul>
+<li>BARS</li>
+<li>SOLID_BOX</li>
+<li>DOT</li>
+</ul>
+<h3 id="bars">[BARS]</h3>
+<p>Displays an animation of a moving bars. Useful in scenarios when we are showing loading processes.</p>
+<h4 id="example">Example:</h4>
+<p><em>Cycle 1</em></p>
+<pre><code class="lang-shell">/ Message
+</code></pre>
+<p><em>Cycle 2</em></p>
+<pre><code class="lang-shell">- Message
+</code></pre>
+<p><em>Cycle 3</em></p>
+<pre><code class="lang-shell">\ Message
+</code></pre>
+<p><em>Cycle 4</em></p>
+<pre><code class="lang-shell">| Message
+</code></pre>
+<h3 id="solid_box">[SOLID_BOX]</h3>
+<p>Displays an animation of an intermittent block cursor.</p>
+<h4 id="example-1">Example:</h4>
+<p><em>Cycle 1</em></p>
+<pre><code class="lang-shell">█ Message
+</code></pre>
+<p><em>Cycle 2</em></p>
+<pre><code class="lang-shell">  Message
+</code></pre>
+<p><em>Cycle 3</em></p>
+<pre><code class="lang-shell">█ Message
+</code></pre>
+<h3 id="dot">[DOT]</h3>
+<p>Displays an animation of an intermittent point cursor.</p>
+<h4 id="example-2">Example:</h4>
+<p><em>Cycle 1</em></p>
+<pre><code class="lang-shell">. Message
+</code></pre>
+<p><em>Cycle 2</em></p>
+<pre><code class="lang-shell">  Message
+</code></pre>
+<p><em>Cycle 3</em></p>
+<pre><code class="lang-shell">. Message
+</code></pre>
+<hr>
 <h2 id="border-template">Border Template</h2>
+<p>Provides a collection of pre-defined borders.</p>
+<ul>
+<li>DOTTED</li>
+<li>STARS</li>
+<li>RIDGE</li>
+<li>FILL</li>
+<li>SOLID</li>
+</ul>
+<h3 id="dotted">[DOTTED]</h3>
+<p>Displays borders as points.</p>
+<h4 id="output">Output</h4>
+<pre><code class="lang-shell">·······························
+·     Welcome to TWidgets     ·
+·        &lt;Get Started&gt;        ·
+·······························
+</code></pre>
+<h3 id="stars">[STARS]</h3>
+<p>Displays borders as starts.</p>
+<h4 id="output-1">Output</h4>
+<pre><code class="lang-shell">*******************************
+*     Welcome to TWidgets     *
+*        &lt;Get Started&gt;        *
+*******************************
+</code></pre>
+<h3 id="ridge">[RIDGE]</h3>
+<p>Displays borders with ridge lines.</p>
+<h4 id="output-2">Output</h4>
+<pre><code class="lang-shell">╔═════════════════════════════╗
+║     Welcome to TWidgets     ║
+║        &lt;Get Started&gt;        ║
+╚═════════════════════════════╝
+</code></pre>
+<h3 id="fill">[FILL]</h3>
+<p>Displays borders as a solid box.</p>
+<h4 id="output-3">Output</h4>
+<pre><code class="lang-shell">███████████████████████████████
+██████Welcome to TWidgets██████
+█████████&lt;Get Started&gt;█████████
+███████████████████████████████
+</code></pre>
+<h3 id="solid">[SOLID]</h3>
+<p>Displays borders as a solid line.</p>
+<h4 id="output-4">Output</h4>
+<pre><code class="lang-shell">┌─────────────────────────────┐
+│     Welcome to TWidgets     │
+│        &lt;Get Started&gt;        │
+└─────────────────────────────┘
+</code></pre>
+<hr>
 <h2 id="bullet-template">Bullet Template</h2>
+<p>Provides a collection of pre-defined bullet characters.</p>
+<ul>
+<li>SQUARE</li>
+<li>ARROW</li>
+<li>BAR</li>
+<li>STAR</li>
+</ul>
+<h4 id="output-5">Output</h4>
+<pre><code class="lang-shell">■ SQUARE Item
+&gt; ARROW Item
+- BAR Item
+* STAR Item
+</code></pre>
+<hr>
 <h2 id="progress-bar-template">Progress Bar Template</h2>
+<p>Provides a collection of pre-defined progress bars. Each one define empty and filled characters.</p>
+<ul>
+<li>SIMPLE</li>
+<li>SOLID</li>
+<li>ARROW</li>
+<li>INVERTED_BACKSLASH</li>
+<li>BACKSLASH</li>
+<li>BARS</li>
+</ul>
+<h4 id="output-6">Output</h4>
+<pre><code class="lang-shell">[■■■■■     ] SIMPLE
+¦█████     ¦ SOLID
+[&gt;&gt;&gt;&gt;&gt;     ] ARROW
+[\\\\\     ] INVERTED_BACKSLASH
+[/////     ] BACKSLASH
+¦|||||     ¦ BARS
+</code></pre>
+<hr>
+<h2 id="custom-templates">Custom Templates</h2>
+<p>You can define your own templates just defining a custom array of characters in the corresponding widget.</p>
+<p>Examples:</p>
+<h3 id="setting-custom-bullet-in-bulletlist">[Setting custom bullet in BulletList]</h3>
+<p>A custom bullet support any character.</p>
+<h4 id="source">Source</h4>
+<pre><code class="lang-csharp">// Setup the TWidget
+var list = new BulletList(&quot;twidget_id&quot;);
+
+list.Items = new string[] {
+    &quot;Uno&quot;,
+    &quot;Dos&quot;,
+    &quot;Tres&quot;
+};
+list.Bullet='+';
+
+// Mount and play
+TWidgetPlayer.Mount(list);
+</code></pre>
+<h4 id="output-7">Output</h4>
+<pre><code class="lang-shell">+ Uno
++ Dos
++ Tres
+</code></pre>
+<h3 id="setting-custom-progressbar-in-progressbar-widget">[Setting custom ProgressBar in ProgressBar widget]</h3>
+<p>A custom array must have 4 characters.</p>
+<h4 id="source-1">Source</h4>
+<pre><code class="lang-csharp">// Setup the TWidget
+var progress = new ProgressBar(&quot;twidget_id&quot;);
+progress.Template= new char[]{'@', '#', '+', '@'};
+
+// Mount and play
+TWidgetPlayer.Mount(progress);
+
+// Execute 5 Cycles
+for (int i = 0; i &lt; 5; i++)
+{
+    progress.PerformStep();
+    Thread.Sleep(200);
+}
+</code></pre>
+<h4 id="output-8">Output</h4>
+<pre><code class="lang-shell">@++++++++++##########@
+</code></pre>
+<h3 id="setting-custom-border-in-marquee-widget">[Setting custom Border in Marquee widget]</h3>
+<p>A custom array must have 9 characters.</p>
+<h4 id="source-2">Source</h4>
+<pre><code class="lang-csharp">// Setup the TWidget
+var marquee = new Marquee(&quot;twidget_id&quot;);
+
+marquee.Items = new string[] {
+    &quot;Welcome to TWidgets&quot;,
+    &quot;&lt;Get Started&gt;&quot;
+};
+
+marquee.Border.Template = new char[]{
+    '+', '+', '+',
+    '+', ' ', '+',
+    '+', '+', '+'
+};
+
+// Mount and play
+TWidgetPlayer.Mount(marquee);
+</code></pre>
+<h4 id="output-9">Output</h4>
+<pre><code class="lang-shell">+++++++++++++++++++++++++++++++
++     Welcome to TWidgets     +
++        &lt;Get Started&gt;        +
++++++++++++++++++++++++++++++++
+</code></pre>
+<h3 id="setting-a-custom-animation-in-progresschar-widget">[Setting a custom Animation in ProgressChar widget]</h3>
+<p>A custom array if characters of any size can be defined as template.</p>
+<h4 id="source-3">Source</h4>
+<pre><code class="lang-csharp">// Setup the TWidget
+var progress = new ProgressChar(&quot;twidget_id&quot;);
+progress.Text = &quot;Start Message&quot;;
+progress.Template = new char[]{'@','#','%'};
+
+// Mount and play
+TWidgetPlayer.Mount(progress);
+
+// Execute 4 Cycles
+for (int i = 0; i &lt; 4;)
+{
+    progress.Text = $&quot;Message {++i:00}&quot;;
+    Thread.Sleep(500);
+}
+</code></pre>
+<h4 id="output-10">Output</h4>
+<p><em>Cycle 1</em></p>
+<pre><code class="lang-shell">@ Message 01
+</code></pre>
+<p><em>Cycle 2</em></p>
+<pre><code class="lang-shell"># Message 02
+</code></pre>
+<p><em>Cycle 3</em></p>
+<pre><code class="lang-shell">% Message 03
+</code></pre>
+<p><em>Cycle 4</em></p>
+<pre><code class="lang-shell">@ Message 04
+</code></pre>
+<hr>
+<p><a href="index.md">More Documentation</a></p>
 </article>
           </div>
           
@@ -84,10 +317,14 @@
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ArtTorres/TWidgets/blob/tw-docs/articles/templates.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>

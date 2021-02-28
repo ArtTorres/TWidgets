@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title> </title>
+    <title>Drawing System </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content=" ">
-    <meta name="generator" content="docfx 2.40.11.0">
+    <meta name="title" content="Drawing System ">
+    <meta name="generator" content="docfx 2.56.6.0">
     
     <link rel="shortcut icon" href="../../favicon.ico">
     <link rel="stylesheet" href="../../styles/docfx.vendor.css">
@@ -67,7 +67,244 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
+<h1 id="drawing-system">Drawing System</h1>
 
+<p>On TWidgets, the drawing system is inspired in the Drawing library of Microsoft .Net Framework.</p>
+<p>The drawing workflow is as the image below:</p>
+<p><img src="/images/drawing/workflow.png" alt="Workflow"></p>
+<h2 id="canvas-matrix">Canvas Matrix</h2>
+<p>Canvas is a matrix with a width of Console.Width and a dynamic height.</p>
+<p>Each time we draw a stencil element...</p>
+<p><img src="/images/drawing/matrix.png" alt="Matrix"></p>
+<h2 id="layer-system">Layer System</h2>
+<p>You can draw as many stencils as you need. Modifying the cursor you can override the canvas matrix in a previous position. Under these circuntances a new stencil will override the values of the matrix cell as new layer above the previous stencils.</p>
+<p><img src="/images/drawing/layers.png" alt="Layers"></p>
+<h2 id="canvas-rows-and-columns">Canvas Rows and Columns</h2>
+<p>All the drawing is performed on a canvas object. The canvas have a predefined positions.
+X=0 and Y=0 with origin at the top-left corner.</p>
+<p>During the drawing event you can modify manually the pointers to set the next origin for the stencils in the next position.</p>
+<h4 id="source">Source</h4>
+<pre><code class="lang-csharp">// Custom Widget
+public class NewWidget : TWidgetBase
+{ 
+    ...
+    // On Draw Event
+    public override void Draw(Graphics g)
+    {
+        g.Draw(new Line());
+    }
+
+    ...
+}
+</code></pre>
+<h4 id="output">Output</h4>
+<pre><code class="lang-shell">──────────────────────────────────────────────────────
+</code></pre>
+<hr>
+<h2 id="about-the-stencils">About the Stencils</h2>
+<p>Stencils allows to draw basic items in the canvas.</p>
+<p>Currently TWidgets have four basic stencils:</p>
+<ul>
+<li>Line</li>
+<li>Rectangle</li>
+<li>Text</li>
+<li>List</li>
+</ul>
+<p>Mixing stencils allows to draw any image.</p>
+<h3 id="drawing-lines">Drawing Lines</h3>
+<p>Draws a single line on the current position of the canvas.</p>
+<p>By default draws a line from side to side of the screen.</p>
+<p>Example:</p>
+<h4 id="source-1">Source</h4>
+<pre><code class="lang-csharp">// Custom Widget
+public class NewWidget : TWidgetBase
+{ 
+    ...
+    // On Draw Event
+    public override void Draw(Graphics g)
+    {
+        g.Draw(new Line());
+    }
+
+    ...
+}
+</code></pre>
+<h4 id="output-1">Output</h4>
+<pre><code class="lang-shell">──────────────────────────────────────────────────────
+</code></pre>
+<hr>
+<h2 id="drawing-rectangles">Drawing Rectangles</h2>
+<p>Draws a rectangle on the current position of the canvas.</p>
+<p>Example:</p>
+<h4 id="source-2">Source</h4>
+<pre><code class="lang-csharp">// Custom Widget
+public class NewWidget : TWidgetBase
+{ 
+    ...
+    // On Draw Event
+    public override void Draw(Graphics g)
+    {
+        g.Draw(new Rectangle(20,3));
+    }
+
+    ...
+}
+</code></pre>
+<h4 id="output-20-character-console">Output [20 character console]</h4>
+<pre><code class="lang-shell">┌───────────────────┐
+│                   │
+└───────────────────┘
+</code></pre>
+<hr>
+<h2 id="drawing-text">Drawing Text</h2>
+<p>Draws a text item in the current position of the canvas.</p>
+<p>Example:</p>
+<h4 id="source-3">Source</h4>
+<pre><code class="lang-csharp">// Custom Widget
+public class NewWidget : TWidgetBase
+{ 
+    ...
+    // On Draw Event
+    public override void Draw(Graphics g)
+    {
+        g.Draw(new Text(&quot;Hello World&quot;));
+    }
+
+    ...
+}
+</code></pre>
+<h4 id="output-2">Output</h4>
+<pre><code class="lang-shell">Hello World
+</code></pre>
+<hr>
+<h2 id="drawing-list">Drawing List</h2>
+<p>Draws a list of text items. Each item will be drawn below the previous one.</p>
+<p>Example:</p>
+<h4 id="source-4">Source</h4>
+<pre><code class="lang-csharp">// Custom Widget
+public class NewWidget : TWidgetBase
+{ 
+    ...
+    // On Draw Event
+    public override void Draw(Graphics g)
+    {
+        g.Draw(new List(new string[]{
+            &quot;One&quot;,
+            &quot;Two&quot;,
+            &quot;Three&quot;
+        }));
+    }
+
+    ...
+}
+</code></pre>
+<h4 id="output-3">Output</h4>
+<pre><code class="lang-shell">One
+Two
+Three
+</code></pre>
+<hr>
+<h2 id="alignment-of-stencils">Alignment of Stencils</h2>
+<p>Allows to specifiy the text orientation of a text stencil.</p>
+<p>Modify the <strong>Align</strong> property of the text stencil to change the orientation.</p>
+<p>Example of setting up the alignment:</p>
+<h4 id="source-5">Source</h4>
+<pre><code class="lang-csharp">// Custom Widget
+public class NewWidget : TWidgetBase
+{ 
+    ...
+    // On Draw Event
+    public override void Draw(Graphics g)
+    {
+        g.Draw(new Text(&quot;Hello World&quot;){ Align = Align.Left });
+        g.Draw(new Text(&quot;Hello World&quot;){ Align = Align.Center });
+        g.Draw(new Text(&quot;Hello World&quot;){ Align = Align.Right });
+    }
+    ...
+}
+</code></pre>
+<h4 id="output-20-character-width-console">Output [20 character width console]</h4>
+<pre><code class="lang-shell">Hello World
+    Hello World
+        Hello World
+</code></pre>
+<h3 id="supported-stencils">Supported Stencils</h3>
+<ul>
+<li>Text</li>
+<li>List</li>
+</ul>
+<hr>
+<h2 id="borders-of-stencils">Borders of Stencils</h2>
+<p>Defines the type of border and the presentation of the stencil.</p>
+<p>Using BorderTemplate class you can change between types of borders.</p>
+<p><a href="">See BorderTemplate</a></p>
+<p>Example of setting up a border:</p>
+<h4 id="source-6">Source</h4>
+<pre><code class="lang-csharp">// Custom Widget
+public class NewWidget : BoxTWidget
+{ 
+    ...
+    // On Draw Event
+    public override void Draw(Graphics g)
+    {
+        // Define the type of border
+        var border=new Border(BorderTemplate.Solid);
+
+        g.Draw(new Rectangle(20,3, new Margin(), border));
+    }
+
+    ...
+}
+</code></pre>
+<h4 id="output-4">Output</h4>
+<pre><code class="lang-shell">┌───────────────────┐
+│                   │
+└───────────────────┘
+</code></pre>
+<h3 id="supported-stencils-1">Supported Stencils</h3>
+<ul>
+<li>Rectanlgle</li>
+<li>Line</li>
+</ul>
+<hr>
+<h2 id="margins-of-stencils">Margins of Stencils</h2>
+<p>Defines the extern margin of an stencil.</p>
+<p>Any stencil with margin values will be push on the directions of the alignment settings.</p>
+<p>[image here]</p>
+<p>Example of setting up a border with 1 character on top and bottom and 2 on left and right:</p>
+<h4 id="source-7">Source</h4>
+<pre><code class="lang-csharp">// Custom Widget
+public class NewWidget : TWidgetBase
+{ 
+    ...
+    // On Draw Event
+    public override void Draw(Graphics g)
+    {
+        // Define the size of margin (top, left, bottom, right)
+        var margin=new Margin(1,2,1,2);
+
+        g.Draw(new Rectangle(20,3, margin, new Border()));
+    }
+
+    ...
+}
+</code></pre>
+<h4 id="output-5">Output</h4>
+<pre><code class="lang-shell">
+  ┌───────────────────┐  
+  │                   │  
+  └───────────────────┘  
+
+</code></pre>
+<h3 id="supported-stencils-2">Supported Stencils</h3>
+<ul>
+<li>Line</li>
+<li>Rectangle</li>
+<li>Text</li>
+<li>List</li>
+</ul>
+<hr>
+<p><a href="index.html">More Documentation</a></p>
 </article>
           </div>
           
@@ -75,10 +312,14 @@
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ArtTorres/TWidgets/blob/tw-docs/articles/advanced/drawing.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>

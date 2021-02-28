@@ -8,7 +8,7 @@
     <title>Interactive TWidgets </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Interactive TWidgets ">
-    <meta name="generator" content="docfx 2.40.11.0">
+    <meta name="generator" content="docfx 2.56.6.0">
     
     <link rel="shortcut icon" href="../../favicon.ico">
     <link rel="stylesheet" href="../../styles/docfx.vendor.css">
@@ -96,7 +96,7 @@ var stop = new StopMessage(&quot;twidget_id&quot;);
 message.Text = &quot;-- Press Any Key to Continue --&quot;;
 
 // Mount and play
-TWidgetPlayer.Mount(stop);
+TWidgetTWidgetPlayer.Mount(stop);
 </code></pre>
 <h4 id="output">Output</h4>
 <pre><code class="lang-shell">-- Press Any Key to Continue --
@@ -130,7 +130,7 @@ var input = new TextInput(&quot;twidget_id&quot;);
 input.HeaderText = &quot;Enter a city name:&quot;;
 
 // Mount and play
-TWidgetPlayer.Mount(input);
+TWidgetTWidgetPlayer.Mount(input);
 
 // Retrieve values
 foreach (var value in input.Values)
@@ -184,7 +184,7 @@ var option = new OptionInput(&quot;twidget_id&quot;)
 };
 
 // Mount and play
-TWidgetPlayer.Mount(option);
+TWidgetTWidgetPlayer.Mount(option);
 
 // Retrieve values
 foreach (var value in option.Values)
@@ -210,6 +210,7 @@ Select an option &gt;&gt; _
 <li><a href="">API Documentation/OptionInput</a></li>
 </ul>
 <hr>
+<p><a href="index.html">More Documentation</a></p>
 </article>
           </div>
           
@@ -217,10 +218,14 @@ Select an option &gt;&gt; _
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ArtTorres/TWidgets/blob/tw-docs/articles/twidgets/interactive.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>

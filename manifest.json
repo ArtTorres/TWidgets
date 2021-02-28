@@ -1,15 +1,27 @@
 {
   "homepages": [],
-  "source_base_path": "G:/ws_git/TWidgets.Docs",
+  "source_base_path": "G:/git_github/Twidgets.Docs",
   "xrefmap": "xrefmap.yml",
   "files": [
+    {
+      "type": "Conceptual",
+      "source_relative_path": "README.md",
+      "output": {
+        ".html": {
+          "relative_path": "README.html",
+          "hash": "wSdhVwJTAiNpj6mrGvlo4Q=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/TWidgets.AnimationTemplate.yml",
       "output": {
         ".html": {
           "relative_path": "api/TWidgets.AnimationTemplate.html",
-          "hash": "Ck3yx7CkllN3DnaZpdvqZQ=="
+          "hash": "hAM74N1T1Vpou96Z1nF0Og=="
         }
       },
       "is_incremental": true,
@@ -21,7 +33,7 @@
       "output": {
         ".html": {
           "relative_path": "api/TWidgets.BorderTemplate.html",
-          "hash": "bGW7V3cT6y+dUcilTL0urw=="
+          "hash": "60HhctaXyMFSCjf4jSrJ5g=="
         }
       },
       "is_incremental": true,
@@ -33,7 +45,7 @@
       "output": {
         ".html": {
           "relative_path": "api/TWidgets.BoxTWidget.html",
-          "hash": "+eT7cibldlzs0oWCwQKZKg=="
+          "hash": "/zuLIcrJCphSEtKPuGUPwQ=="
         }
       },
       "is_incremental": true,
@@ -45,7 +57,7 @@
       "output": {
         ".html": {
           "relative_path": "api/TWidgets.BulletList.html",
-          "hash": "5ehU/uPFjFrMhRDWoPXyRA=="
+          "hash": "MOeelwqbd7uIk6lH96ILzA=="
         }
       },
       "is_incremental": true,
@@ -57,7 +69,7 @@
       "output": {
         ".html": {
           "relative_path": "api/TWidgets.BulletTemplate.html",
-          "hash": "71nvFyKGmHhoOTvVsPRsBA=="
+          "hash": "9RuesP3q4D0cuaPacTHt6w=="
         }
       },
       "is_incremental": true,
@@ -69,7 +81,7 @@
       "output": {
         ".html": {
           "relative_path": "api/TWidgets.Core.Drawing.Align.html",
-          "hash": "Hl0SrinRnYQk2KjVzoY8sg=="
+          "hash": "9Wx+rISKyC88RWK9dIMyoA=="
         }
       },
       "is_incremental": true,
@@ -81,7 +93,7 @@
       "output": {
         ".html": {
           "relative_path": "api/TWidgets.Core.Drawing.Border.html",
-          "hash": "iaUFNqxhPP7YTsNcnLzLiA=="
+          "hash": "Ju8T9E5mIK8BwqJl0bMJqQ=="
         }
       },
       "is_incremental": true,
@@ -93,7 +105,7 @@
       "output": {
         ".html": {
           "relative_path": "api/TWidgets.Core.Drawing.Canvas.html",
-          "hash": "E0jv0pyKmQVCNIby4VvHXQ=="
+          "hash": "0rDdzG76vsK8WSdxipBQ1A=="
         }
       },
       "is_incremental": true,
@@ -105,7 +117,7 @@
       "output": {
         ".html": {
           "relative_path": "api/TWidgets.Core.Drawing.Graphics.html",
-          "hash": "JQrCEV7G6cx5KwkBy8xa4Q=="
+          "hash": "9/xMmkp2kXKiVOhIKFh4tw=="
         }
       },
       "is_incremental": true,
@@ -117,7 +129,7 @@
       "output": {
         ".html": {
           "relative_path": "api/TWidgets.Core.Drawing.IAlignable.html",
-          "hash": "8Pd8lRPdd2A9ZgCSKD0OPg=="
+          "hash": "ZNON72ocCEH0NOK0OSVZcA=="
         }
       },
       "is_incremental": true,
@@ -129,7 +141,7 @@
       "output": {
         ".html": {
           "relative_path": "api/TWidgets.Core.Drawing.IBordeable.html",
-          "hash": "FBuODacPgzL6G5qjp5LV3w=="
+          "hash": "j8d1SQt7Jb1pK+E8lbCyfg=="
         }
       },
       "is_incremental": true,
@@ -141,7 +153,7 @@
       "output": {
         ".html": {
           "relative_path": "api/TWidgets.Core.Drawing.IMarginable.html",
-          "hash": "mFYNB4RsY+TMQkMvVc0Oiw=="
+          "hash": "QrAWPhP4junqvjWPbTXTlg=="
         }
       },
       "is_incremental": true,
@@ -153,7 +165,7 @@
       "output": {
         ".html": {
           "relative_path": "api/TWidgets.Core.Drawing.Line.html",
-          "hash": "H+LM6u9YaS7gTLiHcsIsXA=="
+          "hash": "baoDYWcwHxvItnw6sBjnng=="
         }
       },
       "is_incremental": true,
@@ -165,7 +177,7 @@
       "output": {
         ".html": {
           "relative_path": "api/TWidgets.Core.Drawing.List.html",
-          "hash": "NP/jLCe/4E6yNII6ABlUuA=="
+          "hash": "e7aKGkN4vd48FK3rg+4mKw=="
         }
       },
       "is_incremental": true,
@@ -177,7 +189,7 @@
       "output": {
         ".html": {
           "relative_path": "api/TWidgets.Core.Drawing.Margin.html",
-          "hash": "lAi04DD5waEFwydZabDH4Q=="
+          "hash": "9umADbsFQBp01/F0ZQHNbA=="
         }
       },
       "is_incremental": true,
@@ -189,7 +201,7 @@
       "output": {
         ".html": {
           "relative_path": "api/TWidgets.Core.Drawing.Padding.html",
-          "hash": "JVdBVwY/w8Bt5hoyn9NXfA=="
+          "hash": "Q88sy27tR46h5Ork7SNhWw=="
         }
       },
       "is_incremental": true,
@@ -201,7 +213,7 @@
       "output": {
         ".html": {
           "relative_path": "api/TWidgets.Core.Drawing.Position.html",
-          "hash": "MQANqQkG1VG5kLmojHQ5qQ=="
+          "hash": "HC2gyqTKQ2qjTLPYJalAeQ=="
         }
       },
       "is_incremental": true,
@@ -213,7 +225,7 @@
       "output": {
         ".html": {
           "relative_path": "api/TWidgets.Core.Drawing.Rectangle.html",
-          "hash": "L3AqdK9QxynDeu4S4Q1rzw=="
+          "hash": "Gv6UqfAQS3HT8caxaZcThA=="
         }
       },
       "is_incremental": true,
@@ -225,7 +237,7 @@
       "output": {
         ".html": {
           "relative_path": "api/TWidgets.Core.Drawing.Text.html",
-          "hash": "iFuGaxZWDk9EJYy/eN5yTg=="
+          "hash": "IG5MfEL7SgXmUxEbA88fPA=="
         }
       },
       "is_incremental": true,
@@ -237,7 +249,7 @@
       "output": {
         ".html": {
           "relative_path": "api/TWidgets.Core.Drawing.html",
-          "hash": "gbqZdFP+/5aDEvYuBDp/5w=="
+          "hash": "Z72U35pKv5coHVwu1nkAPA=="
         }
       },
       "is_incremental": true,
@@ -249,7 +261,7 @@
       "output": {
         ".html": {
           "relative_path": "api/TWidgets.Core.Events.InputEventArgs.html",
-          "hash": "BGF3SLwjYQTo6Nas7dDCpg=="
+          "hash": "Q3WQK/rBX93l8itUESkSjA=="
         }
       },
       "is_incremental": true,
@@ -261,7 +273,7 @@
       "output": {
         ".html": {
           "relative_path": "api/TWidgets.Core.Events.html",
-          "hash": "Wp2WrvI9swZc289arfCAAQ=="
+          "hash": "ze6Jv/7LIShNBxRWhEwVxg=="
         }
       },
       "is_incremental": true,
@@ -273,7 +285,7 @@
       "output": {
         ".html": {
           "relative_path": "api/TWidgets.Core.ITWidget.html",
-          "hash": "7RRbeKIxUQlh7ozwBNH+Mg=="
+          "hash": "JSGEAxc2dMcGtrO4lgoOGw=="
         }
       },
       "is_incremental": true,
@@ -285,7 +297,7 @@
       "output": {
         ".html": {
           "relative_path": "api/TWidgets.Core.Input.IInputWidget.html",
-          "hash": "8TZfzKbcnX/ZCX9vXnvoqg=="
+          "hash": "I6A4YER4muHh/ti3RQ7+kA=="
         }
       },
       "is_incremental": true,
@@ -297,7 +309,7 @@
       "output": {
         ".html": {
           "relative_path": "api/TWidgets.Core.Input.InputAction.html",
-          "hash": "u3mEcaUSdwF1TySJZ3tMxQ=="
+          "hash": "Q8NmMeQOsuP3I1j7KvwSzA=="
         }
       },
       "is_incremental": true,
@@ -309,7 +321,7 @@
       "output": {
         ".html": {
           "relative_path": "api/TWidgets.Core.Input.InputCursor.html",
-          "hash": "8iT1VX1SPSUZmf+zUr6uBA=="
+          "hash": "hNzi1qxXl02oh9kSHq/9jw=="
         }
       },
       "is_incremental": true,
@@ -321,7 +333,7 @@
       "output": {
         ".html": {
           "relative_path": "api/TWidgets.Core.Input.InputMethod.html",
-          "hash": "ZEVaKdI9mWJIF/Mfi+ZSmA=="
+          "hash": "txlUKWeLwBz8H/57Zv5TYA=="
         }
       },
       "is_incremental": true,
@@ -333,7 +345,7 @@
       "output": {
         ".html": {
           "relative_path": "api/TWidgets.Core.Input.ValidateAction.html",
-          "hash": "/SAjnJRHuXk0QBODMHLUZw=="
+          "hash": "KZ119b9lss0STAfgk2YoVQ=="
         }
       },
       "is_incremental": true,
@@ -345,7 +357,7 @@
       "output": {
         ".html": {
           "relative_path": "api/TWidgets.Core.Input.ValidationResult.html",
-          "hash": "0/G0k0cDtDRATrorqyqaEA=="
+          "hash": "eRRtMQTjYdaKu82y+Tvfig=="
         }
       },
       "is_incremental": true,
@@ -357,7 +369,7 @@
       "output": {
         ".html": {
           "relative_path": "api/TWidgets.Core.Input.ValidationState.html",
-          "hash": "6ieX1ayOd9Nys8ySduk4uQ=="
+          "hash": "eQO9goauygjybxf7udgWiQ=="
         }
       },
       "is_incremental": true,
@@ -369,7 +381,7 @@
       "output": {
         ".html": {
           "relative_path": "api/TWidgets.Core.Input.html",
-          "hash": "kkG45O+ImewnTebJum2dpQ=="
+          "hash": "rFeRfue0luLvrbNFX3poMA=="
         }
       },
       "is_incremental": true,
@@ -381,7 +393,7 @@
       "output": {
         ".html": {
           "relative_path": "api/TWidgets.Core.Utils.TextUtils.html",
-          "hash": "p1CPGWCuLmzu4PIMsobTGg=="
+          "hash": "ibp4v8mSfatroohER6Q7mA=="
         }
       },
       "is_incremental": true,
@@ -393,7 +405,7 @@
       "output": {
         ".html": {
           "relative_path": "api/TWidgets.Core.Utils.html",
-          "hash": "2HSPtFQVIxrcSoxa7Lwf8Q=="
+          "hash": "ibnC79p6FjklGC8rFUW0gQ=="
         }
       },
       "is_incremental": true,
@@ -405,7 +417,7 @@
       "output": {
         ".html": {
           "relative_path": "api/TWidgets.Core.html",
-          "hash": "q5sPKfQG4pzSDjO32mCZOQ=="
+          "hash": "uM/f+UOpKOIVDJ1qYM1M3A=="
         }
       },
       "is_incremental": true,
@@ -417,7 +429,7 @@
       "output": {
         ".html": {
           "relative_path": "api/TWidgets.InputWidget.html",
-          "hash": "fZzpx3oi+GPvHW6vk9wVnA=="
+          "hash": "/pFCKQ/ubAPBJVhy4MXqwA=="
         }
       },
       "is_incremental": true,
@@ -429,7 +441,7 @@
       "output": {
         ".html": {
           "relative_path": "api/TWidgets.Marquee.html",
-          "hash": "PG5G1sFy+NkETjDew03TYQ=="
+          "hash": "4PgsVQojNLtSLDZcDE2q1Q=="
         }
       },
       "is_incremental": true,
@@ -441,7 +453,7 @@
       "output": {
         ".html": {
           "relative_path": "api/TWidgets.Message.html",
-          "hash": "DD3EmksJ+qPqcgYYyjDl6Q=="
+          "hash": "JJ+GCj6bLribnUyzuad8cw=="
         }
       },
       "is_incremental": true,
@@ -453,7 +465,7 @@
       "output": {
         ".html": {
           "relative_path": "api/TWidgets.NumberList.html",
-          "hash": "FPohG+cydtxC8x4WzZ6OVA=="
+          "hash": "ditkfVAtOM7CSlcNZ29ang=="
         }
       },
       "is_incremental": true,
@@ -465,7 +477,7 @@
       "output": {
         ".html": {
           "relative_path": "api/TWidgets.OptionInput.html",
-          "hash": "JWjj6u+8WTdsBZhufiPmkQ=="
+          "hash": "BQjmaiAD7+fBw45DiOka/A=="
         }
       },
       "is_incremental": true,
@@ -477,7 +489,7 @@
       "output": {
         ".html": {
           "relative_path": "api/TWidgets.ProgressBar.html",
-          "hash": "nj2b1zE7cESjdpMhxePDIA=="
+          "hash": "3MSi0i6o7oICR0rszjR9SQ=="
         }
       },
       "is_incremental": true,
@@ -489,7 +501,7 @@
       "output": {
         ".html": {
           "relative_path": "api/TWidgets.ProgressBarTemplate.html",
-          "hash": "tBDudp2yMd0b09cTKULn5w=="
+          "hash": "ce+YecxAlBce6MCHZcy9fg=="
         }
       },
       "is_incremental": true,
@@ -501,7 +513,7 @@
       "output": {
         ".html": {
           "relative_path": "api/TWidgets.ProgressChar.html",
-          "hash": "NpliP0kqrYfvbqFk5+XUtQ=="
+          "hash": "aMNdyDfYnfJEuLkRnhM8uA=="
         }
       },
       "is_incremental": true,
@@ -513,7 +525,7 @@
       "output": {
         ".html": {
           "relative_path": "api/TWidgets.ProgressItem.html",
-          "hash": "YwhRqrxPHB98q/0k0uMbFQ=="
+          "hash": "iumW58JN0L+X4mR87jS7Rw=="
         }
       },
       "is_incremental": true,
@@ -525,7 +537,7 @@
       "output": {
         ".html": {
           "relative_path": "api/TWidgets.ProgressList.html",
-          "hash": "yBnF7u2IvkZtERuuLIKPzg=="
+          "hash": "HNc5w8DWb+3j/Hji+DOTPw=="
         }
       },
       "is_incremental": true,
@@ -537,7 +549,7 @@
       "output": {
         ".html": {
           "relative_path": "api/TWidgets.Separator.html",
-          "hash": "TAt2YV3gBafBdg+9ce4JpA=="
+          "hash": "5wx/g+aFGO6z+V3NTO5NcA=="
         }
       },
       "is_incremental": true,
@@ -549,7 +561,7 @@
       "output": {
         ".html": {
           "relative_path": "api/TWidgets.StopMessage.html",
-          "hash": "QbXrgK+gws+vCDxovL5GEQ=="
+          "hash": "JRljbH1gOWsbecWKR/IBAw=="
         }
       },
       "is_incremental": true,
@@ -561,7 +573,7 @@
       "output": {
         ".html": {
           "relative_path": "api/TWidgets.TWidgetBase.html",
-          "hash": "EGNpM1FawEPxI7g0Hb50Zg=="
+          "hash": "vDRmbtjWNaMi2IvJwNMjPA=="
         }
       },
       "is_incremental": true,
@@ -573,7 +585,7 @@
       "output": {
         ".html": {
           "relative_path": "api/TWidgets.TWidgetColor.html",
-          "hash": "dAY1KojmOavItE+mKqj8Xw=="
+          "hash": "7DbM3pZy45IT6agzSgDpgg=="
         }
       },
       "is_incremental": true,
@@ -585,7 +597,7 @@
       "output": {
         ".html": {
           "relative_path": "api/TWidgets.TWidgetPlayer.html",
-          "hash": "+HpBT28a6diIIeBC9adOAw=="
+          "hash": "V8FH/Oxfiwg8FoTLYMXzHA=="
         }
       },
       "is_incremental": true,
@@ -597,7 +609,7 @@
       "output": {
         ".html": {
           "relative_path": "api/TWidgets.TextInput.html",
-          "hash": "Zvol9TfFUBeXIZYJy1SZRw=="
+          "hash": "AJOlLfgjQLBruikTZA1Cgg=="
         }
       },
       "is_incremental": true,
@@ -609,7 +621,7 @@
       "output": {
         ".html": {
           "relative_path": "api/TWidgets.html",
-          "hash": "D60gUVaZjpCLWGKIPuAJGA=="
+          "hash": "yO/nLkL6Do3KXF7eL08TpA=="
         }
       },
       "is_incremental": true,
@@ -621,7 +633,7 @@
       "output": {
         ".html": {
           "relative_path": "api/index.html",
-          "hash": "jiY8jEBhyhi+Ajf10Aut5A=="
+          "hash": "fPzU4cEqOfk0o1aP3KhyPA=="
         }
       },
       "is_incremental": true,
@@ -633,7 +645,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "BCLIh/dr5FDwBeYu1HczQA=="
+          "hash": "206x9Thd5Dp7wga+NjWpDQ=="
         }
       },
       "is_incremental": false,
@@ -645,7 +657,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/advanced/custom.html",
-          "hash": "pwYggm94ziSQMPA4jlHP5g=="
+          "hash": "ij8Fu0QC/E1tBVu7Khw/HQ=="
         }
       },
       "is_incremental": true,
@@ -657,7 +669,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/advanced/drawing.html",
-          "hash": "wNg8essy6wR88PhaUxyQeA=="
+          "hash": "TnRQnDjPHl4zVuJSHSrG6w=="
         }
       },
       "is_incremental": true,
@@ -665,23 +677,11 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "articles/extend.md",
+      "source_relative_path": "articles/advanced/index.md",
       "output": {
         ".html": {
-          "relative_path": "articles/extend.html",
-          "hash": "dax6p0S1G3L5o/WDOjtGEw=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "articles/getstarted.md",
-      "output": {
-        ".html": {
-          "relative_path": "articles/getstarted.html",
-          "hash": "fWZVN9+rQzS2KIrqkagkaw=="
+          "relative_path": "articles/advanced/index.html",
+          "hash": "d4pVCWklbwWzOVjESL4I8A=="
         }
       },
       "is_incremental": true,
@@ -693,19 +693,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/install.html",
-          "hash": "wh6D9Bdle6j0xpJipJumXg=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "articles/interactive.md",
-      "output": {
-        ".html": {
-          "relative_path": "articles/interactive.html",
-          "hash": "YdWP2K/RlRfFN9iFAPMOPA=="
+          "hash": "90RL2GMqQTe9pvUVn55mMw=="
         }
       },
       "is_incremental": true,
@@ -717,7 +705,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/intro.html",
-          "hash": "IW8M9Yi1paQYkkAMipcgjQ=="
+          "hash": "Y6Lbwxhfvudi2UQn1GjlnQ=="
         }
       },
       "is_incremental": true,
@@ -725,11 +713,26 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "articles/quickstart.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/quickstart.html",
+          "hash": "KKuic0XWmnRNPfn2XdEyVw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
       "source_relative_path": "articles/templates.md",
       "output": {
         ".html": {
           "relative_path": "articles/templates.html",
-          "hash": "c0waRxQg3vaCGUHMo7KUzw=="
+          "hash": "PCuU7d3EwdAGQIl7jp/hYg=="
         }
       },
       "is_incremental": true,
@@ -741,10 +744,22 @@
       "output": {
         ".html": {
           "relative_path": "articles/toc.html",
-          "hash": "BqRzsYcW/UD+KORzYXMNDg=="
+          "hash": "iAmG3y0IhszE0/SyiODfyQ=="
         }
       },
       "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/twidgets/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/twidgets/index.html",
+          "hash": "p2ufq/o+xT5pv0l1Fgafog=="
+        }
+      },
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -753,7 +768,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/twidgets/interactive.html",
-          "hash": "Bp0GHU6XF2a5jHnAH2ZzMg=="
+          "hash": "mN7DtNph2Pl9JhICqpqrtw=="
         }
       },
       "is_incremental": true,
@@ -765,7 +780,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/twidgets/lists.html",
-          "hash": "zy3fCkSS9mwaPQwg3bI4UQ=="
+          "hash": "IEmdDVBz+LEz9kv/4Z+k5Q=="
         }
       },
       "is_incremental": true,
@@ -777,7 +792,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/twidgets/messages.html",
-          "hash": "bsYjHxB1+MnZt06wNcoE/g=="
+          "hash": "KgiEeAkaZ45ELrH8PLWtbA=="
         }
       },
       "is_incremental": true,
@@ -789,10 +804,87 @@
       "output": {
         ".html": {
           "relative_path": "articles/twidgets/progress.html",
-          "hash": "wnsilDBfyt+YF69n5QTfoA=="
+          "hash": "WQpbJ/a0bODe8ddHzHitHw=="
         }
       },
       "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "favicon.ico",
+      "output": {
+        "resource": {
+          "relative_path": "favicon.ico"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/custom/hierarchy.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/custom/hierarchy.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/custom/workflow.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/custom/workflow.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/drawing/layers.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/drawing/layers.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/drawing/matrix.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/drawing/matrix.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/drawing/workflow.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/drawing/workflow.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/logo.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/logo.png"
+        }
+      },
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -801,10 +893,21 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "QLjiUEKtw7X5BRipne5TsQ=="
+          "hash": "FVpfXuho2qOKotkRJ350Lg=="
         }
       },
       "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "logo.svg",
+      "output": {
+        "resource": {
+          "relative_path": "logo.svg"
+        }
+      },
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -813,7 +916,7 @@
       "output": {
         ".html": {
           "relative_path": "toc.html",
-          "hash": "uJPzxI/8C3EQiUkMt+lPjQ=="
+          "hash": "WC0xHbnPUR/KY96P3yr2PQ=="
         }
       },
       "is_incremental": false,
@@ -829,12 +932,11 @@
         "skipped_file_count": 0
       },
       "processors": {
-        "TocDocumentProcessor": {
-          "can_incremental": false,
-          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+        "ConceptualDocumentProcessor": {
+          "can_incremental": true,
           "incrementalPhase": "build",
-          "total_file_count": 0,
-          "skipped_file_count": 0
+          "total_file_count": 15,
+          "skipped_file_count": 15
         },
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": true,
@@ -842,11 +944,19 @@
           "total_file_count": 51,
           "skipped_file_count": 51
         },
-        "ConceptualDocumentProcessor": {
-          "can_incremental": true,
+        "ResourceDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor ResourceDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
           "incrementalPhase": "build",
-          "total_file_count": 14,
-          "skipped_file_count": 14
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        },
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
         }
       }
     },

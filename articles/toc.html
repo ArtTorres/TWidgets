@@ -4,6 +4,7 @@
     <div class="sidefilter">
       <form class="toc-filter">
         <span class="glyphicon glyphicon-filter filter-icon"></span>
+        <span class="glyphicon glyphicon-remove clear-icon" id="toc_filter_clear"></span>
         <input type="text" id="toc_filter_input" placeholder="Enter here to filter..." onkeypress="if(event.keyCode==13) {return false;}">
       </form>
     </div>
@@ -15,16 +16,45 @@
                     <a href="intro.html" name="" title="Introduction">Introduction</a>
                 </li>
                 <li>
-                    <a href="getstarted.html" name="" title="Get Started">Get Started</a>
+                    <a href="quickstart.html" name="" title="Quick Start">Quick Start</a>
                 </li>
                 <li>
                     <a href="install.html" name="" title="Install">Install</a>
                 </li>
                 <li>
+                    <span class="expand-stub"></span>
+                    <a href="twidgets/index.html" name="" title="Widgets">Widgets</a>
+                    
+                    <ul class="nav level2">
+                          <li>
+                              <a href="twidgets/messages.html" name="" title="Messages">Messages</a>
+                          </li>
+                          <li>
+                              <a href="twidgets/lists.html" name="" title="Lists">Lists</a>
+                          </li>
+                          <li>
+                              <a href="twidgets/progress.html" name="" title="Progress">Progress</a>
+                          </li>
+                          <li>
+                              <a href="twidgets/interactive.html" name="" title="Interactive">Interactive</a>
+                          </li>
+                    </ul>
+                </li>
+                <li>
                     <a href="templates.html" name="" title="Templates">Templates</a>
                 </li>
                 <li>
-                    <a href="advanced/custom.html" name="" title="Advanced">Advanced</a>
+                    <span class="expand-stub"></span>
+                    <a href="advanced/index.html" name="" title="Advanced">Advanced</a>
+                    
+                    <ul class="nav level2">
+                          <li>
+                              <a href="advanced/drawing.html" name="" title="Drawing">Drawing</a>
+                          </li>
+                          <li>
+                              <a href="advanced/custom.html" name="" title="Custom Widgets">Custom Widgets</a>
+                          </li>
+                    </ul>
                 </li>
           </ul>
       </div>

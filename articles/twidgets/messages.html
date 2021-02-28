@@ -8,7 +8,7 @@
     <title>Message TWidgets </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Message TWidgets ">
-    <meta name="generator" content="docfx 2.40.11.0">
+    <meta name="generator" content="docfx 2.56.6.0">
     
     <link rel="shortcut icon" href="../../favicon.ico">
     <link rel="stylesheet" href="../../styles/docfx.vendor.css">
@@ -69,52 +69,27 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="message-twidgets">Message TWidgets</h1>
 
-<p>Displays text. Helps to displays values with consistent visual format.</p>
+<p>Displays text. Helps to displays messages with consistent visual format.</p>
 <p>The current Message TWidgets are:</p>
 <ul>
-<li>Message</li>
 <li>Marquee</li>
-</ul>
-<hr>
-<h2 id="message">Message</h2>
-<p>Displays a text message.</p>
-<h3 id="layout">Layout</h3>
-<p>Supports <a href="">text align</a>, <a href="">margin</a> and <a href="">position</a>.</p>
-<h3 id="events">Events</h3>
-<ul>
-<li><a href="">OnStateChanged.</a> Raises when the assigned text changes.</li>
-</ul>
-<h3 id="implementation">Implementation</h3>
-<p>Initialize and mount as the example below.</p>
-<h4 id="source">Source</h4>
-<pre><code class="lang-csharp">// Setup the TWidget
-var message = new Message(&quot;twidget_id&quot;)
-{
-    Text = &quot;Hello World&quot;
-};
-
-// Mount and play
-TWidgetPlayer.Mount(message);
-</code></pre>
-<h4 id="output">Output</h4>
-<pre><code class="lang-shell">Hello World
-</code></pre>
-<h3 id="documentation">Documentation</h3>
-<ul>
-<li><a href="">API Documentation/Message</a></li>
+<li>Message</li>
+<li>StatusMessage (comming soon)</li>
+<li>TagMessage (comming soon)</li>
+<li>Separator</li>
 </ul>
 <hr>
 <h2 id="marquee">Marquee</h2>
 <p>Displays a text marquee. Each item represent a text line.</p>
-<h3 id="layout-1">Layout</h3>
+<h3 id="layout">Layout</h3>
 <p>Supports <a href="">text align</a>, <a href="">margin</a>, <a href="">padding</a>, <a href="">border</a> and <a href="">position</a>.</p>
-<h3 id="events-1">Events</h3>
+<h3 id="events">Events</h3>
 <ul>
 <li>OnStateChanged. Raises when the assigned list of text items changes.</li>
 </ul>
-<h3 id="implementation-1">Implementation</h3>
+<h3 id="implementation">Implementation</h3>
 <p>Initialize and mount as the example below.</p>
-<h4 id="source-1">Source</h4>
+<h4 id="source">Source</h4>
 <pre><code class="lang-csharp">// Setup the TWidget
 var marquee = new Marquee(&quot;twidget_id&quot;);
 marquee.Items = new string[] {
@@ -125,7 +100,7 @@ marquee.Items = new string[] {
 // Mount and play
 TWidgetPlayer.Mount(marquee);
 </code></pre>
-<h4 id="output-1">Output</h4>
+<h4 id="output">Output</h4>
 <pre><code class="lang-shell">┌─────────────────────────────┐
 │     Welcome to TWidgets     │
 │        &lt;Get Started&gt;        │
@@ -136,9 +111,37 @@ TWidgetPlayer.Mount(marquee);
 <ul>
 <li><a href="">Border Template</a></li>
 </ul>
-<h3 id="documentation-1">Documentation</h3>
+<h3 id="documentation">Documentation</h3>
 <ul>
 <li><a href="">API Documentation/Marquee</a></li>
+</ul>
+<hr>
+<h2 id="message">Message</h2>
+<p>Displays a text message.</p>
+<h3 id="layout-1">Layout</h3>
+<p>Supports <a href="">text align</a>, <a href="">margin</a> and <a href="">position</a>.</p>
+<h3 id="events-1">Events</h3>
+<ul>
+<li><a href="">OnStateChanged.</a> Raises when the assigned text changes.</li>
+</ul>
+<h3 id="implementation-1">Implementation</h3>
+<p>Initialize and mount as the example below.</p>
+<h4 id="source-1">Source</h4>
+<pre><code class="lang-csharp">// Setup the TWidget
+var message = new Message(&quot;twidget_id&quot;)
+{
+    Text = &quot;Hello World&quot;
+};
+
+// Mount and play
+TWidgetTWidgetPlayer.Mount(message);
+</code></pre>
+<h4 id="output-1">Output</h4>
+<pre><code class="lang-shell">Hello World
+</code></pre>
+<h3 id="documentation-1">Documentation</h3>
+<ul>
+<li><a href="">API Documentation/Message</a></li>
 </ul>
 <hr>
 <h3 id="separator">Separator</h3>
@@ -154,7 +157,7 @@ TWidgetPlayer.Mount(marquee);
 var separator = new Separator(&quot;twidget_id&quot;);
 
 // Mount and play
-TWidgetPlayer.Mount(separator);
+TWidgetTWidgetPlayer.Mount(separator);
 </code></pre>
 <h4 id="output-2">Output</h4>
 <pre><code class="lang-shell">──────────────────────────────────────────────────────
@@ -169,6 +172,7 @@ TWidgetPlayer.Mount(separator);
 <li><a href="">API Documentation/Separator</a></li>
 </ul>
 <hr>
+<p><a href="index.html">More Documentation</a></p>
 </article>
           </div>
           
@@ -176,10 +180,14 @@ TWidgetPlayer.Mount(separator);
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ArtTorres/TWidgets/blob/tw-docs/articles/twidgets/messages.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>
