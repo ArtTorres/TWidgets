@@ -52,13 +52,13 @@ Output:
 
 ---
 ## Project References
-- [Homepage](https://github.com/arttorres/Twidgets/wiki)
-- [Get Started](https://github.com/arttorres/TWidgets/wiki/Get-Started)
-- [Documentation](https://github.com/arttorres/TWidgets/wiki/Documentation)
+- [Homepage](https://arttorres.github.io/TWidgets)
+- [Get Started](https://arttorres.github.io/TWidgets/articles/quickstart.html)
+- [Documentation](https://arttorres.github.io/TWidgets/api/TWidgets.html)
 - [Nuget Package](https://www.nuget.org/packages/TWidgets)
 - [Release Notes](https://github.com/arttorres/TWidgets/releases)
-- [Contributing Guidelines](https://github.com/arttorres/TWidgets/.github/CONTRIBUTING.md)
-- [License](https://github.com/arttorres/TWidgets/LICENSE)
+- [Contributing Guidelines](https://github.com/ArtTorres/TWidgets/blob/master/.github/CONTRIBUTING.md)
+- [License](https://github.com/ArtTorres/TWidgets/blob/master/LICENSE)
 
 ## Related Projects
 - [EasyApp. A simple and ready application framework.](https://github.com/arttorres/EasyApp)
