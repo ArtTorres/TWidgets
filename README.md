@@ -16,7 +16,7 @@ Package Manager:
 PM> Install-Package Twidgets
 ```
 
-[>> See more installation options](https://github.com/arttorres/TWidgets/wiki/Install)
+[>> See more installation options](https://arttorres.github.io/TWidgets/articles/install.html)
 
 ---
 ## Quick Start
@@ -35,7 +35,7 @@ class Program
             "<Get Started>"
         };
         
-        TWidgetPlayer.Mount(twidget);
+        Player.Mount(twidget);
     }
 }
 ```
@@ -48,13 +48,14 @@ Output:
 │        <Get Started>        │
 └─────────────────────────────┘
 ```
-[>> See more on Get Started](https://github.com/arttorres/TWidgets/wiki/Get-Started)
+[>> See more on Get Started](https://arttorres.github.io/TWidgets/articles/quickstart.html)
 
 ---
 ## Project References
 - [Homepage](https://arttorres.github.io/TWidgets)
 - [Get Started](https://arttorres.github.io/TWidgets/articles/quickstart.html)
-- [Documentation](https://arttorres.github.io/TWidgets/api/TWidgets.html)
+- [Documentation](https://arttorres.github.io/TWidgets/articles/intro.html)
+- [API Documentation](https://arttorres.github.io/TWidgets/api/TWidgets.html)
 - [Nuget Package](https://www.nuget.org/packages/TWidgets)
 - [Release Notes](https://github.com/arttorres/TWidgets/releases)
 - [Contributing Guidelines](https://github.com/ArtTorres/TWidgets/blob/master/.github/CONTRIBUTING.md)
